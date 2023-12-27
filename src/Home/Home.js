@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
+import { useSelector } from 'react-redux';
 import Sidebar, { SidebarItem } from './Sidebar'
 import Side from './side'
 
 const Home = () => {
+  const expanded = useSelector(state => state.expanded);
   
     const date=new Date()
     const [selectedLanguage, setSelectedLanguage] = useState('Financial');
@@ -18,7 +20,7 @@ const Home = () => {
     <>
     <div className=' flex '>
     <div className='fixed'>
-  </div>
+  <Side/></div>
        <div className=' flex-1 ml-[300px] '>
        <div>
       
