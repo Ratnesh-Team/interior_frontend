@@ -54,7 +54,6 @@ const FileUploadForm = ({ onUpload, onClose }) => {
      
     } catch (error) {
       console.error('Error uploading file:', error);
-     
     }
   };
 
@@ -67,7 +66,7 @@ const FileUploadForm = ({ onUpload, onClose }) => {
             <form>
               <label>
                 Title:
-                <input
+                <input className=''
                   type="text"
                   name="title"
                   value={fileDetails.title}
