@@ -1,12 +1,12 @@
 // FileUploadForm.jsx
-import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios for making HTTP requests
-import './file.css';
+import React, { useState } from "react";
+import axios from "axios"; // Import Axios for making HTTP requests
+import "./file.css";
 
 const FileUploadForm = ({ onUpload, onClose }) => {
   const [fileDetails, setFileDetails] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     file: null,
   });
 
@@ -29,44 +29,40 @@ const FileUploadForm = ({ onUpload, onClose }) => {
   const handleUpload = async () => {
     try {
       const formData = new FormData();
-      formData.append('title', fileDetails.title);
-      formData.append('description', fileDetails.description);
-      formData.append('file', fileDetails.file);
+      formData.append("title", fileDetails.title);
+      formData.append("description", fileDetails.description);
+      formData.append("file", fileDetails.file);
 
       // Make a POST request to the API endpoint with FormData
-      const response = await axios.post('https://interior-backend.stg.initz.run//v1/api/fileupload/', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-     
+      const response = await axios.post(
+        "http://localhost:3000/v1/api/fileupload/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-      
-    
-
-      
       onUpload(response.data);
 
-      
-      console.log('API response:', response.data);
-
-      
-     
+      console.log("API response:", response.data);
     } catch (error) {
-      console.error('Error uploading file:', error);
+      console.error("Error uploading file:", error);
     }
   };
 
   return (
-    <div className='fixed top-0 left-0 w-[100%] h-[100vh] flex bg-[rgba(0,0,0,0.2)] justify-center items-center'>
-      <div className='relative p-[32px] w-[100%] max-w-[640px] bg-white'>
+    <div className="fixed top-0 left-0 w-[100%] h-[100vh] flex bg-[rgba(0,0,0,0.2)] justify-center items-center">
+      <div className="relative p-[32px] w-[100%] max-w-[640px] bg-white">
         <div className="modal-content">
           <div>
             <h2>New Upload</h2>
             <form>
               <label>
                 Title:
-                <input className=''
+                <input
+                  className=""
                   type="text"
                   name="title"
                   value={fileDetails.title}
