@@ -6,7 +6,9 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/v1/api/getfile/"); // Replace 'API_URL' with the actual API URL
+        const response = await fetch(
+          "https://interior-backend.stg.initz.run//v1/api/getfile/"
+        ); // Replace 'API_URL' with the actual API URL
         const result = await response.json();
         setData(result.data);
       } catch (error) {

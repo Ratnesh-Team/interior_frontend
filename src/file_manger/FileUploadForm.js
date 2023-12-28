@@ -35,7 +35,7 @@ const FileUploadForm = ({ onUpload, onClose }) => {
 
       // Make a POST request to the API endpoint with FormData
       const response = await axios.post(
-        "http://localhost:3000/v1/api/fileupload/",
+        "https://interior-backend.stg.initz.run//v1/api/fileupload/",
         formData,
         {
           headers: {
