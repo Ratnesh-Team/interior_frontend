@@ -7,7 +7,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://interior-backend.stg.initz.run//v1/api/getfile/"
+          "https://demo-backend.test.initz.run/engineerHUB-backend/v1/api/getfile/"
         ); // Replace 'API_URL' with the actual API URL
         const result = await response.json();
         setData(result.data);
