@@ -1,13 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Side from '../Home/side';
 import Onsite from './Onsite';
+import { Link } from 'react-router-dom';
+import Furniture from './Furniture'
+import Quote from './quotationupload'
+import { Route,Routes } from 'react-router-dom';
+import FileUploadForm from '../file_manger/FileUploadForm';
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
   const [selectedCategory, setSelectedCategory] = useState('Onsite & Civil works');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+  
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+
+      // You can adjust the offset value based on your design
+      setIsSticky(offset > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+  };
+
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleUpload = (fileDetails) => {
+    
+    closeModal();
   };
 
   return (
@@ -16,6 +53,7 @@ const Quotation = () => {
     <div className='flex-1 ml-4 '>
     <h1 className=" text-3xl font-bold mt-16">Quotation</h1>   
       {/* Render category buttons */}
+      <div className='flex justify-between'>
       <div className="flex mt-4 bg-white">
         {categories.map((category) => (
           <button
@@ -27,7 +65,27 @@ const Quotation = () => {
           </button>
         ))}
       </div>
+      <div>
+      <span className=' mr-5'>
+              <Link to="new-uploades" className="bg-blue-500 text-white p-2 rounded mb-4" onClick={openModal}>
+                Add/Upload
+              </Link>
+              <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2">
+                Remove
+              </button>
+            </span>
+      </div>
+</div>
+ {isModalOpen && (
+        <div className="modal-overlay">
+          <Quote onUpload={handleUpload} onClose={closeModal} trigger={false} />
+        </div>
+      )}
 
+      <Routes>
+        {/* Update Route path to match the nested structure */}
+        <Route path="new-uploades" element={<div />} />
+      </Routes>
       {/* Render content based on selected category */}
       <div className="mt-4">
         {selectedCategory === 'All Items' && (
@@ -47,7 +105,7 @@ const Quotation = () => {
         {selectedCategory === 'Furniture, Decor & Wardrobe' && (
           <div>
             {/* Display pictures and details for Furniture, Decor & Wardrobe */}
-            <h2>Furniture, Decor & Wardrobe Pictures and Details</h2>
+           <Furniture/>
             {/* Add code to display pictures and details here */}
           </div>
         )}

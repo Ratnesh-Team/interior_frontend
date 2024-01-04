@@ -15,7 +15,7 @@ function App() {
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/file/*' element={<Files/>}/>
-    <Route path='/quotation' element={<Quotation/>}/>
+    <Route path='/quotation/*' element={<Quotation/>}/>
     <Route path='/demo' element={<Demo/>}/>
     <Route path="/item/:itemId" element={<Fetch />} />
     <Route path="/item/:itemId" element={<Fetch />} />
