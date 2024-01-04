@@ -7,6 +7,8 @@ import Files from './file_manger/Files'
 import Quotation from './Quotation/Quotation'
 import Demo from './file_manger/demo'
 import Fetch from './file_manger/Fetchdata'
+import Project from './project/project'
+import Mom from "./Mom/mom"
 function App() {
 
   return (
@@ -19,6 +21,8 @@ function App() {
     <Route path='/demo' element={<Demo/>}/>
     <Route path="/item/:itemId" element={<Fetch />} />
     <Route path="/item/:itemId" element={<Fetch />} />
+     <Route path='/project' element={<Project/>}/>
+     <Route path='/mom' element={<Mom/>}/>
     </Routes>
    
     </>

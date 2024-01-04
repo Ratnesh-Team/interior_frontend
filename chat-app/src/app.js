@@ -41,7 +41,7 @@ app.set("io", io); // using set method to mount the `io` instance on the app to 
 // global middlewares
 app.use(
   cors({
-   origin: 'http://localhost:3000' ,
+   origin: 'http://localhost:5173' ,
     credentials: true,
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   })
