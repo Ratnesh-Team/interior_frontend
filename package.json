@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/charts": "^2.0.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "ant-design": "^1.0.0",
+    "antd": "^5.12.7",
     "axios": "^1.6.3",
     "lucide-react": "^0.302.0",
     "react": "^18.2.0",
@@ -15,6 +18,7 @@
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
+    "recharts": "^2.10.3",
     "redux": "^5.0.1",
     "web-vitals": "^2.1.4"
   },

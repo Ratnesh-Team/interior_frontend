@@ -17,10 +17,16 @@ export default function Sidebar({ children }) {
   };
 
   return (
-    <aside className="h-screen ">
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
+    <aside className="h-screen ml-2 rounded-md mt-1 mb-1">
+      <nav className="h-full flex flex-col bg-white border-r shadow-sm rounded-md">
         <div className="p-4 pb-2 flex justify-between items-center">
-        
+        <button
+            
+            className={`overflow-hidden transition-all bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  rounded-xl ${
+              expanded ? "w-40 py-2 px-2" : "w-0 none py-0"
+            }`}
+            alt=""
+          >Create A Project</button>
           <button
            onClick={handleToggleSidebar}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
@@ -57,11 +63,11 @@ export default function Sidebar({ children }) {
   );
 }
 
-export function SidebarItem({ icon, text, active, alert }) {
+export function SidebarItem({ icon, text, active, alert,onClick }) {
   const { expanded, showNames } = useContext(SidebarContext);
 
   return (
-    <li
+    <button
       className={`
         relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
@@ -72,6 +78,7 @@ export function SidebarItem({ icon, text, active, alert }) {
             : "hover:bg-indigo-50 text-gray-600"
         }
     `}
+   onClick={onclick}
     >
       {icon}
       <span
@@ -101,6 +108,6 @@ export function SidebarItem({ icon, text, active, alert }) {
           {text}
         </div>
       )}
-    </li>
+    </button>
   );
 }

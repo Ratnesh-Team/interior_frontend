@@ -9,6 +9,7 @@ import Demo from './file_manger/demo'
 import Fetch from './file_manger/Fetchdata'
 import Project from './project/project'
 import Mom from "./Mom/mom"
+import Total from './Home/total-revenue'
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
     <Route path="/item/:itemId" element={<Fetch />} />
      <Route path='/project' element={<Project/>}/>
      <Route path='/mom' element={<Mom/>}/>
+     <Route path='/revenue' element={<Total/>}/>
     </Routes>
    
     </>

@@ -6,6 +6,7 @@ import img from './sofa.png'
 const Onsite = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [quotationData, setQuotationData] = useState([]);
+  
 
   useEffect(() => {
     const fetchQuotationData = async () => {

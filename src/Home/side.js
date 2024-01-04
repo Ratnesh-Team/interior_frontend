@@ -1,23 +1,84 @@
+import { useState } from 'react'
 import React from 'react'
 import Sidebar, { SidebarItem } from './Sidebar'
 import { Link } from 'react-router-dom'
+import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 
 const Side = () => {
+    const [activeButton, setActiveButton] = useState(null);
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
   return (
     <Sidebar >
     
-    <Link to='/'><SidebarItem  text="Dashboard"  active={true} alert ></SidebarItem></Link>
-    <Link to='/project' ><SidebarItem  text="All Projects" active={true} alert ></SidebarItem></Link>
-    <Link to='/quotation'><SidebarItem  text="Quotation" active={true} alert ></SidebarItem></Link>
-    <Link to='/file'><SidebarItem  text="Files" active={true} alert ></SidebarItem></Link>
-    <Link to='/timelines'><SidebarItem  text="Timelines" active={true} alert ></SidebarItem></Link>
-    <Link to='/task'><SidebarItem  text="Task Manager" active={true} alert ></SidebarItem></Link>
-    <Link to='/mom'><SidebarItem  text="MOM" active={true} alert ></SidebarItem></Link>
-    <Link to='/moodboard'><SidebarItem  text="Moodboard" active={true} alert ></SidebarItem></Link>
-    <Link to='/vendor'><SidebarItem  text="Vender & PO's" active={true} alert ></SidebarItem></Link>
-    <Link to='http://localhost:5173/'><SidebarItem  text="Chat" active={true} alert ></SidebarItem></Link>
-     <Link to='/reports'><SidebarItem  text="Reports" active={true} alert ></SidebarItem></Link> 
+    <Link to='/'>
+    <SidebarItem 
+    icon={<LayoutDashboardIcon/>}  
+    text="Dashboard"  
+    active={activeButton === 'Dashboard'}  
+    onClick={() => handleButtonClick('Dashboard')}></SidebarItem>
+    </Link>
+
+
+    <Link to='/project' >
+    <SidebarItem 
+    icon={<File/>}  
+    text="All Projects"  
+    active={activeButton === 'project'}  
+    onClick={() => handleButtonClick('project')}  ></SidebarItem>
+    </Link>
+
+
+    <Link to='/quotation'>
+    <SidebarItem 
+    icon={<IndianRupee/>}  
+    text="Quotation"  
+    active={activeButton === 'quote'}  
+    onClick={() => handleButtonClick('quote')}  ></SidebarItem>
+    </Link>
+
+
+    <Link to='/file'>
+    <SidebarItem 
+    icon={<Folder/>}  
+    text="Files"  
+    active={activeButton === 'files'}  
+    onClick={() => handleButtonClick('files')}  ></SidebarItem>
+    </Link>
+
+
+ 
+
+
+    <Link to='/mom'>
+    <SidebarItem 
+    icon={<Timer/>}  
+    text="MOM"  
+    active={activeButton === 'mom'}  
+    onClick={() => handleButtonClick('mom')}  ></SidebarItem>
+    </Link>
+
+
+
+
+
+
+
+    <Link to='http://localhost:5173/'>
+    <SidebarItem 
+    icon={<MessageCircleCode/>}  
+    text="Chat"  
+    active={activeButton === 'chat'}  
+    onClick={() => handleButtonClick('chat')}  ></SidebarItem>
+    </Link>
+
+
+
+
+
 
     </Sidebar>
   )
