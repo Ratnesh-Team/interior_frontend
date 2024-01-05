@@ -1,13 +1,18 @@
 // ProjectForm.js
-
 import React, { useState } from 'react';
 
 const ProjectForm = ({ isOpen, onClose, onSave }) => {
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+    const [leadManager, setProjectLeadManager] = useState("");
+    const [designer, setProjectDesigner] = useState("");
+     const [phase, setProjectPhase] = useState("");
+     const [category, setProjectCategory] = useState("")
+
+  
 
   const handleSave = () => {
-    onSave({ name: projectName, description: projectDescription });
+    onSave({ name: projectName, description: projectDescription, leadManager: leadManager, designer: designer, phase:phase, category:category });
     onClose();
   };
 
@@ -31,6 +36,42 @@ const ProjectForm = ({ isOpen, onClose, onSave }) => {
               className="border rounded-md p-2 w-full"
               value={projectDescription}
               onChange={(e) => setProjectDescription(e.target.value)}
+            />
+          </label>
+          <label className="block mb-2">
+            Lead Manager Name:
+            <input
+              type="text"
+              className="border rounded-md p-2 w-full"
+              value={leadManager}
+              onChange={(e) => setProjectLeadManager(e.target.value)}
+            />
+          </label>
+          <label className="block mb-2">
+            Designer Name:
+            <input
+              type="text"
+              className="border rounded-md p-2 w-full"
+              value={designer}
+              onChange={(e) => setProjectDesigner(e.target.value)}
+            />
+          </label>
+          <label className="block mb-2">
+            Phase:
+            <input
+              type="text"
+              className="border rounded-md p-2 w-full"
+              value={phase}
+              onChange={(e) => setProjectPhase(e.target.value)}
+            />
+          </label>
+          <label className="block mb-2">
+            category:
+            <input
+              type="text"
+              className="border rounded-md p-2 w-full"
+              value={category}
+              onChange={(e) => setProjectCategory(e.target.value)}
             />
           </label>
           <button

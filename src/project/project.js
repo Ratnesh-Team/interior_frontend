@@ -1,18 +1,21 @@
 // Project.js
 
-import React, { useState, useEffect } from 'react';
-import 'tailwindcss/tailwind.css';
-import ProjectForm from './ProjectForm';
-import Side from '../Home/Side';
-// Popup component for displaying project details and remove button
+import React, { useState, useEffect } from "react";
+import "tailwindcss/tailwind.css";
+import ProjectForm from "./ProjectForm";
+import Side from "../Home/Side";
+
+
 const ProjectDetailsPopup = ({ isOpen, onClose, project, onRemove }) => {
   return (
-    
     isOpen && (
       <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
         <div className="bg-white p-4 rounded-md">
-          <h2 className="text-2xl font-bold mb-2">{project.name}</h2>
-          <p>{project.description}</p>
+          <h2 className="text-2xl font-bold mb-2">Project: {project.name}</h2>
+          <p>Lead Manager: {project.leadManager}</p>
+          <p>Designer: {project.designer}</p>
+          <p>Phase: {project.phase}</p>
+          <p>Description: {project.description}</p>
           <button
             className="py-2 px-4 bg-red-500 text-white rounded-md mt-4 hover:bg-red-600"
             onClick={() => {
@@ -39,13 +42,36 @@ const Project = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     // Initialize with demo data when the component is mounted
     setProjects([
-      { id: 1, name: 'Project 1', description: 'Description 1' },
-      { id: 2, name: 'Project 2', description: 'Description 2' },
-      { id: 3, name: 'Project 3', description: 'Description 3' },
+      {
+        id: 1,
+        name: "Floor Design",
+        leadManager: "Ratnesh",
+        designer: "Rattu",
+        phase: "Design",
+        category: "floor",
+      },
+      {
+        id: 2,
+        name: "Room Design",
+        leadManager: "Rattu",
+        designer: "Ratnesh",
+        phase: "Review",
+        category: "room",
+      },
+      {
+        id: 3,
+        name: "Kitchen Design",
+        leadManager: "Rattu 12",
+        designer: "Rattu ",
+        phase: "painting",
+        category: "kitchen",
+      },
+      // Add more projects with different categories
     ]);
   }, []);
 
@@ -55,7 +81,9 @@ const Project = () => {
   };
 
   const removeProject = (projectId) => {
-    const updatedProjects = projects.filter((project) => project.id !== projectId);
+    const updatedProjects = projects.filter(
+      (project) => project.id !== projectId
+    );
     setProjects(updatedProjects);
   };
 
@@ -77,52 +105,110 @@ const Project = () => {
     setIsDetailsPopupOpen(false);
   };
 
+  const filterProjectsByCategory = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const clearCategoryFilter = () => {
+    setSelectedCategory(null);
+  };
+
+  const filteredProjects =
+    selectedCategory === null
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
+
   return (
-    <div className='flex'>
-    <Side/>
-    <div className="flex-1 container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">Project Manager</h1>
-      <button
-        className="py-2 px-4 bg-blue-500 text-white rounded-md mb-4"
-        onClick={openForm}
-      >
-        Add Project
-      </button>
-
-      {/* Project List */}
-      <ul>
-        {projects.map((project) => (
-          <li
-            key={project.id}
-            className="mb-2 flex justify-between items-center bg-gray-100 p-2 rounded cursor-pointer"
-            onClick={() => showDetailsPopup(project)}
+    <div className="flex">
+      <Side />
+      <div className="flex-1 container mx-auto p-4 bg-slate-100 relative">
+        <div className="bg-white p-6 shadow-lg mt-2 rounded-lg flex justify-between items-center ">
+          <h1 className="text-3xl font-bold mb-4">Project Management</h1>
+        </div>
+        <div className="flex justify-start mt-4">
+          <button
+            className={`py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md    ml-4 mt-4  ${
+              selectedCategory === null ? "opacity-50" : ""
+            }`}
+            onClick={clearCategoryFilter}
           >
-            <span className="text-blue-500">{project.name}</span>
-            <button
-              className="py-1 px-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-              onClick={() => removeProject(project.id)}
-            >
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
+            All Projects
+          </button>
+          <button
+            className={`py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md   ml-8 mt-4 ${
+              selectedCategory === "floor" ? "opacity-50" : ""
+            }`}
+            onClick={() => filterProjectsByCategory("floor")}
+          >
+            Floors
+          </button>
+          <button
+            className={`py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md  ml-8 mt-4 ${
+              selectedCategory === "room" ? "opacity-50" : ""
+            }`}
+            onClick={() => filterProjectsByCategory("room")}
+          >
+            Rooms
+          </button>
+          <button
+            className={`py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md  ml-8 mt-4 ${
+              selectedCategory === "kitchen" ? "opacity-50" : ""
+            }`}
+            onClick={() => filterProjectsByCategory("kitchen")}
+          >
+            Kitchen
+          </button>
+          <button
+            className="py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md  ml-auto mt-4"
+            onClick={openForm}
+          >
+            Add Project
+          </button>
+        </div>
 
-      {/* Project Form */}
-      <ProjectForm isOpen={isFormOpen} onClose={closeForm} onSave={addProject} />
+        {/* Project List */}
+        <ul>
+          {filteredProjects.map((project) => (
+            <li key={project.id} className="mb-10">
+              <div className="flex justify-between items-center bg-white p-4 shadow-lg mt-4 rounded-lg relative">
+                <span className="text-black-500 font-bold">
+                  {project.name}
+                  <p className="font-normal">
+                    Lead Manager: {project.leadManager}
+                  </p>
+                  <p className="font-normal">Designer: {project.designer}</p>
+                </span>
+                <p className="font-normal absolute  bottom-0 right-12 mr-20 mb-2 ml-auto mt- 4 ">
+                  Phase: {project.phase}
+                </p>
+                <button
+                  className="py-1 px-2 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md"
+                  onClick={() => showDetailsPopup(project)}
+                >
+                  Manage
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
 
-      {/* Project Details Popup */}
-      <ProjectDetailsPopup
-        isOpen={isDetailsPopupOpen}
-        onClose={closeDetailsPopup}
-        project={selectedProject}
-        onRemove={removeProject}
-      />
-    </div>
+        {/* Project Form */}
+        <ProjectForm
+          isOpen={isFormOpen}
+          onClose={closeForm}
+          onSave={addProject}
+        />
+
+        {/* Project Details Popup */}
+        <ProjectDetailsPopup
+          isOpen={isDetailsPopupOpen}
+          onClose={closeDetailsPopup}
+          project={selectedProject}
+          onRemove={removeProject}
+        />
+      </div>
     </div>
   );
 };
-
-// ProjectForm and ProjectDetailsPopup components remain the same as in the previous response.
 
 export default Project;
