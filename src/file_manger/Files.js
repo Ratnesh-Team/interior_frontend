@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import FileUploadForm from './FileUploadForm';
-import Side from '../Home/side';
+import Side from '../Home/Side';
 import axios from 'axios';
 import Fetch from './Fetchdata';
 
@@ -57,12 +57,12 @@ const Files = () => {
     <div className=' fixed '>
       <Side />
       </div>
-      <div className={`flex-1 mt-20 ${expanded?' ml-[280px]':' ml-[100px]'}`}>
+      <div className={`flex-1 mt-20 ${expanded?' ml-[300px]':' ml-[100px]'}`}>
         <div>
-          <div className='flex justify-between'>
+          <div className='flex justify-between '>
             <h2 className="text-center text-2xl font-bold mb-4 ml-4">Files</h2>
             <span className=' mr-5'>
-              <Link to="new-upload" className="bg-blue-500 text-white p-2 rounded mb-4" onClick={openModal}>
+              <Link to="new-upload" className="bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  p-2 rounded mb-4" onClick={openModal}>
                 New Upload
               </Link>
               <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2">
@@ -72,8 +72,10 @@ const Files = () => {
           </div>
 
           {/* Display uploaded files */}
-     <Fetch/>
         </div>
+        <div className='bg-slate-100'>
+     <Fetch/>
+     </div>
       </div>
 
       {/* Display FileUploadForm as a modal when isModalOpen is true */}

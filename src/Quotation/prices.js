@@ -38,7 +38,7 @@ const Prices = () => {
         </h1>
 </div>
 <div className=' flex items-center justify-center pt-5'>
-        <button className=' bg-blue-900 py-2 px-7 rounded-md text-white'>Update & Submit</button>
+        <button className=' bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 py-2 px-7 rounded-md '>Update & Submit</button>
         </div>
     </div>
   )

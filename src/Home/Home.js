@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Sidebar, { SidebarItem } from './Sidebar'
-import Side from './side'
+import Side from './Side'
 import DonutChart from './total-revenue';
 import { BarChart, List } from 'lucide-react';
 import sofa from '../Quotation/sofa.png'

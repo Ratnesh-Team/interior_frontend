@@ -62,6 +62,15 @@ const Side = () => {
     </Link>
 
 
+    <Link to='/lead'>
+    <SidebarItem 
+    icon={<Timer/>}  
+    text="Lead"  
+    active={activeButton === 'mom'}  
+    onClick={() => handleButtonClick('mom')}  ></SidebarItem>
+    </Link>
+
+
 
 
 
@@ -74,6 +83,8 @@ const Side = () => {
     active={activeButton === 'chat'}  
     onClick={() => handleButtonClick('chat')}  ></SidebarItem>
     </Link>
+    
+   
 
 
 

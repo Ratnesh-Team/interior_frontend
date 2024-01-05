@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import ProjectForm from './ProjectForm';
+import Side from '../Home/Side';
 // Popup component for displaying project details and remove button
 const ProjectDetailsPopup = ({ isOpen, onClose, project, onRemove }) => {
   return (
+    
     isOpen && (
       <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
         <div className="bg-white p-4 rounded-md">
@@ -76,7 +78,9 @@ const Project = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className='flex'>
+    <Side/>
+    <div className="flex-1 container mx-auto p-4">
       <h1 className="text-4xl font-bold mb-4">Project Manager</h1>
       <button
         className="py-2 px-4 bg-blue-500 text-white rounded-md mb-4"
@@ -114,6 +118,7 @@ const Project = () => {
         project={selectedProject}
         onRemove={removeProject}
       />
+    </div>
     </div>
   );
 };

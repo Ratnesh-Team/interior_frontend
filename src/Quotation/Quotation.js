@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import Side from '../Home/side';
+import Side from '../Home/Side';
 import Onsite from './Onsite';
 import { Link } from 'react-router-dom';
 import Furniture from './Furniture'
@@ -49,7 +49,7 @@ const Quotation = () => {
 
   return (
     <div className='flex'>
-    
+    <Side/>
     <div className='flex-1 ml-4 '>
     <h1 className=" text-3xl font-bold mt-16">Quotation</h1>   
       {/* Render category buttons */}
