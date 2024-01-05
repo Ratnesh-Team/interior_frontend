@@ -34,7 +34,7 @@ const ProjectForm = ({ isOpen, onClose, onSave }) => {
             />
           </label>
           <button
-            className="py-2 px-4 bg-blue-500 text-white rounded-md mr-2"
+            className="py-2 px-4 from-indigo-200 to-indigo-100 text-indigo-800 text-white rounded-md mr-2"
             onClick={handleSave}
           >
             Save

@@ -27,7 +27,7 @@ const Onsite = () => {
         <div className='border-r-2 w-[80%]'>
           <table className="w-full pt-10">
             {/* Header and other code remain unchanged */}
-            <thead className='h-[40px] bg-blue-500 shadow-md pb-4 separate-background border-b-2'>
+            <thead className='h-[40px] bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 shadow-md pb-4 separate-background border-b-2'>
               <tr className='pt-5'>
                 <th className="w-[70%]">Item</th>
                 <th>Quantity</th>

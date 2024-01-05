@@ -103,7 +103,7 @@ const FileUploadForm = ({ onUpload, onClose }) => {
               <button
                 type="button"
                 onClick={handleUpload}
-                className="bg-blue-500 text-white p-2 rounded mt-4"
+                className="from-indigo-200 to-indigo-100 text-indigo-800 text-white p-2 rounded mt-4"
               >
                 Upload
               </button>

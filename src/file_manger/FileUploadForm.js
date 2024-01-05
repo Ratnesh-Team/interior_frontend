@@ -1,7 +1,6 @@
 // FileUploadForm.jsx
+
 import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios for making HTTP requests
-import './file.css';
 
 const FileUploadForm = ({ onUpload, onClose }) => {
   const [fileDetails, setFileDetails] = useState({
@@ -9,6 +8,8 @@ const FileUploadForm = ({ onUpload, onClose }) => {
     description: '',
     file: null,
   });
+
+  const [submittedData, setSubmittedData] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,30 +29,24 @@ const FileUploadForm = ({ onUpload, onClose }) => {
 
   const handleUpload = async () => {
     try {
-      const formData = new FormData();
-      formData.append('title', fileDetails.title);
-      formData.append('description', fileDetails.description);
-      formData.append('file', fileDetails.file);
+      // Simulate a static response
+      const staticResponse = {
+        id: 123,
+        title: fileDetails.title,
+        description: fileDetails.description,
+        createdAt: new Date().toLocaleString(),
+      };
 
-      // Make a POST request to the API endpoint with FormData
-      const response = await axios.post('https://interior-backend.stg.initz.run//v1/api/fileupload/', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-     
+      // Simulate a delay to mimic the server request
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      
-    
+      // Call onUpload with the static response
+      onUpload(staticResponse);
 
-      
-      onUpload(response.data);
+      // Set the submitted data to update the UI
+      setSubmittedData(staticResponse);
 
-      
-      console.log('API response:', response.data);
-
-      
-     
+      console.log('File uploaded successfully (static response):', staticResponse);
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -66,7 +61,7 @@ const FileUploadForm = ({ onUpload, onClose }) => {
             <form>
               <label>
                 Title:
-                <input className=''
+                <input
                   type="text"
                   name="title"
                   value={fileDetails.title}
@@ -74,15 +69,7 @@ const FileUploadForm = ({ onUpload, onClose }) => {
                 />
               </label>
               <br />
-              <label>
-                Description:
-                <textarea
-                  name="description"
-                  value={fileDetails.description}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
+              {/* Remove description field */}
               <label>
                 File:
                 <input type="file" onChange={handleFileChange} />
@@ -91,7 +78,7 @@ const FileUploadForm = ({ onUpload, onClose }) => {
               <button
                 type="button"
                 onClick={handleUpload}
-                className="bg-blue-500 text-white p-2 rounded mt-4"
+                className="from-indigo-200 to-indigo-100 text-indigo-800 text-white p-2 rounded mt-4"
               >
                 Upload
               </button>

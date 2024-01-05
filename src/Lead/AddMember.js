@@ -46,8 +46,8 @@ const AddMemberModal = ({onAddMember, onClose }) => {
             <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -80,7 +80,7 @@ const AddMemberModal = ({onAddMember, onClose }) => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="px-4 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="px-4 py-2 mr-2 from-indigo-200 to-indigo-100 text-indigo-800 text-white rounded hover:from-indigo-200 to-indigo-100 text-indigo-800600"
               onClick={handleSubmit}
             >
               Submit

@@ -1,96 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import FileUploadForm from './FileUploadForm';
-import Side from '../Home/Side';
-import axios from 'axios';
-import Fetch from './Fetchdata';
+// src/components/App.js
+import React, { useState } from 'react';
+import CategoryForm from './CategoryForm';
+import FloorDesignContent from './Floor';
+import KitchenContent from './KitchenContent';
+import WardrobeContent from './WardrobeContent';
+import HallContent from './HallContent';
 
-import { useSelector } from 'react-redux';
+const App = () => {
+  const [showForm, setShowForm] = useState(false);
+  const [contents, setContents] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-const Files = () => {
-  const [uploadedFiles, setUploadedFiles] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [data, setData] = useState([]); const [isSticky, setIsSticky] = useState(false);
-  const expanded = useSelector(state => state.expanded);
-
-  
-
-  useEffect(() => {
-    axios.get('https://interior-backend.stg.initz.run//v1/api/getfile/')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-
-      // You can adjust the offset value based on your design
-      setIsSticky(offset > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const openModal = () => {
-    setIsModalOpen(true);
+  const handleOpenForm = () => {
+    setShowForm(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleCloseForm = () => {
+    setShowForm(false);
   };
 
-  const handleUpload = (fileDetails) => {
-    
-    closeModal();
+  const handleFormSubmit = (formData) => {
+    // Handle the submitted form data and update the contents state
+    setContents([...contents, formData]);
+
+    // Close the form
+    handleCloseForm();
   };
+
+  const handleCategoryClick = (category) => {
+    // Set the selected category to display its content
+    setSelectedCategory(category);
+  };
+
+  const resetSelectedCategory = () => {
+    // Reset the selected category to show all content
+    setSelectedCategory(null);
+  };
+
+  // Filter contents based on categories
+  const floorDesignContents = contents.filter((item) => item.category === 'Floor Design');
+  const kitchenContents = contents.filter((item) => item.category === 'Kitchen');
+  const wardrobeContents = contents.filter((item) => item.category === 'Wardrobe');
+  const hallContents = contents.filter((item) => item.category === 'Hall');
 
   return (
-    <div className='flex'>
-    <div className=' fixed '>
-      <Side />
+    <div className="container mx-auto mt-8 p-4">
+      <div className="flex justify-end mb-4">
+        <button onClick={handleOpenForm} className="bg-green-500 text-white px-4 py-2 rounded-md">
+          Add Item
+        </button>
       </div>
-      <div className={`flex-1 mt-20 ${expanded?' ml-[300px]':' ml-[100px]'}`}>
-        <div>
-          <div className='flex justify-between '>
-            <h2 className="text-center text-2xl font-bold mb-4 ml-4">Files</h2>
-            <span className=' mr-5'>
-              <Link to="new-upload" className="bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  p-2 rounded mb-4" onClick={openModal}>
-                New Upload
-              </Link>
-              <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2">
-                New Approval
-              </button>
-            </span>
-          </div>
+      {showForm && <CategoryForm onClose={handleCloseForm} onSubmit={handleFormSubmit} />}
+      <div>
+        {/* Display Category buttons */}
+        <button onClick={() => handleCategoryClick('Floor Design')} className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">
+          Floor Design
+        </button>
+        <button onClick={() => handleCategoryClick('Kitchen')} className="bg-red-500 text-white px-4 py-2 rounded-md mr-2">
+          Kitchen
+        </button>
+        <button onClick={() => handleCategoryClick('Wardrobe')} className="bg-yellow-500 text-white px-4 py-2 rounded-md mr-2">
+          Wardrobe
+        </button>
+        <button onClick={() => handleCategoryClick('Hall')} className="bg-purple-500 text-white px-4 py-2 rounded-md mr-2">
+          Hall
+        </button>
+        <button onClick={resetSelectedCategory} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md">
+          Show All
+        </button>
 
-          {/* Display uploaded files */}
-        </div>
-        <div className='bg-slate-100'>
-     <Fetch/>
-     </div>
+        {/* Display CategoryContent based on the selected category */}
+        {selectedCategory === 'Floor Design' && <FloorDesignContent content={floorDesignContents} />}
+        {selectedCategory === 'Kitchen' && <KitchenContent content={kitchenContents} />}
+        {selectedCategory === 'Wardrobe' && <WardrobeContent content={wardrobeContents} />}
+        {selectedCategory === 'Hall' && <HallContent content={hallContents} />}
+        {/* Add additional categories as needed */}
       </div>
-
-      {/* Display FileUploadForm as a modal when isModalOpen is true */}
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <FileUploadForm onUpload={handleUpload} onClose={closeModal} trigger={false} />
-        </div>
-      )}
-
-      <Routes>
-        {/* Update Route path to match the nested structure */}
-        <Route path="new-upload" element={<div />} />
-      </Routes>
     </div>
   );
 };
 
-export default Files;
+export default App;

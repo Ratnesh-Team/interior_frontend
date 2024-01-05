@@ -6,12 +6,14 @@ import Furniture from './Furniture'
 import Quote from './quotationupload'
 import { Route,Routes } from 'react-router-dom';
 import FileUploadForm from '../file_manger/FileUploadForm';
+import { useSelector } from 'react-redux';
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
   const [selectedCategory, setSelectedCategory] = useState('Onsite & Civil works');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const expanded = useSelector((state) => state.expanded);
   
 
   useEffect(() => {
@@ -48,17 +50,19 @@ const Quotation = () => {
   };
 
   return (
-    <div className='flex'>
+    <div className='flex bg-slate-100'>
+    <div className='fixed'>
     <Side/>
-    <div className='flex-1 ml-4 '>
+    </div>
+    <div className={`flex-1 ${expanded ? 'ml-[310px]' : 'ml-[100px]'}`}>
     <h1 className=" text-3xl font-bold mt-16">Quotation</h1>   
       {/* Render category buttons */}
       <div className='flex justify-between'>
-      <div className="flex mt-4 bg-white">
+      <div className="flex mt-4 ">
         {categories.map((category) => (
           <button
             key={category}
-            className={`p-2 mx-2 rounded ${selectedCategory === category ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}`}
+            className={`p-2 mx-2 rounded ${selectedCategory === category ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'bg-gray-200 text-gray-800'}`}
             onClick={() => handleCategoryClick(category)}
           >
             {category}
@@ -67,7 +71,7 @@ const Quotation = () => {
       </div>
       <div>
       <span className=' mr-5'>
-              <Link to="new-uploades" className="bg-blue-500 text-white p-2 rounded mb-4" onClick={openModal}>
+              <Link to="new-uploades" className="bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  p-2 rounded mb-4" onClick={openModal}>
                 Add/Upload
               </Link>
               <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2">

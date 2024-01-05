@@ -78,12 +78,12 @@ const Project = () => {
   };
 
   return (
-    <div className='flex'>
+    <div className='flex bg-slate-100'>
     <Side/>
     <div className="flex-1 container mx-auto p-4">
       <h1 className="text-4xl font-bold mb-4">Project Manager</h1>
       <button
-        className="py-2 px-4 bg-blue-500 text-white rounded-md mb-4"
+        className="py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md mb-4"
         onClick={openForm}
       >
         Add Project
