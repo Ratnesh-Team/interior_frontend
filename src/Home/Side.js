@@ -44,7 +44,7 @@ const Side = () => {
     <Link to='/file'>
     <SidebarItem 
     icon={<Folder/>}  
-    text="Files"  
+    text="File Manager"  
     active={activeButton === 'files'}  
     onClick={() => handleButtonClick('files')}  ></SidebarItem>
     </Link>
@@ -65,7 +65,7 @@ const Side = () => {
     <Link to='/lead'>
     <SidebarItem 
     icon={<Timer/>}  
-    text="Lead"  
+    text="Lead Management"  
     active={activeButton === 'mom'}  
     onClick={() => handleButtonClick('mom')}  ></SidebarItem>
     </Link>

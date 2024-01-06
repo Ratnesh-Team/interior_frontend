@@ -5,7 +5,7 @@ import img from '../Mom/sofa.png'
 const TeamSection = ({ title, members }) => {
   return (
     <div className='mt-16 ml-10 '>
-      <h2 className='text-2xl w-1/5  pl-5 border-b-2 py-1 rounded-lg bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800'>{title}</h2>
+
       <div className='flex flex-wrap mt-3 '>
              
               {members.map((member, index) => (

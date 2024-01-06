@@ -61,13 +61,15 @@ const TeamPage = () => {
         <Side />
       </div>
       <div className={`flex-1 ${expanded ? 'ml-[300px]' : 'ml-[100px]'}`}>
+        <div className=" bg-white px-6 py-3 my-6 mx-4   shadow-lg  rounded-lg">
+        <h1 className="text-3xl font-bold  ">File Manager</h1>
         <button
           onClick={openAddMemberModal}
           className="float-right bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 mt-7 mr-10 py-2 px-3 rounded-lg"
         >
-          Add Member
+          Add/Upload
         </button>
-
+      </div>
         {/* Role buttons */}
         <div className="flex mt-4 mb-2 ml-4">
           {Object.keys(teamMembers).map((role) => (
@@ -80,8 +82,10 @@ const TeamPage = () => {
             >
               {role}
             </button>
+          
           ))}
         </div>
+       
 
         {/* Render the selected team members based on the selectedCategory */}
         {selectedCategory && (

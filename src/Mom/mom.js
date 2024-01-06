@@ -25,8 +25,8 @@ const MinutesOfMeeting = () => {
     <div className="flex">
     <Side/>
     <div className="flex-1 container mx-auto p-4 bg-slate-100  relative  ">
-      <div className=" bg-white p-6  shadow-lg mt-2 rounded-lg">
-        <h1 className="text-3xl font-bold mb-4 ">Minutes of Meeting</h1>
+      <div className=" bg-white px-6 py-3   shadow-lg mt-2 rounded-lg">
+        <h1 className="text-3xl font-bold  ">Minutes of Meeting</h1>
         <FontAwesomeIcon
           icon={faBell}
           className="text-xl absolute top-12  right-14 text-indigo-800"

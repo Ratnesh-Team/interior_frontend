@@ -55,7 +55,10 @@ const Quotation = () => {
     <Side/>
     </div>
     <div className={`flex-1 ${expanded ? 'ml-[310px]' : 'ml-[100px]'}`}>
-    <h1 className=" text-3xl font-bold mt-16">Quotation</h1>   
+    <div className=" bg-white px-6 py-3 my-6 mx-4   shadow-lg  rounded-lg">
+        <h1 className="text-3xl font-bold  ">Quotation</h1>
+        
+      </div>
       {/* Render category buttons */}
       <div className='flex justify-between'>
       <div className="flex mt-4 ">
