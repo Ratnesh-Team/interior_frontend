@@ -1,83 +1,100 @@
-// src/components/App.js
 import React, { useState } from 'react';
-import CategoryForm from './CategoryForm';
-import FloorDesignContent from './Floor';
-import KitchenContent from './KitchenContent';
-import WardrobeContent from './WardrobeContent';
-import HallContent from './HallContent';
+import TeamSection from './Floor';
+import AddMemberPage from './FileUploadForm';
+import Side from '../Home/Side';
+import { useSelector } from 'react-redux';
+import img from '../Mom/sofa.png'
 
-const App = () => {
-  const [showForm, setShowForm] = useState(false);
-  const [contents, setContents] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+const TeamPage = () => {
+  const [isAddMemberModalOpen, setAddMemberModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('Floor');
+  const expanded = useSelector((state) => state.expanded);
+  const [teamMembers, setTeamMembers] = useState({
+    Floor: [
+      { name: 'John Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      { name: 'Jane Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      // ... other members
+    ],
+    Kitchen: [
+      { name: 'John Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      { name: 'Jane Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      // ... other members
+    ],
+    Wardrobe: [
+      { name: 'Sam Supervisor', email: 'abc@gmail.com',description:"fdgvw"  },
+      { name: 'Sara Supervisor', email: 'abc@gmail.com',description:"fdgvw"  },
+      // ... other members
+    ],
+    Hall: [
+      { name: 'Tom Worker', email: 'abc@gmail.com',description:"fdgvw"  },
+      { name: 'Tina Worker', email: 'abc@gmail.com',description:"fdgvw"   },
+      // ... other members
+    ],
+  });
 
-  const handleOpenForm = () => {
-    setShowForm(true);
+  const openAddMemberModal = () => {
+    setAddMemberModalOpen(true);
   };
 
-  const handleCloseForm = () => {
-    setShowForm(false);
+  const closeAddMemberModal = () => {
+    setAddMemberModalOpen(false);
   };
 
-  const handleFormSubmit = (formData) => {
-    // Handle the submitted form data and update the contents state
-    setContents([...contents, formData]);
+  const handleAddMember = ({ name,email, image, role }) => {
+    // Create a copy of the current team members
+    const updatedTeamMembers = { ...teamMembers };
 
-    // Close the form
-    handleCloseForm();
+    // Add the new member to the appropriate role
+    updatedTeamMembers[role] = [...updatedTeamMembers[role], { name,email, image }];
+
+    // Update the state with the new team members
+    setTeamMembers(updatedTeamMembers);
   };
 
-  const handleCategoryClick = (category) => {
-    // Set the selected category to display its content
-    setSelectedCategory(category);
+  const handleRoleButtonClick = (role) => {
+    setSelectedCategory(role);
   };
-
-  const resetSelectedCategory = () => {
-    // Reset the selected category to show all content
-    setSelectedCategory(null);
-  };
-
-  // Filter contents based on categories
-  const floorDesignContents = contents.filter((item) => item.category === 'Floor Design');
-  const kitchenContents = contents.filter((item) => item.category === 'Kitchen');
-  const wardrobeContents = contents.filter((item) => item.category === 'Wardrobe');
-  const hallContents = contents.filter((item) => item.category === 'Hall');
 
   return (
-    <div className="container mx-auto mt-8 p-4">
-      <div className="flex justify-end mb-4">
-        <button onClick={handleOpenForm} className="bg-green-500 text-white px-4 py-2 rounded-md">
-          Add Item
-        </button>
+    <div className="flex bg-[#ebebed] h-[100vh]">
+      <div className="fixed">
+        <Side />
       </div>
-      {showForm && <CategoryForm onClose={handleCloseForm} onSubmit={handleFormSubmit} />}
-      <div>
-        {/* Display Category buttons */}
-        <button onClick={() => handleCategoryClick('Floor Design')} className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">
-          Floor Design
-        </button>
-        <button onClick={() => handleCategoryClick('Kitchen')} className="bg-red-500 text-white px-4 py-2 rounded-md mr-2">
-          Kitchen
-        </button>
-        <button onClick={() => handleCategoryClick('Wardrobe')} className="bg-yellow-500 text-white px-4 py-2 rounded-md mr-2">
-          Wardrobe
-        </button>
-        <button onClick={() => handleCategoryClick('Hall')} className="bg-purple-500 text-white px-4 py-2 rounded-md mr-2">
-          Hall
-        </button>
-        <button onClick={resetSelectedCategory} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md">
-          Show All
+      <div className={`flex-1 ${expanded ? 'ml-[300px]' : 'ml-[100px]'}`}>
+        <button
+          onClick={openAddMemberModal}
+          className="float-right bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 mt-7 mr-10 py-2 px-3 rounded-lg"
+        >
+          Add Member
         </button>
 
-        {/* Display CategoryContent based on the selected category */}
-        {selectedCategory === 'Floor Design' && <FloorDesignContent content={floorDesignContents} />}
-        {selectedCategory === 'Kitchen' && <KitchenContent content={kitchenContents} />}
-        {selectedCategory === 'Wardrobe' && <WardrobeContent content={wardrobeContents} />}
-        {selectedCategory === 'Hall' && <HallContent content={hallContents} />}
-        {/* Add additional categories as needed */}
+        {/* Role buttons */}
+        <div className="flex mt-4 mb-2 ml-4">
+          {Object.keys(teamMembers).map((role) => (
+            <button
+              key={role}
+              onClick={() => handleRoleButtonClick(role)}
+              className={`bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  py-2 px-4 mr-2 rounded-lg ${
+                selectedCategory === role ? 'bg-blue-700' : ''
+              }`}
+            >
+              {role}
+            </button>
+          ))}
+        </div>
+
+        {/* Render the selected team members based on the selectedCategory */}
+        {selectedCategory && (
+          <TeamSection title={selectedCategory} members={teamMembers[selectedCategory]} />
+        )}
+
+        {/* Render the AddMemberPage component */}
+        {isAddMemberModalOpen && (
+          <AddMemberPage onAddMember={handleAddMember} onClose={closeAddMemberModal} />
+        )}
       </div>
     </div>
   );
 };
 
-export default App;
+export default TeamPage;

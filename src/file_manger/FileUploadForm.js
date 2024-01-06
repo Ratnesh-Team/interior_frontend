@@ -1,100 +1,102 @@
-// FileUploadForm.jsx
-
 import React, { useState } from 'react';
 
-const FileUploadForm = ({ onUpload, onClose }) => {
-  const [fileDetails, setFileDetails] = useState({
-    title: '',
-    description: '',
-    file: null,
-  });
+const AddMemberModal = ({onAddMember, onClose }) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [phone, setPhone] = useState('');
+  const [Category, setCategory] = useState('');
 
-  const [submittedData, setSubmittedData] = useState(null);
+  const roles = ['Designer', 'Supervisor', 'Worker'];
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFileDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFileDetails((prevDetails) => ({
-      ...prevDetails,
-      file,
-    }));
-  };
-
-  const handleUpload = async () => {
-    try {
-      // Simulate a static response
-      const staticResponse = {
-        id: 123,
-        title: fileDetails.title,
-        description: fileDetails.description,
-        createdAt: new Date().toLocaleString(),
-      };
-
-      // Simulate a delay to mimic the server request
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Call onUpload with the static response
-      onUpload(staticResponse);
-
-      // Set the submitted data to update the UI
-      setSubmittedData(staticResponse);
-
-      console.log('File uploaded successfully (static response):', staticResponse);
-    } catch (error) {
-      console.error('Error uploading file:', error);
+  const handleSubmit = () => {
+    // Validate the form data
+    if (!title || !phone || !description || !Category) {
+      alert('Please fill in all fields.');
+      return;
     }
+
+    // Handle form submission (add member to the respective Category)
+    onAddMember({ title, phone,description, Category });
+
+    // Close the modal
+    onClose();
+  };
+
+  const handleClose = () => {
+    // Close the modal without adding the member
+    onClose();
   };
 
   return (
-    <div className='fixed top-0 left-0 w-[100%] h-[100vh] flex bg-[rgba(0,0,0,0.2)] justify-center items-center'>
-      <div className='relative p-[32px] w-[100%] max-w-[640px] bg-white'>
-        <div className="modal-content">
-          <div>
-            <h2>New Upload</h2>
-            <form>
-              <label>
-                Title:
-                <input
-                  type="text"
-                  name="title"
-                  value={fileDetails.title}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <br />
-              {/* Remove description field */}
-              <label>
-                File:
-                <input type="file" onChange={handleFileChange} />
-              </label>
-              <br />
-              <button
-                type="button"
-                onClick={handleUpload}
-                className="from-indigo-200 to-indigo-100 text-indigo-800 text-white p-2 rounded mt-4"
-              >
-                Upload
-              </button>
-              <button
-                type="button"
-                onClick={onClose}
-                className="bg-red-500 text-white p-2 rounded mt-4 ml-2"
-              >
-                Close
-              </button>
-            </form>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg w-96">
+        <h1 className="text-2xl font-bold mb-4">Add/Upload</h1>
+        <form>
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-1">Name:</label>
+            <input
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
-        </div>
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-1">Email:</label>
+            <input
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-1">Phone:</label>
+            <input
+              type="text"
+              className="w-full p-2 border border-gray-300 rounded"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-1">Role:</label>
+            <select
+              className="w-full p-2 border border-gray-300 rounded"
+              value={Category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="">Select a Category</option>
+              {roles.map((r) => (
+                <option key={r} value={r}>
+                  {r}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex justify-end">
+            <button
+              type="button"
+              className="px-4 py-2 mr-2 from-indigo-200 to-indigo-100 text-indigo-800 text-white rounded hover:from-indigo-200 to-indigo-100 text-indigo-800600"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              onClick={handleClose}
+            >
+              Close
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
 };
 
-export default FileUploadForm;
+export default AddMemberModal;
