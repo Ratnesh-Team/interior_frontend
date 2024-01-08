@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import DonutChart from '../Home/total-revenue';
 import { BarChart, List } from 'lucide-react';
 import sofa from '../Quotation/sofa.png'
-import Sidebar from '../Home/Sides';
-import { SidebarItem } from '../Home/Sides';
+import Sidebar from './sides';
+import { SidebarItem } from './sides';
 import { Link } from 'react-router-dom'
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 

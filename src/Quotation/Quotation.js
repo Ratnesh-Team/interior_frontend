@@ -9,7 +9,7 @@ import FileUploadForm from '../file_manger/FileUploadForm';
 import { useSelector } from 'react-redux';
 import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
@@ -107,7 +107,7 @@ const Quotation = () => {
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
     active={false}  
       ></SidebarItem>

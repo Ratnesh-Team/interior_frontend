@@ -8,7 +8,7 @@ import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
 import { truckContainer } from "fontawesome";
 
 
@@ -80,7 +80,7 @@ const MinutesOfMeeting = () => {
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
     active={false}  
       ></SidebarItem>

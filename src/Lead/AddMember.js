@@ -87,7 +87,7 @@ const AddMemberModal = ({onAddMember, onClose }) => {
             </button>
             <button
               type="button"
-              className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              className="px-4 py-2 bg-red-500 text-gray-700 rounded hover:bg-gray-400"
               onClick={handleClose}
             >
               Close

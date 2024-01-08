@@ -7,8 +7,8 @@ import Side from "../Home/Side";
 import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
 
 
 const ProjectDetailsPopup = ({ isOpen, onClose, project, onRemove }) => {
@@ -48,6 +48,7 @@ const Project = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const navigate=useNavigate();
 
   useEffect(() => {
     // Initialize with demo data when the component is mounted
@@ -89,6 +90,7 @@ const Project = () => {
   }, []);
 
   const addProject = (project) => {
+    
     setProjects([...projects, { id: projects.length + 1, ...project }]);
     closeForm();
   };
@@ -109,8 +111,8 @@ const Project = () => {
   };
 
   const showDetailsPopup = (project) => {
-    setSelectedProject(project);
-    setIsDetailsPopupOpen(true);
+    navigate("/user")
+ 
   };
 
   const closeDetailsPopup = () => {
@@ -185,7 +187,7 @@ const Project = () => {
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
     active={false}  
       ></SidebarItem>

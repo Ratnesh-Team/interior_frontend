@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
 
 const TeamPage = () => {
   const [isAddMemberModalOpen, setAddMemberModalOpen] = useState(false);
@@ -113,7 +113,7 @@ const TeamPage = () => {
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
     active={true}  
       ></SidebarItem>

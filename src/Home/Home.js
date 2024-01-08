@@ -3,11 +3,11 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Side from './Side'
 import DonutChart from './total-revenue';
-import { BarChart, List } from 'lucide-react';
+import { BarChart, List, Users } from 'lucide-react';
 import sofa from '../Quotation/sofa.png'
 import Sidebar from './Sides';
 import { SidebarItem } from './Sides';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 
@@ -15,12 +15,15 @@ const Home = () => {
   const expanded = useSelector(state => state.expanded);
     const date=new Date()
     const [selectedLanguage, setSelectedLanguage] = useState('Financial');
-    
+    const navigate=useNavigate()
     const languages = ['Financial', 'Client', 'Task Manager','File manager', 'Quotation', 'MOM',  'Purchase Order'];
   
     const handleLanguageClick = (index) => {
       setSelectedLanguage(index);
     };
+    const onclick=()=>{
+        navigate('/user')
+    }
     const ProjectsData = [
       {
         "id": 1,
@@ -99,7 +102,7 @@ const Home = () => {
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
     active={false}  
       ></SidebarItem>
@@ -154,13 +157,17 @@ const Home = () => {
       <h1 className='text-lg font-normal ml-2'>Latest Activities</h1>
       </div>
       <div>   {Projects.map(Project => (
-          <li key={Project.id} className=' list-none flex ml-4 border-b-2 py-1 '>
+        <div className=' flex justify-between border-b-2'>
+          <li key={Project.id} className=' list-none flex ml-4  py-1 '>
             <img src={sofa} alt={Project.name} style={{ maxWidth: '100px' }} className='mr-6'/>
             <div>
             <h3>{Project.name}</h3>
             <p>{Project.details}</p>
             </div>
           </li>
+          
+          <button className='flex items-center bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 h-10 mr-3 px-2 rounded-md mt-4' onClick={onclick}>Manage</button>
+          </div>
         ))}</div>
 </div>
 
