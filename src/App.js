@@ -12,6 +12,7 @@ import Mom from "./Mom/mom"
 import Total from './Home/total-revenue'
 import Lead from './Lead/Lead'
 import AddMemberPage from './Lead/AddMember'
+import User from './user/User'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
      <Route path='/lead' element={<Lead/>}/>
      <Route path="/add-member" element={<AddMemberPage/>} />
      <Route path='/revenue' element={<Total/>}/>
+     <Route path='/user' element={<User/>}/>
     </Routes>
    
     </>

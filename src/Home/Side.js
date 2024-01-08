@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
-import Sidebar, { SidebarItem } from './Sidebar'
+import Sidebar, { SidebarItem } from './Sides'
 import { Link } from 'react-router-dom'
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 

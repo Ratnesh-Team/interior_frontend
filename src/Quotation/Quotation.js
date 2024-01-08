@@ -7,6 +7,9 @@ import Quote from './quotationupload'
 import { Route,Routes } from 'react-router-dom';
 import FileUploadForm from '../file_manger/FileUploadForm';
 import { useSelector } from 'react-redux';
+import Sidebar from '../Home/Sides';
+import { SidebarItem } from '../Home/Sides';
+import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
@@ -52,7 +55,86 @@ const Quotation = () => {
   return (
     <div className='flex bg-slate-100'>
     <div className='fixed'>
-    <Side/>
+    <Sidebar >
+    
+    <Link to='/'>
+    <SidebarItem 
+    icon={<LayoutDashboardIcon/>}  
+    text="Dashboard"  
+    active={false} 
+    ></SidebarItem>
+    </Link>
+
+
+    <Link to='/project' >
+    <SidebarItem 
+    icon={<File/>}  
+    text="All Projects"  
+    active={false} 
+      ></SidebarItem>
+    </Link>
+
+
+    <Link to='/quotation'>
+    <SidebarItem 
+    icon={<IndianRupee/>}  
+    text="Quotation"  
+    active={true}  
+      ></SidebarItem>
+    </Link>
+
+
+    <Link to='/file'>
+    <SidebarItem 
+    icon={<Folder/>}  
+    text="File Manager"  
+    active={false}  
+      ></SidebarItem>
+    </Link>
+
+
+ 
+
+
+    <Link to='/mom'>
+    <SidebarItem 
+    icon={<Timer/>}  
+    text="MOM"  
+    active={false}  
+      ></SidebarItem>
+    </Link>
+
+
+    <Link to='/lead'>
+    <SidebarItem 
+    icon={<Timer/>}  
+    text="Lead Management"  
+    active={false}  
+      ></SidebarItem>
+    </Link>
+
+
+
+
+
+
+
+    <Link to='http://localhost:5173/'>
+    <SidebarItem 
+    icon={<MessageCircleCode/>}  
+    text="Chat"  
+    active={false}  
+      ></SidebarItem>
+    </Link>
+    
+   
+
+
+
+
+
+
+    </Sidebar>
     </div>
     <div className={`flex-1 ${expanded ? 'ml-[310px]' : 'ml-[100px]'}`}>
     <div className=" bg-white px-6 py-3 my-6 mx-4   shadow-lg  rounded-lg">
@@ -98,7 +180,7 @@ const Quotation = () => {
         {selectedCategory === 'All Items' && (
           <div>
             {/* Display furniture names */}
-            <h2>Furniture Names</h2>
+            <Onsite/>
             {/* Add code to display furniture names here */}
           </div>
         )}
@@ -119,7 +201,7 @@ const Quotation = () => {
         {selectedCategory === 'Kitchen & Accessories' && (
           <div>
             {/* Display kitchen accessories */}
-            <h2>Kitchen Accessories</h2>
+            <Onsite/>
             {/* Add code to display kitchen accessories here */}
           </div>
         )}

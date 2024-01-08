@@ -6,7 +6,7 @@ const AddMemberModal = ({onAddMember, onClose }) => {
   const [phone, setPhone] = useState('');
   const [role, setRole] = useState('');
 
-  const roles = ['Designer', 'Supervisor', 'Worker'];
+  const roles = ['Designer', 'Supervisor', 'Worker','Client'];
 
   const handleSubmit = () => {
     // Validate the form data

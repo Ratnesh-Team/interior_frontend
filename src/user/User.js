@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import React from 'react'
 import { useSelector } from 'react-redux';
-import Side from './Side'
-import DonutChart from './total-revenue';
+
+import DonutChart from '../Home/total-revenue';
 import { BarChart, List } from 'lucide-react';
 import sofa from '../Quotation/sofa.png'
-import Sidebar from './Sides';
-import { SidebarItem } from './Sides';
+import Sidebar from '../Home/Sides';
+import { SidebarItem } from '../Home/Sides';
 import { Link } from 'react-router-dom'
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
@@ -55,15 +55,6 @@ const Home = () => {
     text="Dashboard"  
     active={true} 
     ></SidebarItem>
-    </Link>
-
-
-    <Link to='/project' >
-    <SidebarItem 
-    icon={<File/>}  
-    text="All Projects"  
-    active={false} 
-      ></SidebarItem>
     </Link>
 
 
@@ -130,7 +121,7 @@ const Home = () => {
        <div className={` flex-1 ${expanded?' ml-[300px]':' ml-[100px]'} `}>
        <div className=' bg-white mx-3 py-5 mt-5 rounded-lg '>
       
-        <h1 className=" text-2xl font-bold ml-4 ">Admin Dashboard</h1>       
+        <h1 className=" text-2xl font-bold ml-4 ">Project Level Dashboard</h1>       
         <h1 className=" text-xl font-bold mt-2 ml-4">Timeline: {date.toLocaleDateString()}</h1>        
         <h1 className=" text-md font-light mt-4 ml-4">Project Admin: Interior designer</h1>     
         </div>
