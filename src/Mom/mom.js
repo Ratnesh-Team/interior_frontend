@@ -47,7 +47,7 @@ const MinutesOfMeeting = () => {
             <th className="border px-4 py-2">Remarks</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white">
           <tr>
             <td className="border px-4 py-2">
               <img

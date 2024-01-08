@@ -11,24 +11,24 @@ const TeamPage = () => {
   const expanded = useSelector((state) => state.expanded);
   const [teamMembers, setTeamMembers] = useState({
     Floor: [
-      { name: 'John Designer', email: 'abc@gmail.com',description:"fdgvw"  },
-      { name: 'Jane Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'John Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'Jane Designer', email: 'abc@gmail.com',description:"fdgvw"  },
       // ... other members
     ],
     Kitchen: [
-      { name: 'John Designer', email: 'abc@gmail.com',description:"fdgvw"  },
-      { name: 'Jane Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'John Designer', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'Jane Designer', email: 'abc@gmail.com',description:"fdgvw"  },
       // ... other members
     ],
     Wardrobe: [
-      { name: 'Sam Supervisor', email: 'abc@gmail.com',description:"fdgvw"  },
-      { name: 'Sara Supervisor', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'Sam Supervisor', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'Sara Supervisor', email: 'abc@gmail.com',description:"fdgvw"  },
       // ... other members
     ],
     Hall: [
-      { name: 'Tom Worker', email: 'abc@gmail.com',description:"fdgvw"  },
-      { name: 'Tina Worker', email: 'abc@gmail.com',description:"fdgvw"   },
-      // ... other members
+      { title: 'Tom Worker', email: 'abc@gmail.com',description:"fdgvw"  },
+      { title: 'Tina Worker', email: 'abc@gmail.com',description:"fdgvw"   },
+     
     ],
   });
 
@@ -40,13 +40,15 @@ const TeamPage = () => {
     setAddMemberModalOpen(false);
   };
 
-  const handleAddMember = ({ name,email, image, role }) => {
+  const handleAddMember = ({ title, email, description, role }) => {
     // Create a copy of the current team members
     const updatedTeamMembers = { ...teamMembers };
-
-    // Add the new member to the appropriate role
-    updatedTeamMembers[role] = [...updatedTeamMembers[role], { name,email, image }];
-
+  
+    // Make sure that updatedTeamMembers[role] is an array before spreading it
+    updatedTeamMembers[role] = Array.isArray(updatedTeamMembers[role])
+      ? [...updatedTeamMembers[role], { title, email, description }]  : [{ title, email, description }];
+      console.log(updatedTeamMembers);
+  
     // Update the state with the new team members
     setTeamMembers(updatedTeamMembers);
   };
@@ -56,7 +58,7 @@ const TeamPage = () => {
   };
 
   return (
-    <div className="flex bg-[#ebebed] h-[100vh]">
+    <div className="flex bg-slate-100 h-[100vh]">
       <div className="fixed">
         <Side />
       </div>
@@ -65,7 +67,7 @@ const TeamPage = () => {
         <h1 className="text-3xl font-bold  ">File Manager</h1>
         <button
           onClick={openAddMemberModal}
-          className="float-right bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 mt-7 mr-10 py-2 px-3 rounded-lg"
+          className="float-right shadow-lg bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 mt-7 mr-10 py-2 px-3 rounded-lg"
         >
           Add/Upload
         </button>
@@ -76,8 +78,8 @@ const TeamPage = () => {
             <button
               key={role}
               onClick={() => handleRoleButtonClick(role)}
-              className={`bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  py-2 px-4 mr-2 rounded-lg ${
-                selectedCategory === role ? 'bg-blue-700' : ''
+              className={`  py-2 px-4 mr-2 rounded-lg ${
+                selectedCategory === role ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 shadow-lg' : 'bg-white shadow-lg'
               }`}
             >
               {role}

@@ -3,22 +3,23 @@ import React, { useState } from 'react';
 const AddMemberModal = ({onAddMember, onClose }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [Category, setCategory] = useState('');
 
-  const roles = ['Designer', 'Supervisor', 'Worker'];
+  const roles = ['Floor', 'Kitchen', 'Wardrobe','Hall'];
 
   const handleSubmit = () => {
     // Validate the form data
-    if (!title || !phone || !description || !Category) {
+    if (!title || !email || !description || !Category) {
       alert('Please fill in all fields.');
       return;
     }
 
     // Handle form submission (add member to the respective Category)
-    onAddMember({ title, phone,description, Category });
+    onAddMember({ title, email,description, Category });
 
     // Close the modal
+   
     onClose();
   };
 
@@ -42,7 +43,7 @@ const AddMemberModal = ({onAddMember, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Email:</label>
+            <label className="block text-sm font-semibold mb-1">Description:</label>
             <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded"
@@ -56,8 +57,8 @@ const AddMemberModal = ({onAddMember, onClose }) => {
             <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -80,14 +81,14 @@ const AddMemberModal = ({onAddMember, onClose }) => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="px-4 py-2 mr-2 from-indigo-200 to-indigo-100 text-indigo-800 text-white rounded hover:from-indigo-200 to-indigo-100 text-indigo-800600"
+              className="px-4 py-2 mr-2 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded hover:from-indigo-200 to-indigo-100 text-indigo-800600"
               onClick={handleSubmit}
             >
               Submit
             </button>
             <button
               type="button"
-              className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              className="px-4 py-2 bg-red-500 text-gray-700 rounded "
               onClick={handleClose}
             >
               Close

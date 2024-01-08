@@ -80,7 +80,7 @@ const AddMemberModal = ({onAddMember, onClose }) => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="px-4 py-2 mr-2 from-indigo-200 to-indigo-100 text-indigo-800 text-white rounded hover:from-indigo-200 to-indigo-100 text-indigo-800600"
+              className="px-4 py-2 mr-2 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded hover:from-indigo-200 to-indigo-100 text-indigo-800600"
               onClick={handleSubmit}
             >
               Submit

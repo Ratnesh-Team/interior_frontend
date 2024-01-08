@@ -50,7 +50,7 @@ const TeamPage = () => {
   };
 
   return (
-    <div className="flex bg-[#ebebed] h-[100vh]">
+    <div className="flex bg-slate-100 h-[100vh]">
       <div className="fixed">
         <Side />
       </div>
@@ -59,13 +59,13 @@ const TeamPage = () => {
       <div className=" bg-white px-6 py-3 my-6 mx-4   shadow-lg  rounded-lg">
         <h1 className="text-3xl font-bold  ">Lead Management</h1>
         
-      </div>
         <button
           onClick={openAddMemberModal}
-          className="float-right bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 mt-7 mr-10 py-2 px-3 rounded-lg"
+          className="float-right shadow-lg bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 mt-9 mr-10 py-2 px-3 rounded-lg"
         >
           Add Member
         </button>
+      </div>
 
         {/* Role buttons */}
         <div className="flex mt-4 mb-2 ml-4">
@@ -73,8 +73,8 @@ const TeamPage = () => {
             <button
               key={role}
               onClick={() => handleRoleButtonClick(role)}
-              className={`bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  py-2 px-4 mr-2 rounded-lg ${
-                selectedRole === role ? 'bg-blue-700' : ''
+              className={`  py-2 shadow-lg px-4 mr-2 rounded-lg ${
+                selectedRole === role ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'bg-white'
               }`}
             >
               {role}

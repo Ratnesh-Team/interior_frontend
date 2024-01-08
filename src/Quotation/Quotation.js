@@ -65,7 +65,7 @@ const Quotation = () => {
         {categories.map((category) => (
           <button
             key={category}
-            className={`p-2 mx-2 rounded ${selectedCategory === category ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'bg-gray-200 text-gray-800'}`}
+            className={`p-2 mx-2 rounded ${selectedCategory === category ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'bg-white shadow-lg text-gray-800'}`}
             onClick={() => handleCategoryClick(category)}
           >
             {category}
@@ -74,10 +74,10 @@ const Quotation = () => {
       </div>
       <div>
       <span className=' mr-5'>
-              <Link to="new-uploades" className="bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  p-2 rounded mb-4" onClick={openModal}>
+              <Link to="new-uploades" className="bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  p-2 rounded mb-4 shadow-lg" onClick={openModal}>
                 Add/Upload
               </Link>
-              <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2">
+              <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2 shadow-lg">
                 Remove
               </button>
             </span>
