@@ -119,16 +119,52 @@ const Project = () => {
       : projects.filter((project) => project.category === selectedCategory);
 
   return (
-    <div className='flex'>
-    <Side/>
-    <div className="flex-1 container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">Project Manager</h1>
-      <button
-        className="py-2 px-4 bg-blue-500 text-white rounded-md mb-4"
-        onClick={openForm}
-      >
-        Add Project
-      </button>
+    <div className="flex">
+      <Side />
+      <div className="flex-1 container mx-auto p-4 bg-slate-100 relative">
+        <div className="bg-white p-6 shadow-lg mt-2 rounded-lg flex justify-between items-center ">
+          <h1 className="text-3xl font-bold mb-4">Project Management</h1>
+        </div>
+        <div className="flex justify-start mt-4">
+          <button
+            className={`py-2 px-4  rounded-md    ml-4 mt-4  ${
+              selectedCategory === null ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md" : "bg-white"
+            }`}
+            onClick={clearCategoryFilter}
+          >
+            All Projects
+          </button>
+          <button
+            className={`py-2 px-4  rounded-md   ml-8 mt-4 ${
+              selectedCategory === "floor" ? " bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800" : " bg-white"
+            }`}
+            onClick={() => filterProjectsByCategory("floor")}
+          >
+            Floors
+          </button>
+          <button
+            className={`py-2 px-4   ml-8 mt-4 ${
+              selectedCategory === "room" ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md" : "bg-white"
+            }`}
+            onClick={() => filterProjectsByCategory("room")}
+          >
+            Rooms
+          </button>
+          <button
+            className={`py-2 px-4  rounded-md  ml-8 mt-4 ${
+              selectedCategory === "kitchen" ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md" : "bg-white"
+            }`}
+            onClick={() => filterProjectsByCategory("kitchen")}
+          >
+            Kitchen
+          </button>
+          <button
+            className="py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md  ml-auto mt-4"
+            onClick={openForm}
+          >
+            Add Project
+          </button>
+        </div>
 
         {/* Project List */}
         <ul>
