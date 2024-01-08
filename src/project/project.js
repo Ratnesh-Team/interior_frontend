@@ -49,7 +49,7 @@ const Project = () => {
     setProjects([
       {
         id: 1,
-        name: "Floor Design",
+        name: "Project 1",
         leadManager: "Ratnesh",
         designer: "Rattu",
         phase: "Design",
@@ -57,7 +57,7 @@ const Project = () => {
       },
       {
         id: 2,
-        name: "Room Design",
+        name: "project 2",
         leadManager: "Rattu",
         designer: "Ratnesh",
         phase: "Review",
@@ -65,11 +65,19 @@ const Project = () => {
       },
       {
         id: 3,
-        name: "Kitchen Design",
+        name: "project 3",
         leadManager: "Rattu 12",
         designer: "Rattu ",
         phase: "painting",
         category: "kitchen",
+      },
+      {
+        id: 4,
+        name: "project 4",
+        leadManager: "Rattu 12",
+        designer: "Rattu ",
+        phase: "completed",
+        category: "complete",
       },
       // Add more projects with different categories
     ]);
@@ -127,36 +135,54 @@ const Project = () => {
         </div>
         <div className="flex justify-start mt-4">
           <button
-            className={`py-2 px-4  rounded-md    ml-4 mt-4  ${
-              selectedCategory === null ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md" : "bg-white"
+            className={`py-2 px-4  rounded-md  shadow-lg  ml-4 mt-4  ${
+              selectedCategory === null
+                ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md"
+                : "bg-white"
             }`}
             onClick={clearCategoryFilter}
           >
             All Projects
           </button>
           <button
-            className={`py-2 px-4  rounded-md   ml-8 mt-4 ${
-              selectedCategory === "floor" ? " bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800" : " bg-white"
+            className={`py-2 px-4  rounded-md shadow-lg  ml-8 mt-4 ${
+              selectedCategory === "floor"
+                ? " bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
+                : " bg-white"
             }`}
             onClick={() => filterProjectsByCategory("floor")}
           >
             Floors
           </button>
           <button
-            className={`py-2 px-4   ml-8 mt-4 ${
-              selectedCategory === "room" ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md" : "bg-white"
+            className={`py-2 px-4 shadow-lg   ml-8 mt-4 ${
+              selectedCategory === "room"
+                ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md"
+                : "bg-white"
             }`}
             onClick={() => filterProjectsByCategory("room")}
           >
             Rooms
           </button>
           <button
-            className={`py-2 px-4  rounded-md  ml-8 mt-4 ${
-              selectedCategory === "kitchen" ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md" : "bg-white"
+            className={`py-2 px-4  rounded-md shadow-lg  ml-8 mt-4 ${
+              selectedCategory === "kitchen"
+                ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md"
+                : "bg-white"
             }`}
             onClick={() => filterProjectsByCategory("kitchen")}
           >
             Kitchen
+          </button>
+          <button
+            className={`py-2 px-4  rounded-md shadow-lg  ml-8 mt-4 ${
+              selectedCategory === "complete"
+                ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md"
+                : "bg-white"
+            }`}
+            onClick={() => filterProjectsByCategory("complete")}
+          >
+            completed
           </button>
           <button
             className="py-2 px-4 bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 rounded-md  ml-auto mt-4"
@@ -173,10 +199,10 @@ const Project = () => {
               <div className="flex justify-between items-center bg-white p-4 shadow-lg mt-4 rounded-lg relative">
                 <span className="text-black-500 font-bold">
                   {project.name}
-                  <p className="font-normal">
+                  {/* <p className="font-normal">
                     Lead Manager: {project.leadManager}
                   </p>
-                  <p className="font-normal">Designer: {project.designer}</p>
+                  <p className="font-normal">Designer: {project.designer}</p> */}
                 </span>
                 <p className="font-normal absolute  bottom-0 right-12 mr-20 mb-2 ml-auto mt- 4 ">
                   Phase: {project.phase}
