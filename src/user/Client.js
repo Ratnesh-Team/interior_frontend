@@ -3,16 +3,22 @@ import React from 'react'
 import Sidebar, { SidebarItem } from '../Home/Sides'
 import { Link } from 'react-router-dom'
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, Mail, MessageCircleCode, MessageCircleCodeIcon, Timer, Users, Watch} from 'lucide-react'
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { useSelector } from 'react-redux'
 
 const ClientPage = () => {
   const [leadStatus, setLeadStatus] = useState('Follow up');
-
+  const expanded = useSelector((state) => state.expanded);
   const handleLeadStatusChange = (status) => {
     setLeadStatus(status);
   };
 
   return (
     <div className=' flex'>
+    <div className='fixed'>
           <Sidebar >
     
     <Link to='/'>
@@ -93,7 +99,8 @@ const ClientPage = () => {
 
 
     </Sidebar>
-    <div className=" flex-1 container  mt-8 w-full">
+    </div>
+    <div className={`flex-1 container  mt-8 w-full ${expanded ? 'ml-[300px]' : 'ml-[100px]'} `}>
       <div className=" mx-5 bg-white py-6 pl-6 rounded-md shadow-md ">
         <div className="mb-4">
           <h1 className="text-2xl font-bold mb-2">Client Information</h1>
@@ -172,6 +179,34 @@ const ClientPage = () => {
               No response
             </div>
           </div>
+        </div>
+        <div className=''>
+        <div className='w-1/2'>
+        <h1 className='my-2 font-semibold'>To follow up on</h1>
+        <div className='flex'>
+            <input
+              type="date"
+              name="timelineDate"
+              className="w-1/2 h-14 mr-3 mt-2 border text-gray-300 border-gray-300 p-2 rounded hover:border-black"
+            />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DemoContainer components={['TimePicker']}>
+        <TimePicker label="" />
+      </DemoContainer>
+    </LocalizationProvider>
+    </div>
+        </div>
+        <div>
+      
+        </div>
+        </div>
+
+        <div className='my-5'>
+        <span className='flex justify-between'>
+      <h1 className='mb-4 font-semibold'>Today's Update</h1>
+      <Link className='text-indigo-800 mr-6'>View Last Update</Link>
+      </span>
+        <input type="text" className='w-4/5 h-12 border-gray-300 border rounded-md mr-6' />
         </div>
       </div>
     </div>
