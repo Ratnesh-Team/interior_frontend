@@ -311,8 +311,19 @@ const App = () => {
             {Object.keys(item).map((column) => (
               // Exclude 'Project Type' column from rendering
               column !== 'Project_Type' && (
-                <td key={column} className="border-b-2 p-2 pl-6">
-                  {item[column]}
+                <td
+          key={column}
+          className={`border-b-2 p-2 pl-6 `}
+        >
+                  <p className={` w-1/2 rounded-md ${
+            column === 'Phase' &&
+            item['Project_Type'] === 'commercial'
+              ? 'text-blue-500 bg-[#e8e7fd]'
+              : column === 'Phase' &&
+                item['Project_Type'] === 'residential'
+              ? 'text-green-500 bg-[#e2f6e8]'
+              : ''
+          }`}>{item[column]}</p>
                 </td>
               )
             ))}
@@ -331,7 +342,7 @@ const App = () => {
           <option value={20}>20</option>
         </select>
         <span className="ml-4">Total Pages: {totalPages}</span>
-        <span className="ml-4">Jump to Page:</span>
+        <span className="ml-4">Page:</span>
         <input
       type="number"
       value={jumpToPage}

@@ -1,0 +1,103 @@
+[
+    {
+      "Item": "Laptop",
+      "Quantity": 5,
+      "Amount": 7500
+    },
+    {
+      "Item": "Printer",
+      "Quantity": 2,
+      "Amount": 1200
+    },
+    {
+      "Item": "Office Chair",
+      "Quantity": 10,
+      "Amount": 5000
+    },
+    {
+      "Item": "Coffee Machine",
+      "Quantity": 1,
+      "Amount": 300
+    },
+    {
+      "Item": "Projector",
+      "Quantity": 3,
+      "Amount": 4500
+    },
+    {
+      "Item": "Whiteboard",
+      "Quantity": 4,
+      "Amount": 800
+    },
+    {
+      "Item": "Desk Lamp",
+      "Quantity": 6,
+      "Amount": 900
+    },
+    {
+      "Item": "Conference Table",
+      "Quantity": 2,
+      "Amount": 3000
+    },
+    {
+      "Item": "Stationery Set",
+      "Quantity": 15,
+      "Amount": 250
+    },
+    {
+      "Item": "Storage Cabinet",
+      "Quantity": 3,
+      "Amount": 1800
+    },
+    {
+      "Item": "Webcam",
+      "Quantity": 8,
+      "Amount": 800
+    },
+    {
+      "Item": "External Hard Drive",
+      "Quantity": 5,
+      "Amount": 1500
+    },
+    {
+      "Item": "Desk Organizer",
+      "Quantity": 7,
+      "Amount": 350
+    },
+    {
+      "Item": "Headset",
+      "Quantity": 12,
+      "Amount": 1200
+    },
+    {
+      "Item": "Flip Chart",
+      "Quantity": 2,
+      "Amount": 200
+    },
+    {
+      "Item": "Water Dispenser",
+      "Quantity": 1,
+      "Amount": 500
+    },
+    {
+      "Item": "Task Chair",
+      "Quantity": 8,
+      "Amount": 1600
+    },
+    {
+      "Item": "Standing Desk",
+      "Quantity": 3,
+      "Amount": 2250
+    },
+    {
+      "Item": "Filing Cabinet",
+      "Quantity": 4,
+      "Amount": 800
+    },
+    {
+      "Item": "Mouse and Keyboard Set",
+      "Quantity": 6,
+      "Amount": 600
+    }
+  ]
+  

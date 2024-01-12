@@ -1,0 +1,2 @@
+design supervision implementation
+execution suspenstion

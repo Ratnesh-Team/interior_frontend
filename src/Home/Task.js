@@ -1,5 +1,7 @@
+// Function to generate dummy data
+
 import React, { useState, useEffect } from 'react';
-import { generateDummyData } from './DummyData';
+import { generateDummyData } from './Datas.js';
 import { ChevronLeft, ListFilter,ChevronRight } from 'lucide-react';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
@@ -7,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 const App = () => {
-  const [data, setData] = useState(generateDummyData(100));
+  const [data, setData] = useState(generateDummyData(10));
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState({});
   const [quickSearch, setQuickSearch] = useState('');
@@ -17,7 +19,7 @@ const App = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [sortColumn, setSortColumn] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [jumpToPage, setJumpToPage] = useState('');
   const [selectedFilters, setSelectedFilters] = useState({});
   const [list, setList] = useState('true');
@@ -177,7 +179,7 @@ const App = () => {
 
   return (
     <div className="container mx-auto bg-white pt-3">
-      <div className="mb-4 flex justify-between ml-6">
+      {/* <div className="mb-4 flex justify-between ml-6">
         <div>
         <div className=' border-[2px] border-indigo-500 rounded-md '>
           <Button
@@ -284,7 +286,7 @@ const App = () => {
           value={quickSearch}
           onChange={(e) => setQuickSearch(e.target.value)}
         />
-      </div>
+      </div> */}
       <table className="w-full">
       <thead className='bg-[rgb(246,246,247)] border-b-2 pl-4 ml-4'>
         <tr className=''>
@@ -311,8 +313,19 @@ const App = () => {
             {Object.keys(item).map((column) => (
               // Exclude 'Project Type' column from rendering
               column !== 'Project_Type' && (
-                <td key={column} className="border-b-2 p-2 pl-6">
-                  {item[column]}
+                <td
+          key={column}
+          className={`border-b-2 p-2 pl-6 `}
+        >
+                  <p className={` w-1/2 rounded-md ${
+            column === 'Phase' &&
+            item[''] === 'commercial'
+              ? 'text-blue-500 bg-[#e8e7fd] pl-2'
+              : column === 'Phase' &&
+                item['Project_Type'] === 'residential'
+              ? 'text-green-500 bg-[#e2f6e8] pl-2 '
+              : ''
+          }`}>{item[column]}</p>
                 </td>
               )
             ))}
@@ -320,44 +333,7 @@ const App = () => {
         ))}
       </tbody>
     </table>
-      <div className=' float-right flex'>
-  
-      <div className="mt-4 mr-6">
-        <span>Show rows per page:</span>
-        <select value={rowsPerPage} onChange={handleRowsPerPageChange} className="ml-2 p-2 border rounded">
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={15}>15</option>
-          <option value={20}>20</option>
-        </select>
-        <span className="ml-4">Total Pages: {totalPages}</span>
-        <span className="ml-4">Jump to Page:</span>
-        <input
-      type="number"
-      value={jumpToPage}
-      onChange={handleJumpToPageChange}
-      onKeyPress={handleJumpToPageKeyPress} // Handle Enter key press
-      className="ml-2  border-2 w-[40px]  border-black rounded"
-    />
-        <span>/ {totalPages}</span>
-      </div>
-      <div className="mt-6 ">
-        <button
-          className="mr-2  text-slate-400 h-[5px]"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-         <ChevronLeft/>
-        </button>
-        <button
-          className=" text-slate-400"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-       >
-           <ChevronRight/>
-        </button>
-      </div>
-      </div>
+      
       
     </div>
   );

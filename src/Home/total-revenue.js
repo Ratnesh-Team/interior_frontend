@@ -89,24 +89,27 @@ const CustomTooltip = ({ active, payload }) => {
 
 const DonutChart = () => {
  return (
-    <PieChart width={400} height={400}>
-      <Pie
-        activeIndex={1}
-        activeShape={renderActiveShape}
-        data={data}
-        cx={200}
-        cy={200}
-        innerRadius={100}
-        outerRadius={150}
-        fill="#8884d8"
-        dataKey="value"
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip content={<CustomTooltip />} />
-    </PieChart>
+      <div>
+        
+      </div>
+    // <PieChart width={400} height={400}>
+    //   <Pie
+    //     activeIndex={1}
+    //     activeShape={renderActiveShape}
+    //     data={data}
+    //     cx={200}
+    //     cy={200}
+    //     innerRadius={100}
+    //     outerRadius={150}
+    //     fill="#8884d8"
+    //     dataKey="value"
+    //   >
+    //     {data.map((entry, index) => (
+    //       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+    //     ))}
+    //   </Pie>
+    //   <Tooltip content={<CustomTooltip />} />
+    // </PieChart>
  );
 };
 export default DonutChart;

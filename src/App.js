@@ -11,6 +11,10 @@ import AddMemberPage from './Lead/AddMember'
 import User from './user/User'
 import Data from './data/Data'
 import Demo from './data/demo'
+import Noti from './notification/App'
+import ClientPage from './user/Client'
+import Form from './user/Form'
+import DisplayData from './user/Display'
 
 function App() {
 
@@ -28,6 +32,9 @@ function App() {
      <Route path='/user' element={<User/>}/>
      <Route path='/data' element={<Data/>}/>
      <Route path='/demo' element={<Demo/>}/>
+     <Route path='/noti' element={<Form/>}/>
+     <Route path='/projects' element={<ClientPage/>}/>
+     <Route path='/display' element={<DisplayData/>}/>
     </Routes>
    
     </>

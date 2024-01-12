@@ -174,21 +174,16 @@ const App = () => {
       [column]: isHovered,
     }));
   };
+  const handleProjectClick = (url) => {
+    // Navigate to the user's URL when the project name is clicked
+    window.location.href = url;
+  };
 
   return (
-    <div className="container mx-auto bg-white pt-3">
-      <div className="mb-4 flex justify-between ml-6">
+    <div className="container mx-auto bg-white pt-3 mt-4">
+      {/* <div className="mb-4 flex justify-between ml-6">
         <div>
-        <div className=' border-[2px] border-indigo-500 rounded-md '>
-          <Button
-            aria-describedby={filterId}
-            onClick={handleFilterClick}
-            className="flex border-b-2 border-indigo-500  py-1 rounded-md text-indigo-500"
-          >
-            <ListFilter className=" " />
-            <h1 className="ml-2 " style={{ fontFamily: "'Jost', sans-serif",paddingLeft:"5px" }}>Filter</h1>
-          </Button>
-          </div>
+       
           <Popover
             id={filterId}
             open={openFilter}
@@ -229,11 +224,12 @@ const App = () => {
                     <MenuItem value="" disabled style={{ fontFamily: "'Jost', sans-serif" }}>
                       Select Column
                     </MenuItem>
-                    {Object.keys(data[0]).map((column) => (
-                      <MenuItem key={column} value={column} style={{ fontFamily: "'Jost', sans-serif" }}>
-                      {column === 'ProjectName' ? 'Project Name' : column === 'Project_Type' ? 'Project Type' : column}
-                      </MenuItem>
-                    ))}
+                    {['Project Type', 'Phase', 'Tag'].map((column) => (
+  <MenuItem key={column} value={column} style={{ fontFamily: "'Jost', sans-serif" }}>
+    {column}
+  </MenuItem>
+))}
+
                   </Select>
                   <input
                     type="text"
@@ -284,7 +280,7 @@ const App = () => {
           value={quickSearch}
           onChange={(e) => setQuickSearch(e.target.value)}
         />
-      </div>
+      </div> */}
       <table className="w-full">
       <thead className='bg-[rgb(246,246,247)] border-b-2 pl-4 ml-4'>
         <tr className=''>
@@ -302,45 +298,52 @@ const App = () => {
         </tr>
       </thead>
       <tbody>
-        {paginatedData.map((item, index) => (
-          <tr
-            key={index}
-            className={selectedRows.includes(index) ? '' : ''}
-            onClick={() => toggleRowSelection(index)}
+  {paginatedData.map((item, index) => (
+    <tr
+      key={index}
+      className={selectedRows.includes(index) ? '' : ''}
+      onClick={() => toggleRowSelection(index)}
+    >
+      {Object.keys(item).map((column) => (
+        // Exclude 'Project Type' column from rendering
+        column !== 'Project_Type' && (
+          <td
+            key={column}
+            className={`border-b-2 p-2 pl-6 text-wrap`}
           >
-            {Object.keys(item).map((column) => (
-              // Exclude 'Project Type' column from rendering
-              column !== 'Project_Type' && (
-                <td key={column} className="border-b-2 p-2 pl-6">
+            {column === 'ProjectName' ? (
+              <div>
+                <span
+                  className="hover:underline cursor-pointer hover:text-indigo-800"
+                  onClick={() => handleProjectClick(`/user/`)}
+                  style={{
+                    backgroundColor: item['Project Type'] === 'Commercial' ? '#e8e7fd' : (item['Project Type'] === 'Residential' ? '#e2f6e8' : 'inherit'),
+                    color: item['Project Type'] === 'Commercial' ? 'blue' : (item['Project Type'] === 'Residential' ? 'green' : 'inherit'),
+                    borderRadius:"5%",
+                    paddingLeft:"5px",
+                    paddingRight:"5px",
+                    // Add more styling based on your requirement
+                  }}
+                >
                   {item[column]}
-                </td>
-              )
-            ))}
-          </tr>
-        ))}
-      </tbody>
+                </span>
+                {/* Additional line for the entry */}
+              
+              </div>
+            ) : (
+              <p className={` rounded-md`}>{item[column]}</p>
+            )}
+          </td>
+        )
+      ))}
+    </tr>
+  ))}
+</tbody>
+
     </table>
       <div className=' float-right flex'>
   
-      <div className="mt-4 mr-6">
-        <span>Show rows per page:</span>
-        <select value={rowsPerPage} onChange={handleRowsPerPageChange} className="ml-2 p-2 border rounded">
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={15}>15</option>
-          <option value={20}>20</option>
-        </select>
-        <span className="ml-4">Total Pages: {totalPages}</span>
-        <span className="ml-4">Jump to Page:</span>
-        <input
-      type="number"
-      value={jumpToPage}
-      onChange={handleJumpToPageChange}
-      onKeyPress={handleJumpToPageKeyPress} // Handle Enter key press
-      className="ml-2  border-2 w-[40px]  border-black rounded"
-    />
-        <span>/ {totalPages}</span>
-      </div>
+      
       <div className="mt-6 ">
         <button
           className="mr-2  text-slate-400 h-[5px]"

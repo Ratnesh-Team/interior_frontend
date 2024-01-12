@@ -22,11 +22,11 @@ export default function Sidebar({ children }) {
         <div className="p-4 pb-2 flex justify-between items-center">
         <button
             
-            className={`overflow-hidden transition-all bg-gradient-to-tr from-green-200 to-indigo-100 text-indigo-800  rounded-xl ${
+            className={`overflow-hidden transition-all  bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  rounded-xl ${
               expanded ? "w-40 py-2 px-2" : "w-0 none py-0"
             }`}
             alt=""
-          >Project 1</button>
+          >Create New Project</button>
           <button
            onClick={handleToggleSidebar}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"

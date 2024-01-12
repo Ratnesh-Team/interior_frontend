@@ -174,6 +174,10 @@ const App = () => {
       [column]: isHovered,
     }));
   };
+  const handleProjectClick = (url) => {
+    // Navigate to the user's URL when the project name is clicked
+    window.location.href = url;
+  };
 
   return (
     <div className="container mx-auto bg-white pt-3">
@@ -229,11 +233,12 @@ const App = () => {
                     <MenuItem value="" disabled style={{ fontFamily: "'Jost', sans-serif" }}>
                       Select Column
                     </MenuItem>
-                    {Object.keys(data[0]).map((column) => (
-                      <MenuItem key={column} value={column} style={{ fontFamily: "'Jost', sans-serif" }}>
-                      {column === 'ProjectName' ? 'Project Name' : column === 'Project_Type' ? 'Project Type' : column}
-                      </MenuItem>
-                    ))}
+                    {['Project Type', 'Phase', 'Tag'].map((column) => (
+  <MenuItem key={column} value={column} style={{ fontFamily: "'Jost', sans-serif" }}>
+    {column}
+  </MenuItem>
+))}
+
                   </Select>
                   <input
                     type="text"
@@ -302,23 +307,48 @@ const App = () => {
         </tr>
       </thead>
       <tbody>
-        {paginatedData.map((item, index) => (
-          <tr
-            key={index}
-            className={selectedRows.includes(index) ? '' : ''}
-            onClick={() => toggleRowSelection(index)}
+  {paginatedData.map((item, index) => (
+    <tr
+      key={index}
+      className={selectedRows.includes(index) ? '' : ''}
+      onClick={() => toggleRowSelection(index)}
+    >
+      {Object.keys(item).map((column) => (
+        // Exclude 'Project Type' column from rendering
+        column !== 'Project_Type' && (
+          <td
+            key={column}
+            className={`border-b-2 p-2 pl-6 text-wrap`}
           >
-            {Object.keys(item).map((column) => (
-              // Exclude 'Project Type' column from rendering
-              column !== 'Project_Type' && (
-                <td key={column} className="border-b-2 p-2 pl-6">
+            {column === 'ProjectName' ? (
+              <div>
+                <span
+                  className="hover:underline cursor-pointer hover:text-indigo-800"
+                  onClick={() => handleProjectClick(`/user/`)}
+                  style={{
+                    backgroundColor: item['Project Type'] === 'Commercial' ? '#e8e7fd' : (item['Project Type'] === 'Residential' ? '#e2f6e8' : 'inherit'),
+                    color: item['Project Type'] === 'Commercial' ? 'blue' : (item['Project Type'] === 'Residential' ? 'green' : 'inherit'),
+                    borderRadius:"5%",
+                    paddingLeft:"5px",
+                    paddingRight:"5px",
+                    // Add more styling based on your requirement
+                  }}
+                >
                   {item[column]}
-                </td>
-              )
-            ))}
-          </tr>
-        ))}
-      </tbody>
+                </span>
+                {/* Additional line for the entry */}
+              
+              </div>
+            ) : (
+              <p className={` rounded-md`}>{item[column]}</p>
+            )}
+          </td>
+        )
+      ))}
+    </tr>
+  ))}
+</tbody>
+
     </table>
       <div className=' float-right flex'>
   
@@ -331,7 +361,7 @@ const App = () => {
           <option value={20}>20</option>
         </select>
         <span className="ml-4">Total Pages: {totalPages}</span>
-        <span className="ml-4">Jump to Page:</span>
+        <span className="ml-4"> Page:</span>
         <input
       type="number"
       value={jumpToPage}

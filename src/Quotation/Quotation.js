@@ -1,15 +1,10 @@
 import React, { useState,useEffect } from 'react';
-import Side from '../Home/Side';
-import Onsite from './Onsite';
 import { Link } from 'react-router-dom';
-import Furniture from './Furniture'
-import Quote from './quotationupload'
-import { Route,Routes } from 'react-router-dom';
-import FileUploadForm from '../file_manger/FileUploadForm';
 import { useSelector } from 'react-redux';
 import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
+import Data from './Data'
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
@@ -137,75 +132,12 @@ const Quotation = () => {
     </Sidebar>
     </div>
     <div className={`flex-1 ${expanded ? 'ml-[310px]' : 'ml-[100px]'}`}>
-    <div className=" bg-white px-6 py-3 my-6 mx-4   shadow-lg  rounded-lg">
-        <h1 className="text-3xl font-bold  ">Quotation</h1>
-        
+    <div className=" bg-white  py-3 my-6 mx-4   shadow-lg  rounded-lg">
+        <h1 className="text-2xl font-bold mb-5 ml-6  ">Quotation</h1>
+        <Data/>
       </div>
-      {/* Render category buttons */}
-      <div className='flex justify-between'>
-      <div className="flex mt-4 ">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`p-2 mx-2 rounded ${selectedCategory === category ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'bg-white shadow-lg text-gray-800'}`}
-            onClick={() => handleCategoryClick(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-      <div>
-      <span className=' mr-5'>
-              <Link to="new-uploades" className="bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  p-2 rounded mb-4 shadow-lg" onClick={openModal}>
-                Add/Upload
-              </Link>
-              <button className="bg-green-500 text-white p-2 rounded mb-4 ml-2 shadow-lg">
-                Remove
-              </button>
-            </span>
-      </div>
-</div>
- {isModalOpen && (
-        <div className="modal-overlay">
-          <Quote onUpload={handleUpload} onClose={closeModal} trigger={false} />
-        </div>
-      )}
-
-      <Routes>
-        {/* Update Route path to match the nested structure */}
-        <Route path="new-uploades" element={<div />} />
-      </Routes>
-      {/* Render content based on selected category */}
-      <div className="mt-4">
-        {selectedCategory === 'All Items' && (
-          <div>
-            {/* Display furniture names */}
-            <Onsite/>
-            {/* Add code to display furniture names here */}
-          </div>
-        )}
-        {selectedCategory === 'Onsite & Civil works' && (
-          <div>
-            {/* Display quotation and details for Onsite & Civil works */}
-           <Onsite/>
-            {/* Add code to display quotation and details here */}
-          </div>
-        )}
-        {selectedCategory === 'Furniture, Decor & Wardrobe' && (
-          <div>
-            {/* Display pictures and details for Furniture, Decor & Wardrobe */}
-           <Furniture/>
-            {/* Add code to display pictures and details here */}
-          </div>
-        )}
-        {selectedCategory === 'Kitchen & Accessories' && (
-          <div>
-            {/* Display kitchen accessories */}
-            <Onsite/>
-            {/* Add code to display kitchen accessories here */}
-          </div>
-        )}
-      </div>
+     
+    
     </div>
     </div>
   );

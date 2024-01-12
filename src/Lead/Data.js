@@ -5,6 +5,7 @@ import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import photo from '../Mom/sofa.png'
 
 const App = () => {
   const [data, setData] = useState(generateDummyData(100));
@@ -22,8 +23,20 @@ const App = () => {
   const [selectedFilters, setSelectedFilters] = useState({});
   const [list, setList] = useState('true');
   const [dynamicFilters, setDynamicFilters] = useState([]);
-
   const [filterAnchorEl, setFilterAnchorEl] = useState(null);
+  const [statusFilter, setStatusFilter] = useState('');
+
+
+  const handleApplyStatusFilter = () => {
+    const filteredData = data.filter((item) =>
+      item['Status'].toLowerCase().includes(statusFilter.toLowerCase())
+    );
+    setSearchText({});
+    setSelectedFilters({});
+    setDynamicFilters([]);
+    setCurrentPage(1);
+    setData(filteredData);
+  };
   
   
 
@@ -54,6 +67,19 @@ const App = () => {
     setSearchText(combinedFilters);
     handleFilterClose();
   };
+  const handleApplyDynamicFilters = () => {
+    // Apply your dynamic filters logic here
+    const statusFilter = dynamicFilters[0].value.toLowerCase();
+    const filteredData = data.filter((item) =>
+      item['Status'].toLowerCase().includes(statusFilter)
+    );
+    setSearchText({});
+    setSelectedFilters({});
+    setDynamicFilters([]);
+    setCurrentPage(1);
+    setData(filteredData);
+  };
+  
 
   const handleClearAllFilters = () => {
     setSearchText({});
@@ -75,10 +101,7 @@ const App = () => {
     updatedFilters.splice(index, 1);
     setDynamicFilters(updatedFilters);
   };
-  const handleApplyDynamicFilters = () => {
-    // Apply your dynamic filters logic here
-    console.log('Applied Dynamic Filters:', dynamicFilters);
-  };
+
 
   const filteredData = data.filter((item) =>
     Object.entries({ ...searchText, ...selectedFilters }).every(
@@ -175,10 +198,15 @@ const App = () => {
     }));
   };
 
+  const handleProjectClick = (url) => {
+    // Navigate to the user's URL when the project name is clicked
+    window.location.href = url;
+  };
+
   return (
     <div className="container mx-auto bg-white pt-3">
       <div className="mb-4 flex justify-between ml-6">
-        <div>
+      <div>
         <div className=' border-[2px] border-indigo-500 rounded-md '>
           <Button
             aria-describedby={filterId}
@@ -311,9 +339,27 @@ const App = () => {
             {Object.keys(item).map((column) => (
               // Exclude 'Project Type' column from rendering
               column !== 'Project_Type' && (
-                <td key={column} className="border-b-2 p-2 pl-6">
+                <td
+            key={column}
+            className={`border-b-2 p-2 pl-6 `}
+          >
+          {column === 'Status' && item['Status']==='Follow up' ? (
+              <div>
+                <span
+                  className="hover:underline cursor-pointer hover:text-indigo-800"
+                  onClick={() => handleProjectClick(`/projects/`)}
+                 
+                >
                   {item[column]}
-                </td>
+                </span>
+                {/* Additional line for the entry */}
+              
+              </div>
+            ) : (
+              <p className={`
+              }`}>{item[column]}</p>
+            )}
+          </td>
               )
             ))}
           </tr>
@@ -331,7 +377,7 @@ const App = () => {
           <option value={20}>20</option>
         </select>
         <span className="ml-4">Total Pages: {totalPages}</span>
-        <span className="ml-4">Jump to Page:</span>
+        <span className="ml-4">Page:</span>
         <input
       type="number"
       value={jumpToPage}

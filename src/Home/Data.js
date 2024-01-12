@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 const App = () => {
-  const [data, setData] = useState(generateDummyData(100));
+  const [data, setData] = useState(generateDummyData(10));
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState({});
   const [quickSearch, setQuickSearch] = useState('');
@@ -17,7 +17,7 @@ const App = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [sortColumn, setSortColumn] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [jumpToPage, setJumpToPage] = useState('');
   const [selectedFilters, setSelectedFilters] = useState({});
   const [list, setList] = useState('true');
@@ -175,9 +175,14 @@ const App = () => {
     }));
   };
 
+  const handleProjectClick = (url) => {
+    // Navigate to the user's URL when the project name is clicked
+    window.location.href = url;
+  };
+
   return (
     <div className="container mx-auto bg-white pt-3">
-      <div className="mb-4 flex justify-between ml-6">
+      {/* <div className="mb-4 flex justify-between ml-6">
         <div>
         <div className=' border-[2px] border-indigo-500 rounded-md '>
           <Button
@@ -284,7 +289,7 @@ const App = () => {
           value={quickSearch}
           onChange={(e) => setQuickSearch(e.target.value)}
         />
-      </div>
+      </div> */}
       <table className="w-full">
       <thead className='bg-[rgb(246,246,247)] border-b-2 pl-4 ml-4'>
         <tr className=''>
@@ -311,8 +316,28 @@ const App = () => {
             {Object.keys(item).map((column) => (
               // Exclude 'Project Type' column from rendering
               column !== 'Project_Type' && (
-                <td key={column} className="border-b-2 p-2 pl-6">
-                  {item[column]}
+                <td
+                  key={column}
+                  className={`border-b-2 p-2 pl-6 `}
+                >
+                  {column === 'Project Name' ? (
+                    <span
+                      className="hover:underline cursor-pointer hover:text-indigo-800"
+                      onClick={() => handleProjectClick(`/user/`)}
+                    >
+                      {item[column]}
+                    </span>
+                  ) : (
+                    <p className={` w-1/2 rounded-md ${
+                      column === 'Phase' &&
+                      item['Project_Type'] === 'commercial'
+                        ? 'text-blue-500 bg-[#e8e7fd] pl-2'
+                        : column === 'Phase' &&
+                          item['Project_Type'] === 'residential'
+                        ? 'text-green-500 bg-[#e2f6e8] pl-2 '
+                        : ''
+                    }`}>{item[column]}</p>
+                  )}
                 </td>
               )
             ))}
@@ -320,7 +345,7 @@ const App = () => {
         ))}
       </tbody>
     </table>
-      <div className=' float-right flex'>
+      {/* <div className=' float-right flex'>
   
       <div className="mt-4 mr-6">
         <span>Show rows per page:</span>
@@ -357,7 +382,7 @@ const App = () => {
            <ChevronRight/>
         </button>
       </div>
-      </div>
+      </div> */}
       
     </div>
   );

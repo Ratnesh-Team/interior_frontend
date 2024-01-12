@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import React from 'react'
 import { useSelector } from 'react-redux';
-import Side from './Side'
-import DonutChart from './total-revenue';
+import Task from './Task'
 import { BarChart, List, Users } from 'lucide-react';
-import sofa from '../Quotation/sofa.png'
 import Sidebar from './Sides';
 import { SidebarItem } from './Sides';
 import { Link, useNavigate } from 'react-router-dom'
+import Data from './Data'
+import Noti from '../notification/App'
 import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 
@@ -131,11 +131,15 @@ const Home = () => {
 
     </Sidebar></div>
        <div className={` flex-1 ${expanded?' ml-[300px]':' ml-[100px]'} `}>
-       <div className=' bg-white mx-3 py-5 mt-5 rounded-lg '>
-      
+       <div className=' bg-white mx-3 py-5 mt-5 rounded-lg flex justify-between'>
+          <div className='w-4/5'>
         <h1 className=" text-2xl font-bold ml-4 ">Admin Dashboard</h1>       
-        <h1 className=" text-xl font-bold mt-2 ml-4">Timeline: {date.toLocaleDateString()}</h1>        
-        <h1 className=" text-md font-light mt-4 ml-4">Project Admin: Interior designer</h1>     
+          
+        <h1 className=" text-md font-light mt-4 ml-4">Project Admin: Interior designer</h1>   
+        </div>
+        <div className='w-1/5 ml-72'>  
+          <Noti />
+          </div>
         </div>
         <div className=' border-t-2 mt-4 mx-3 rounded-lg h-[70vh]'>
      
@@ -143,32 +147,21 @@ const Home = () => {
     
       
       <div className=' flex justify-between  '>
-      <div className=' h-[70vh]  bg-white rounded-lg'>
+      <div className=' h-[70vh]  bg-white rounded-lg w-2/5'>
       <div className=' border-b-2 mb-2 items-start flex py-2 ml-2'>
       <BarChart/>
       <h1 className='text-lg font-normal ml-2 '>Tasks</h1>
       </div>
-        <DonutChart/>
+        <Task/>
 </div>
-        <div className='flex-1 ml-5'> <div className='h-[70vh] w-[100%] bg-white rounded-lg'>
+        <div className='flex-1 ml-5 w-3/5'> <div className='h-[70vh] w-[100%] bg-white rounded-lg'>
       <div className=' border-b-2 mb-2 flex items-start py-2 ml-2
       '>
       <List/>
       <h1 className='text-lg font-normal ml-2'>Latest Activities</h1>
       </div>
-      <div>   {Projects.map(Project => (
-        <div className=' flex justify-between border-b-2'>
-          <li key={Project.id} className=' list-none flex ml-4  py-1 '>
-            <img src={sofa} alt={Project.name} style={{ maxWidth: '100px' }} className='mr-6'/>
-            <div>
-            <h3>{Project.name}</h3>
-            <p>{Project.details}</p>
-            </div>
-          </li>
-          
-          <button className='flex items-center bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 h-10 mr-3 px-2 rounded-md mt-4' onClick={onclick}>Manage</button>
-          </div>
-        ))}</div>
+      <Data/>
+   
 </div>
 
 </div>

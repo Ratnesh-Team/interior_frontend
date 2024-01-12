@@ -1,0 +1,143 @@
+[
+    {
+      "ProjectName": "Devashish Project",
+      "Phase": "Planning",
+      "Project Type": "Commercial",
+      "Client Name": "Tech Solutions Inc.",
+      "Timeline": "6 months"
+    },
+    {
+      "ProjectName": "Mobile App Development",
+      "Phase": "Development",
+      "Project Type": "Residential",
+      "Client Name": "Mobile Innovations Co.",
+      "Timeline": "8 months"
+    },
+    {
+      "ProjectName": "Data Analysis Project",
+      "Phase": "Analysis",
+      "Project Type": "Data Science",
+      "Client Name": "Analytics Research Group",
+      "Timeline": "1 month"
+    },
+    {
+      "ProjectName": "E-commerce Redesign",
+      "Phase": "Design",
+      "Project Type": "E-commerce",
+      "Client Name": "Retail Solutions Ltd.",
+      "Timeline": "4 months"
+    },
+    {
+      "ProjectName": "Infrastructure Upgrade",
+      "Phase": "Implementation",
+      "Project Type": "IT",
+      "Client Name": "Infrastructure Systems Inc.",
+      "Timeline": "1 month"
+    },
+    {
+      "ProjectName": "Marketing Campaign",
+      "Phase": "Execution",
+      "Project Type": "Marketing",
+      "Client Name": "Marketing Pro Agency",
+      "Timeline": "3 months"
+    },
+    {
+      "ProjectName": "Customer Support System",
+      "Phase": "Development",
+      "Project Type": "Software",
+      "Client Name": "Customer Service Solutions",
+      "Timeline": "9 months"
+    },
+    {
+      "ProjectName": "Product Launch",
+      "Phase": "Planning",
+      "Project Type": "Product",
+      "Client Name": "Launch Innovations LLC",
+      "Timeline": "6 months"
+    },
+    {
+      "ProjectName": "Training Program",
+      "Phase": "Implementation",
+      "Project Type": "Education",
+      "Client Name": "Training Excellence Institute",
+      "Timeline": "7 months"
+    },
+    {
+      "ProjectName": "Event Management",
+      "Phase": "Execution",
+      "Project Type": "Events",
+      "Client Name": "Events Management Services",
+      "Timeline": "4 months"
+    },
+    {
+      "ProjectName": "Research Project",
+      "Phase": "Research",
+      "Project Type": "Research",
+      "Client Name": "Research Insights Institute",
+      "Timeline": "2 months"
+    },
+    {
+      "ProjectName": "Social Media Campaign",
+      "Phase": "Execution",
+      "Project Type": "Marketing",
+      "Client Name": "Social Media Solutions Inc.",
+      "Timeline": "3 months"
+    },
+    {
+      "ProjectName": "Finance System Upgrade",
+      "Phase": "Development",
+      "Project Type": "Finance",
+      "Client Name": "Finance Technologies Ltd.",
+      "Timeline": "8 months"
+    },
+    {
+      "ProjectName": "Healthcare Software",
+      "Phase": "Development",
+      "Project Type": "Healthcare",
+      "Client Name": "Health Innovations Inc.",
+      "Timeline": "2 months"
+    },
+    {
+      "ProjectName": "HR Process Optimization",
+      "Phase": "Implementation",
+      "Project Type": "HR",
+      "Client Name": "HR Solutions Ltd.",
+      "Timeline": "6 months"
+    },
+    {
+      "ProjectName": "Supply Chain Management",
+      "Phase": "Implementation",
+      "Project Type": "Logistics",
+      "Client Name": "Supply Chain Solutions Inc.",
+      "Timeline": "9 months"
+    },
+    {
+      "ProjectName": "Quality Assurance Project",
+      "Phase": "Testing",
+      "Project Type": "QA",
+      "Client Name": "Quality Assurance Services Ltd.",
+      "Timeline": "5 months"
+    },
+    {
+      "ProjectName": "Energy Efficiency Initiative",
+      "Phase": "Implementation",
+      "Project Type": "Energy",
+      "Client Name": "Sustainability Innovations Ltd.",
+      "Timeline": "2 months"
+    },
+    {
+      "ProjectName": "AI Research Project",
+      "Phase": "Research",
+      "Project Type": "Artificial Intelligence",
+      "Client Name": "AI Research Labs",
+      "Timeline": "2 months"
+    },
+    {
+      "ProjectName": "Cybersecurity Audit",
+      "Phase": "Audit",
+      "Project Type": "Security",
+      "Client Name": "Cybersecurity Solutions Inc.",
+      "Timeline": "7 months"
+    }
+  ]
+  
