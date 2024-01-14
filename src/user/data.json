@@ -1,26 +1,33 @@
 [
     {
-      "Name": "Web Development Project",
-      "Role": "Tech Solutions Inc.",
-      "Status": "Commercial"
+      "Name": "Ratnesh",
+      "Role": "Lead Manager",
+      "Status": "Working"
       
     },
     {
-      "Name": "Mobile App Development",
-      "Role": "Mobile Innovations Co.",
-      "Status": "Residential"
+      "Name": "Arvind",
+      "Role": "Junior Designer",
+      "Status": "Working"
       
     },
     {
-      "Name": "Data Analysis Project",
-      "Role": "Analytics Research Group,",
-      "Status": "Data Science"
+      "Name": "Danny",
+      "Role": "Senior Designer",
+      "Status": "Working"
       
     },
     {
-      "Name": "E-commerce Redesign",
-      "Role": "Retail Solutions Ltd.",
-      "Status": "E-commerce"
+      "Name": "John",
+      "Role": "Superviser",
+      "Status": "Working"
+      
+    }
+    ,
+    {
+      "Name": "Jack",
+      "Role": "Visualizer",
+      "Status": "Working"
       
     }
   ]

@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import photo from '../Mom/sofa.png'
+import { Pagination, TablePagination } from '@mui/material';
 
 const App = () => {
   const [data, setData] = useState(generateDummyData(100));
@@ -19,7 +20,7 @@ const App = () => {
   const [sortColumn, setSortColumn] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [jumpToPage, setJumpToPage] = useState('');
+  const [jumpToPage, setJumpToPage] = useState(1);
   const [selectedFilters, setSelectedFilters] = useState({});
   const [list, setList] = useState('true');
   const [dynamicFilters, setDynamicFilters] = useState([]);
@@ -181,7 +182,7 @@ const App = () => {
     const page = parseInt(jumpToPage, 10);
     if (!isNaN(page) && page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      setJumpToPage('');
+      setJumpToPage(page);
     }
   };
 
@@ -202,6 +203,20 @@ const App = () => {
     // Navigate to the user's URL when the project name is clicked
     window.location.href = url;
   };
+
+
+
+  const [pg, setpg] = React.useState(0); 
+  const [rpg, setrpg] = React.useState(5); 
+
+  function handleChangePage(event, newpage) { 
+      setpg(newpage); 
+  } 
+
+  function handleChangeRowsPerPage(event) { 
+      setrpg(parseInt(event.target.value, 10)); 
+      setpg(0); 
+  }
 
   return (
     <div className="container mx-auto bg-white pt-3">
@@ -308,7 +323,7 @@ const App = () => {
         <input
           type="text"
           placeholder="Quick Search..."
-          className="p-2 border rounded mr-2"
+          className="p-2 border rounded mr-8"
           value={quickSearch}
           onChange={(e) => setQuickSearch(e.target.value)}
         />
@@ -330,7 +345,7 @@ const App = () => {
         </tr>
       </thead>
       <tbody>
-        {paginatedData.map((item, index) => (
+        {paginatedData.slice(pg * rpg, pg * rpg + rpg).map((item, index) => (
           <tr
             key={index}
             className={selectedRows.includes(index) ? '' : ''}
@@ -341,7 +356,7 @@ const App = () => {
               column !== 'Project_Type' && (
                 <td
             key={column}
-            className={`border-b-2 p-2 pl-6 `}
+            className={`border-b-2 p-4 pl-6 `}
           >
           {column === 'Status' && item['Status']==='Follow up' ? (
               <div>
@@ -370,22 +385,23 @@ const App = () => {
   
       <div className="mt-4 mr-6">
         <span>Show rows per page:</span>
-        <select value={rowsPerPage} onChange={handleRowsPerPageChange} className="ml-2 p-2 border rounded">
+        <select value={rowsPerPage} onChange={handleRowsPerPageChange} className="ml-2 p-2 border-none">
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={15}>15</option>
           <option value={20}>20</option>
         </select>
-        <span className="ml-4">Total Pages: {totalPages}</span>
+        
         <span className="ml-4">Page:</span>
+ 
         <input
       type="number"
       value={jumpToPage}
       onChange={handleJumpToPageChange}
       onKeyPress={handleJumpToPageKeyPress} // Handle Enter key press
-      className="ml-2  border-2 w-[40px]  border-black rounded"
+      className="  border-2 w-[56px]  border-none rounded [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
     />
-        <span>/ {totalPages}</span>
+        <span className='ml-[-1.75rem]'>/ {totalPages}</span>
       </div>
       <div className="mt-6 ">
         <button

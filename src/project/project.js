@@ -1,5 +1,3 @@
-// Project.js
-
 import React, { useState, useEffect } from "react";
 import "tailwindcss/tailwind.css";
 import ProjectForm from "./ProjectForm";
@@ -7,10 +5,15 @@ import Side from "../Home/Side";
 import Sidebar from '../Home/Sides';
 import { useSelector } from 'react-redux';
 import { SidebarItem } from '../Home/Sides';
-
 import Data from './Data'
 import { Link, useNavigate } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 const ProjectDetailsPopup = ({ isOpen, onClose, project, onRemove }) => {
@@ -96,6 +99,14 @@ const Project = () => {
     selectedCategory === null
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
+      const bull = (
+        <Box
+          component="span"
+          sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+        >
+          •
+        </Box>
+      );
 
   return (
     <div className="flex">
@@ -113,7 +124,7 @@ const Project = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<File/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={true} 
       ></SidebarItem>
@@ -129,13 +140,7 @@ const Project = () => {
     </Link>
 
 
-    <Link to='/file'>
-    <SidebarItem 
-    icon={<Folder/>}  
-    text="File Manager"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
+
 
 
  
@@ -164,13 +169,13 @@ const Project = () => {
 
 
 
-    <Link to='http://localhost:5173/'>
+    {/* <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
-    </Link>
+    </Link> */}
     
    
 
@@ -181,17 +186,21 @@ const Project = () => {
 
     </Sidebar>
     </div>
-      <div className={`flex-1 container mx-auto p-4 bg-slate-100 relative ${expanded ? 'ml-[300px]' : 'ml-[100px]'} `} >
-        <div className="bg-white p-6 shadow-lg mt-2 rounded-lg flex justify-between items-center ">
-          <h1 className="text-2xl font-bold mb-4">Projects</h1>
+  
+        <Card sx={{ minWidth: 275 }} style={{ width:"80%", marginTop:"7%", marginLeft:"19%", padding:"0", marginRight:"30px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)',}}>
+      <CardContent>
+      <h1 className="text-2xl font-bold mb-4 ml-6">Project</h1>
+      <Data/>
+      </CardContent>
+      
+    </Card>
         </div>
-          <Data/>
+          
        
 
-        {/* Project List */}
       
-      </div>
-    </div>
+      
+    
   );
 };
 

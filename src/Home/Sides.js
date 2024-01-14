@@ -17,9 +17,9 @@ export default function Sidebar({ children }) {
   };
 
   return (
-    <aside className="h-screen ml-2 rounded-md mt-1 mb-1">
+    <aside className={`h-screen ml-2 rounded-md mt-1 mb-1 ${expanded?"w-60":"w-10"}`}>
       <nav className="h-full flex flex-col bg-white border-r shadow-sm rounded-md">
-        <div className="p-4 pb-2 flex justify-between items-center">
+        <div className={`p-4 pb-2 flex j  ${expanded?"":" h-[75px]"}`}>
         <button
             
             className={`overflow-hidden transition-all bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  rounded-xl ${
@@ -27,12 +27,7 @@ export default function Sidebar({ children }) {
             }`}
             alt=""
           >Create New Project</button>
-          <button
-           onClick={handleToggleSidebar}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
-          >
-            {expanded ? <ChevronFirst /> : <ChevronLast />}
-          </button>
+          
         </div>
 
         <SidebarContext.Provider value={{ expanded, showNames }}>
@@ -69,7 +64,7 @@ export function SidebarItem({ icon, text, active, alert,onClick }) {
   return (
     <button
       className={`
-        relative flex items-center py-2 px-3 my-1
+        relative flex items-center py-3 px-3 my-2 
         font-medium rounded-md cursor-pointer
         transition-colors group
         ${
@@ -82,8 +77,8 @@ export function SidebarItem({ icon, text, active, alert,onClick }) {
     >
       {icon}
       <span
-        className={`overflow-hidden transition-all ${
-          expanded ? "w-52 ml-3" : "w-0"
+        className={`overflow-hidden transition-all  font-semibold text-base text-left ${
+          expanded ? "w-40 ml-3" : "w-0"
         }`}
       >
         {showNames ? text : ""}

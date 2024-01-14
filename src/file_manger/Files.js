@@ -6,7 +6,7 @@ import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 const TeamPage = () => {
   const [isAddMemberModalOpen, setAddMemberModalOpen] = useState(false);
@@ -76,7 +76,7 @@ const TeamPage = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<File/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -126,14 +126,14 @@ const TeamPage = () => {
 
 
 
-
+{/* 
     <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
-    </Link>
+    </Link> */}
     
    
 

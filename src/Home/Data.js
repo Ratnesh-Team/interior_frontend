@@ -17,7 +17,7 @@ const App = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [sortColumn, setSortColumn] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(7);
   const [jumpToPage, setJumpToPage] = useState('');
   const [selectedFilters, setSelectedFilters] = useState({});
   const [list, setList] = useState('true');

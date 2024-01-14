@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
 import Data from './Data'
+import { Card,CardContent } from '@mui/material';
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
@@ -63,7 +64,7 @@ const Quotation = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<File/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -79,13 +80,7 @@ const Quotation = () => {
     </Link>
 
 
-    <Link to='/file'>
-    <SidebarItem 
-    icon={<Folder/>}  
-    text="File Manager"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
+
 
 
  
@@ -114,13 +109,13 @@ const Quotation = () => {
 
 
 
-    <Link to='http://localhost:5173/'>
+    {/* <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
-    </Link>
+    </Link> */}
     
    
 
@@ -131,14 +126,14 @@ const Quotation = () => {
 
     </Sidebar>
     </div>
-    <div className={`flex-1 ${expanded ? 'ml-[310px]' : 'ml-[100px]'}`}>
-    <div className=" bg-white  py-3 my-6 mx-4   shadow-lg  rounded-lg">
-        <h1 className="text-2xl font-bold mb-5 ml-6  ">Quotation</h1>
-        <Data/>
-      </div>
-     
-    
-    </div>
+   
+    <Card sx={{ minWidth: 275 }} style={{ width:"80%", marginTop:"7%", marginLeft:"19%", padding:"0", marginRight:"30px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)',}}>
+      <CardContent>
+      <h1 className="text-2xl font-bold mb-4 ml-6">Quotation</h1>
+      <Data/>
+      </CardContent>
+      
+    </Card>
     </div>
   );
 };

@@ -14,12 +14,14 @@ import Demo from './data/demo'
 import Noti from './notification/App'
 import ClientPage from './user/Client'
 import Form from './user/Form'
-import DisplayData from './user/Display'
+import DisplayData from './Demo/Display'
+import ResponsiveAppBar from './Navbar/Navbar'
 
 function App() {
 
   return (
     <>
+    <ResponsiveAppBar/>
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path="/file/*" element={<Files />} />

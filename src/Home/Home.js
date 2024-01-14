@@ -8,7 +8,7 @@ import { SidebarItem } from './Sides';
 import { Link, useNavigate } from 'react-router-dom'
 import Data from './Data'
 import Noti from '../notification/App'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 
 const Home = () => {
@@ -63,7 +63,7 @@ const Home = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<File/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -79,13 +79,7 @@ const Home = () => {
     </Link>
 
 
-    <Link to='/file'>
-    <SidebarItem 
-    icon={<Folder/>}  
-    text="File Manager"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
+
 
 
  
@@ -114,13 +108,13 @@ const Home = () => {
 
 
 
-    <Link to='http://localhost:5173/'>
+    {/* <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
-    </Link>
+    </Link> */}
     
    
 
@@ -130,31 +124,22 @@ const Home = () => {
 
 
     </Sidebar></div>
-       <div className={` flex-1 ${expanded?' ml-[300px]':' ml-[100px]'} `}>
-       <div className=' bg-white mx-3 py-5 mt-5 rounded-lg flex justify-between'>
-          <div className='w-4/5'>
-        <h1 className=" text-2xl font-bold ml-4 ">Admin Dashboard</h1>       
-          
-        <h1 className=" text-md font-light mt-4 ml-4">Project Admin: Interior designer</h1>   
-        </div>
-        <div className='w-1/5 ml-72'>  
-          <Noti />
-          </div>
-        </div>
-        <div className=' border-t-2 mt-4 mx-3 rounded-lg h-[70vh]'>
+       <div className={` flex-1 ${expanded?' ml-[21%]':' ml-[100px]'} mt-[7%] `}>
+      
+        <div className=' border-t-2 mt-7 mx-3 rounded-lg h-[60vh]'>
      
         <div>
     
       
       <div className=' flex justify-between  '>
-      <div className=' h-[70vh]  bg-white rounded-lg w-2/5'>
+      <div className=' h-[50vh]  bg-white rounded-lg w-2/5'>
       <div className=' border-b-2 mb-2 items-start flex py-2 ml-2'>
       <BarChart/>
       <h1 className='text-lg font-normal ml-2 '>Tasks</h1>
       </div>
         <Task/>
 </div>
-        <div className='flex-1 ml-5 w-3/5'> <div className='h-[70vh] w-[100%] bg-white rounded-lg'>
+        <div className='flex-1 ml-5 w-3/5 h-[60vh]'> <div className='h-[60vh] w-[100%] bg-white rounded-lg'>
       <div className=' border-b-2 mb-2 flex items-start py-2 ml-2
       '>
       <List/>

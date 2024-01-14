@@ -35,8 +35,8 @@ const App = () => {
         <div className="relative">
           <button
             onClick={handleNotificationClick}
-            className={`relative p-2 bg-${viewedNotifications ? 'slate-100' : 'gradient-to-tr from-indigo-200 to-indigo-100'}-500 text-indigo-800 rounded-full hover:bg-${
-              viewedNotifications ? 'gray' : 'blue'
+            className={`relative p-2 bg-${viewedNotifications ? 'slate-100' : 'gradient-to-tr from-indigo-200 to-indigo-100'}-500  rounded-full hover:bg-${
+              viewedNotifications ? 'gray text-indigo-800' : 'text-white blue'
             }-600 focus:outline-none`}
           >
             {!viewedNotifications && (

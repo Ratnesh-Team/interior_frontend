@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import Sidebar, { SidebarItem } from './Sides'
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
 
 
 const Side = () => {
@@ -25,7 +25,7 @@ const Side = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<File/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={activeButton === 'project'}  
     onClick={() => handleButtonClick('project')}  ></SidebarItem>

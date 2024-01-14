@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import Sidebar, { SidebarItem } from '../Home/Sides'
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, Mail, MessageCircleCode, MessageCircleCodeIcon, Timer, Users, Watch} from 'lucide-react'
+import { File, Folder, IndianRupee,FolderOpenDot, LayoutDashboard, LayoutDashboardIcon, Mail, MessageCircleCode, MessageCircleCodeIcon, Timer, Users, Watch} from 'lucide-react'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -32,7 +32,7 @@ const ClientPage = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<File/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -48,13 +48,7 @@ const ClientPage = () => {
     </Link>
 
 
-    <Link to='/file'>
-    <SidebarItem 
-    icon={<Folder/>}  
-    text="File Manager"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
+
 
 
  
