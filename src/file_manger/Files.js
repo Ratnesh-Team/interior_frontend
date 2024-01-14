@@ -86,7 +86,7 @@ const TeamPage = () => {
     <Link to='/quotation'>
     <SidebarItem 
     icon={<IndianRupee/>}  
-    text="Quotation"  
+    text="Inventory"  
     active={false}  
       ></SidebarItem>
     </Link>

@@ -6,7 +6,6 @@ const App = () => {
   const [notificationCount, setNotificationCount] = useState(3);
   const [notifications, setNotifications] = useState([
     'New message received',
-    'Friend request accepted',
     'You have a meeting at 2:00 PM',
   ]);
   const [showNotifications, setShowNotifications] = useState(false);

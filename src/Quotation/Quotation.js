@@ -74,7 +74,7 @@ const Quotation = () => {
     <Link to='/quotation'>
     <SidebarItem 
     icon={<IndianRupee/>}  
-    text="Quotation"  
+    text="Inventory"  
     active={true}  
       ></SidebarItem>
     </Link>

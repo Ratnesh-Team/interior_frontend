@@ -348,7 +348,7 @@ const App = () => {
         {paginatedData.slice(pg * rpg, pg * rpg + rpg).map((item, index) => (
           <tr
             key={index}
-            className={selectedRows.includes(index) ? '' : ''}
+            className={`${selectedRows.includes(index) ? '' : ''} hover:bg-gray-100`}
             onClick={() => toggleRowSelection(index)}
           >
             {Object.keys(item).map((column) => (
@@ -356,7 +356,7 @@ const App = () => {
               column !== 'Project_Type' && (
                 <td
             key={column}
-            className={`border-b-2 p-4 pl-6 `}
+            className={`border-b-2 p-4 pl-6 hover:bg-slate-200 `}
           >
           {column === 'Status' && item['Status']==='Follow up' ? (
               <div>

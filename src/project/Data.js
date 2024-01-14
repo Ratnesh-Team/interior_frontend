@@ -313,7 +313,7 @@ const App = () => {
   {paginatedData.map((item, index) => (
     <tr
       key={index}
-      className={selectedRows.includes(index) ? '' : ''}
+      className={`${selectedRows.includes(index) ? '' : ''} hover:bg-gray-100`}
       onClick={() => toggleRowSelection(index)}
     >
       {Object.keys(item).map((column) => (
@@ -321,7 +321,7 @@ const App = () => {
         column !== 'Project_Type' && (
           <td
             key={column}
-            className={`border-b-2 p-4 pl-6 text-wrap`}
+            className={`border-b-2 p-4 pl-6 text-wrap `}
           >
             {column === 'ProjectName' ? (
               <div>
