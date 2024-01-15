@@ -6,7 +6,7 @@ const Notification = ({ count, notifications, onView, onClose }) => {
     <div className="fixed  p-4 bg-white text-black rounded-md shadow-lg  w-[250px] right-0 top-20">
       <div className="flex items-center justify-between mb-2">
         <span className="font-semibold">Notifications</span>
-        <button onClick={onClose} className="text-gray-400 hover:text-white focus:outline-none">
+        <button onClick={onClose} className="text-gray-400 hover:text-black focus:outline-none">
           X
         </button>
       </div>
