@@ -97,7 +97,7 @@ const ClientPage = () => {
 
     </Sidebar>
     </div>
-    <div className={`flex-1 container  mt-[7%] mr-1 max-w-[2040px] w-[100%] max-lg:ml-[12px] ml-[19%] `}>
+    <div className={`flex-1 container  mt-[7%]  max-w-[2040px] w-[100%] max-xl:ml-[23px] ml-[19%] `}>
       <div className=" mx-5 bg-white py-6 pl-6 rounded-md shadow-md ">
         <div className="mb-4">
           <h1 className="text-2xl font-bold mb-2">Client Information</h1>

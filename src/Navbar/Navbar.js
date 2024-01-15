@@ -58,7 +58,8 @@ function ResponsiveAppBar() {
   const wideScreenStyles1 = {
     // Your styles for 1280px screen and above
     // For example:
-    visibility:"visible" 
+    visibility:"visible" ,
+    marginLeft:"12px"
   };
   const componentStyles = {
     backgroundColor:"white", 
@@ -129,7 +130,7 @@ function ResponsiveAppBar() {
         
         {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)} style={{ ...componentStyles1, ...(window.innerWidth <= 1280?wideScreenStyles1:componentStyles1) }} ><FontAwesomeIcon icon={faBars} className='text-black ml-12 text-2xl w/4/5 '  /></Button>
+          <Button onClick={toggleDrawer(anchor, true)} style={{ ...componentStyles1, ...(window.innerWidth <= 1280?wideScreenStyles1:componentStyles1) }} ><FontAwesomeIcon icon={faBars} className='text-black  text-2xl w/4/5 '  /></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
