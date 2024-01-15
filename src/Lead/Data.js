@@ -354,15 +354,15 @@ const App = () => {
             {Object.keys(item).map((column) => (
               // Exclude 'Project Type' column from rendering
               column !== 'Project_Type' && (
-                <td
+                <td onClick={() => handleProjectClick(`/projects/`)}
             key={column}
-            className={`border-b-2 p-4 pl-6 `}
+            className={`border-b-2 p-4 pl-6 cursor-pointer`}
           >
           {column === 'Status' && item['Status']==='Follow up' ? (
               <div>
                 <span
-                  className="hover:underline cursor-pointer hover:text-indigo-800"
-                  onClick={() => handleProjectClick(`/projects/`)}
+                  className=""
+                  
                  
                 >
                   {item[column]}

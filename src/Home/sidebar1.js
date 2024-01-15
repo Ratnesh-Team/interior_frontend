@@ -17,6 +17,15 @@ const Sidebar = () => {
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
   };
+  function checkDashboardURL() {
+    // Get the current URL
+    var currentURL = window.location.href;
+  
+    // Check if the URL contains the word "dashboard"
+    var isActive = currentURL.includes("dashboard");
+  
+    return isActive;
+  }
 
   return (
     <aside className="h-screen ml-2 rounded-md mt-1 w-60 mb-1 py-3 overflow-hidden overflow-y-hidden">
@@ -41,6 +50,7 @@ const Sidebar = () => {
           title="Dashboard"
           icon=<LayoutDashboard/>
           to="/"
+          
           selected={selectedItem === 'Dashboard'}
           onItemClick={handleItemClick}
         />

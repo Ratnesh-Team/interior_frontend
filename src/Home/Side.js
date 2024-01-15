@@ -3,7 +3,7 @@ import React from 'react'
 import { Warehouse } from 'lucide-react'
 import Sidebar, { SidebarItem } from './Sides'
 import { Link } from 'react-router-dom'
-import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch,LayoutList} from 'lucide-react'
+import { File, Users,Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch,LayoutList} from 'lucide-react'
 
 
 const Side = () => {
@@ -12,6 +12,56 @@ const Side = () => {
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
   };
+
+  function checkURLKeyword(keywords) {
+    // Get the current URL
+    var currentURL = window.location.href;
+  
+    // Check if the URL contains any of the specified keywords
+    for (var i = 0; i < keywords.length; i++) {
+      if (currentURL.includes(keywords[i])) {
+        return true;
+      }
+      else {
+        return false
+      }
+    }
+  
+    return null; // or return false, depending on your preference
+  }
+  function checkURLKeyword1(keywords) {
+    // Get the current URL
+    var currentURL = window.location.href;
+  
+    // Check if the URL contains any of the specified keywords
+    for (var i = 0; i < keywords.length; i++) {
+      if (currentURL.includes(keywords[i])) {
+        return true;
+      }
+      else {
+        return false
+      }
+    }
+  
+    return null; // or return false, depending on your preference
+  }
+  
+  // Example usage for "project" and "inventory"
+  var result = checkURLKeyword(["project"]);
+  
+  if (result) {
+    console.log(result); // This will log "project" or "inventory" if the URL contains the corresponding keyword, otherwise null or false
+  } else {
+    console.log("Keyword not found");
+  }
+  
+  function checkDashboardURL() {
+    var currentURL = window.location.href;
+    // Check if the URL contains the word "dashboard"
+    var isActive = currentURL.includes("/");
+    return isActive;
+  }
+ 
   return (
     <Sidebar >
     
@@ -19,36 +69,30 @@ const Side = () => {
     <SidebarItem 
     icon={<LayoutDashboardIcon/>}  
     text="Dashboard"  
-    active={activeButton === 'Dashboard'}  
-    onClick={() => handleButtonClick('Dashboard')}></SidebarItem>
+    active={checkURLKeyword} 
+    ></SidebarItem>
     </Link>
 
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<FolderOpenDot/>}  
+    icon={<LayoutList/>}  
     text="All Projects"  
-    active={activeButton === 'project'}  
-    onClick={() => handleButtonClick('project')}  ></SidebarItem>
+    active={checkURLKeyword1} 
+      ></SidebarItem>
     </Link>
 
 
-    <Link to='/quotation'>
+    <Link to='/inventory'>
     <SidebarItem 
-    icon={<IndianRupee/>}  
-    text="Quotation"  
-    active={activeButton === 'quote'}  
-    onClick={() => handleButtonClick('quote')}  ></SidebarItem>
+    icon={<Warehouse/>}  
+    text="Inventory"  
+    active={checkURLKeyword1}  
+      ></SidebarItem>
     </Link>
 
 
-    <Link to='/file'>
-    <SidebarItem 
-    icon={<Folder/>}  
-    text="File Manager"  
-    active={activeButton === 'files'}  
-    onClick={() => handleButtonClick('files')}  ></SidebarItem>
-    </Link>
+
 
 
  
@@ -58,32 +102,25 @@ const Side = () => {
     <SidebarItem 
     icon={<Timer/>}  
     text="MOM"  
-    active={activeButton === 'mom'}  
-    onClick={() => handleButtonClick('mom')}  ></SidebarItem>
+    active={checkURLKeyword}  
+      ></SidebarItem>
     </Link>
 
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
-    active={activeButton === 'mom'}  
-    onClick={() => handleButtonClick('mom')}  ></SidebarItem>
+    active={checkURLKeyword}  
+      ></SidebarItem>
     </Link>
-
-
-
-
-
-
-
-    <Link to='http://localhost:5173/'>
+    {/* <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
-    active={activeButton === 'chat'}  
-    onClick={() => handleButtonClick('chat')}  ></SidebarItem>
-    </Link>
+    active={checkURLKeyword}  
+      ></SidebarItem>
+    </Link> */}
     
    
 

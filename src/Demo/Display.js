@@ -1,105 +1,213 @@
-// import { Form, Input, Select } from 'antd';
-// import { UploadOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
-// import { message, Upload, Button, Switch } from 'antd';
+import React from "react"; 
+import AppBar from "@mui/material/AppBar"; 
+import Box from "@mui/material/Box"; 
+import CssBaseline from "@mui/material/CssBaseline"; 
+import Divider from "@mui/material/Divider"; 
+import Drawer from "@mui/material/Drawer"; 
+import IconButton from "@mui/material/IconButton"; 
+import List from "@mui/material/List"; 
+import ListItemButton from "@mui/material/ListItemButton"; 
+import ListItemIcon from "@mui/material/ListItemIcon"; 
+import ListItemText from "@mui/material/ListItemText"; 
+import MenuIcon from "@mui/icons-material/Menu"; 
+import Toolbar from "@mui/material/Toolbar"; 
+import Typography from "@mui/material/Typography"; 
 
-// import useLanguage from './useLangguage';
+import { 
+	CollectionsBookmark, 
+	Edit, 
+	Feedback, 
+	Help, 
+	PermMedia, 
+	UploadFile, 
+	Work, 
+} from "@mui/icons-material"; 
 
-// const beforeUpload = (file) => {
-//   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-//   if (!isJpgOrPng) {
-//     message.error('You can only upload JPG/PNG file!');
-//   }
-//   const isLt2M = file.size / 1024 / 1024 < 2;
-//   if (!isLt2M) {
-//     message.error('Image must smaller than 2MB!');
-//   }
-//   return isJpgOrPng && isLt2M;
-// };
+const drawWidth = 220; 
 
-// export default function AdminForm({ isUpdateForm = false }) {
-//   const translate = useLanguage();
-//   return (
-//     <>
-//       <Form.Item
-//         label={translate('first Name')}
-//         name="name"
-//         rules={[
-//           {
-//             required: true,
-//           },
-//         ]}
-//       >
-//         <Input autoComplete="off" />
-//       </Form.Item>
-//       <Form.Item
-//         label={translate('last Name')}
-//         name="surname"
-//         rules={[
-//           {
-//             required: true,
-//           },
-//         ]}
-//       >
-//         <Input autoComplete="off" />
-//       </Form.Item>
-//       <Form.Item
-//         label={translate('email')}
-//         name="email"
-//         rules={[
-//           {
-//             required: true,
-//           },
-//           {
-//             type: 'email',
-//           },
-//         ]}
-//       >
-//         <Input autoComplete="off" />
-//       </Form.Item>
+function App() { 
+	const [mobileViewOpen, setMobileViewOpen] = React.useState(false); 
 
-//       {!isUpdateForm && (
-//         <Form.Item
-//           label={translate('Password')}
-//           name="password"
-//           rules={[
-//             {
-//               required: true,
-//             },
-//           ]}
-//         >
-//           <Input.Password autoComplete="new-password" />
-//         </Form.Item>
-//       )}
-//       <Form.Item label={translate('enabled')} name="enabled" valuePropName={'checked'}>
-//         <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} />
-//       </Form.Item>
-//       <Form.Item
-//         label={translate('Role')}
-//         name="role"
-//         rules={[
-//           {
-//             required: true,
-//           },
-//         ]}
-//       >
-//         <Select>
-//           <Select.Option value="admin">{translate('admin_super_admin')}</Select.Option>
-//           <Select.Option value="staffAdmin">{translate('staff_admin_crud')}</Select.Option>
-//           <Select.Option value="staff">{translate('staff_cru')}</Select.Option>
-//           <Select.Option value="createOnly">{translate('create_and_read_only')}</Select.Option>
-//           <Select.Option value="readOnly">{translate('read_only')}</Select.Option>
-//         </Select>
-//       </Form.Item>
-//       <Form.Item
-//         name="file"
-//         label={translate('Photo')}
-//         valuePropName="fileList"
-//         getValueFromEvent={(e) => e.fileList}
-//       >
-//         <Upload beforeUpload={beforeUpload}>
-//           <Button icon={<UploadOutlined />}>{translate('click_to_upload')}</Button>
-//         </Upload>
-//       </Form.Item>
-//     </>
-//   );
-// }
+	const handleToggle = () => { 
+		setMobileViewOpen(!mobileViewOpen); 
+	}; 
+
+	const responsiveDrawer = ( 
+		<div style={{ backgroundColor: "#09212E", 
+			height: "100%" }}> 
+			<Toolbar /> 
+			<Divider /> 
+			<Typography 
+				sx={{ textAlign: "center", pt: 4, 
+					color: "green", fontSize: 20 }} 
+			> 
+				GeeksforGeeks 
+			</Typography> 
+			<List sx={{ backgroundColor: "#09212E" }}> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<Help />} 
+					</ListItemIcon> 
+					<ListItemText primary={"How to write"} /> 
+				</ListItemButton> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<CollectionsBookmark />} 
+					</ListItemIcon> 
+					<ListItemText primary={"Posts"} /> 
+				</ListItemButton> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<UploadFile />} 
+					</ListItemIcon> 
+					<ListItemText primary={"Pick Article"} /> 
+				</ListItemButton> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<Edit />} 
+					</ListItemIcon> 
+					<ListItemText primary={"Improve"} /> 
+				</ListItemButton> 
+			</List> 
+			<Divider /> 
+			<List> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<Edit />} 
+					</ListItemIcon> 
+					<ListItemText primary={"Suggest"} /> 
+				</ListItemButton> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<Work />} 
+					</ListItemIcon> 
+					<ListItemText primary={"Work with us"} /> 
+				</ListItemButton> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<PermMedia />} 
+					</ListItemIcon> 
+					<ListItemText primary={"Media"} /> 
+				</ListItemButton> 
+				<ListItemButton sx={{ color: "white" }}> 
+					<ListItemIcon sx={{ color: "white" }}> 
+						{<Feedback />}</ListItemIcon> 
+					<ListItemText primary={"Contact us"} /> 
+				</ListItemButton> 
+			</List> 
+			<Typography 
+				sx={{ 
+					backgroundColor: "blue", 
+					color: "white", 
+					borderRadius: 10, 
+					textAlign: "center", 
+					padding: 1, 
+					margin: 2, 
+				}} 
+			> 
+				Sign In 
+			</Typography> 
+		</div> 
+	); 
+
+	return ( 
+		<div> 
+			<div> 
+				<Box sx={{ display: "flex" }}> 
+					<CssBaseline /> 
+					<AppBar 
+						position="fixed"
+						sx={{ 
+							width: { sm: `calc(100% - ${drawWidth}px)` }, 
+							ml: { sm: `${drawWidth}px` }, 
+							backgroundColor: "green", 
+						}} 
+					> 
+						<Toolbar> 
+							<IconButton 
+								color="inherit"
+								edge="start"
+								onClick={handleToggle} 
+								sx={{ mr: 2, display: { sm: "none" } }} 
+							> 
+								<MenuIcon /> 
+							</IconButton> 
+							<Typography variant="h6"> 
+								Welcome to GeeksforGeeks Write Portal 
+							</Typography> 
+						</Toolbar> 
+					</AppBar> 
+					<Box 
+						component="nav"
+						sx={{ width: { sm: drawWidth }, 
+							flexShrink: { sm: 0 } }} 
+					> 
+						<Drawer 
+							variant="temporary"
+							open={mobileViewOpen} 
+							onClose={handleToggle} 
+							ModalProps={{ 
+								keepMounted: true, 
+							}} 
+							sx={{ 
+								display: { xs: "block", sm: "none" }, 
+								"& .MuiDrawer-paper": { 
+									boxSizing: "border-box", 
+									width: drawWidth, 
+								}, 
+							}} 
+						> 
+							{responsiveDrawer} 
+						</Drawer> 
+						<Drawer 
+							variant="permanent"
+							sx={{ 
+								display: { xs: "none", sm: "block" }, 
+								"& .MuiDrawer-paper": { 
+									boxSizing: "border-box", 
+									width: drawWidth, 
+								}, 
+							}} 
+							open 
+						> 
+							{responsiveDrawer} 
+						</Drawer> 
+					</Box> 
+					<Box 
+						component="main"
+						sx={{ 
+							flexGrow: 1, 
+							p: 3, 
+							width: { sm: `calc(100% - ${drawWidth}px)` }, 
+						}} 
+					> 
+						<Toolbar /> 
+						<Typography paragraph> 
+							GeeksforGeeks provides Free Tutorials, 
+							Millions of Articles, Live, 
+							Online and Classroom Courses ,Frequent 
+							Coding Competitions, Webinars by Industry 
+							Experts, Internship opportunities and Job 
+							Opportunities. It provides all the 
+							individuals with a ‘Contribute’ 
+							feature on their platform where they 
+							can come to write on a particular topic 
+							and share it with everyone and helps you to 
+							enhance your knowledge and expertise 
+							of particular subjects and 
+							allows you to showcase your research 
+							and writing skills to all 
+							others across the world. Not only 
+							this but you’ll also get 
+							rewarded for it in the form of 
+							remuneration, internship 
+							opportunities, discount offers, etc. 
+						</Typography> 
+					</Box> 
+				</Box> 
+			</div> 
+		</div> 
+	); 
+} 
+
+export default App;

@@ -21,11 +21,12 @@ function App() {
 
   return (
     <>
+    
     <ResponsiveAppBar/>
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path="/file/*" element={<Files />} />
-    <Route path='/quotation/*' element={<Quotation/>}/>
+    <Route path='/inventory/*' element={<Quotation/>}/>
      <Route path='/project' element={<Project/>}/>
      <Route path='/mom' element={<Mom/>}/>
      <Route path='/lead' element={<Lead/>}/>

@@ -83,7 +83,7 @@ const TeamPage = () => {
     </Link>
 
 
-    <Link to='/quotation'>
+    <Link to='/inventory'>
     <SidebarItem 
     icon={<Warehouse/>}  
     text="Inventory"  

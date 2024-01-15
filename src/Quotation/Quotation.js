@@ -5,7 +5,8 @@ import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Warehouse, Watch,LayoutList} from 'lucide-react'
 import Data from './Data'
-import { Card,CardContent } from '@mui/material';
+import { Box, Button, Card,CardContent, Drawer } from '@mui/material';
+import Side from '../Home/Side';
 
 const Quotation = () => {
   const categories = ['All Items', 'Onsite & Civil works', 'Furniture, Decor & Wardrobe', 'Kitchen & Accessories'];
@@ -75,6 +76,54 @@ const Quotation = () => {
     marginTop:"8%"
   };
 
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 400 }}
+      role="presentation"
+     
+    >
+    <h1 className=' text-xl text-center mt-5 ' style={{fontFamily:"'Nunito Sans', sans-serif",fontWeight:"600"}}>Add Item</h1>
+    <form className='flex flex-col ml-[12%] mt-9 '>
+                    <label>Item</label>
+                    <input type="text" className='border-gray-400 border rounded-sm w-72 h-10' name='devashish' 
+                       />
+                </form>
+
+    <form className='flex flex-col ml-[12%] mt-4 '>
+                    <label>Quantity</label>
+                    <input type="number" className='border-gray-400 border rounded-sm w-72 h-10' name='' value=""
+                       />
+                </form>
+    <form className='flex flex-col ml-[12%] mt-4 '>
+                    <label>Amount</label>
+                    <input type="number" className='border-gray-400 border rounded-sm w-72 h-10' name='' value=""
+                       />
+                </form>
+ 
+
+ 
+
+
+<button className='ml-[12%] mt-[5%] bg-gradient-to-tr from-indigo-300 to-indigo-100 text-indigo-800 py-2 px-5 rounded-sm font-semibold' onClick={toggleDrawer(anchor, false)}>Submit</button>
+<button className='ml-[5%] mt-[5%] bg-slate-200 text-gray-400 py-2 px-5 rounded-sm font-semibold hover:bg-gray-400 hover:text-black' onClick={toggleDrawer(anchor, false)}>Cancel</button>
+    </Box>
+  );
+
   return (
     <div className='flex bg-slate-100'>
     <div className='fixed'>
@@ -89,16 +138,16 @@ const Quotation = () => {
     </Link>
 
 
-  <Link to='/project' >
+    <Link to='/project' >
     <SidebarItem 
-    icon={<LayoutList/>}  
+    icon={<FolderOpenDot/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
     </Link>
 
 
-    <Link to='/quotation'>
+    <Link to='/inventory'>
     <SidebarItem 
     icon={<Warehouse/>}  
     text="Inventory"  
@@ -156,7 +205,25 @@ const Quotation = () => {
    
     <Card sx={{ minWidth: 275 }} style={{ ...componentStyles, ...(window.innerWidth <= 1280?wideScreenStyles:componentStyles) }}>
       <CardContent>
+      <div className='flex justify-between'>
       <h1 className="text-2xl font-bold mb-4 ml-6">Inventory</h1>
+      {['right'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(anchor, true)} style={{marginRight:"30px", background:"linear-gradient(to bottom left, #a5b4ff, #ebf4ff) " ,color:"", textTransform:"capatalize" ,  padding: '10px',
+      height: '34px',
+      fontFamily: "'Nunito Sans', sans-serif",
+      textTransform: 'capitalize',fontWeight:"600"}}>Add Items</Button>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            ModalProps={{ onBackdropClick: toggleDrawer }}
+            style={{width:"30%"}}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>  ))}
+        </div>
       <Data/>
       </CardContent>
       

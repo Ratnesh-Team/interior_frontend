@@ -179,6 +179,8 @@ const App = () => {
     window.location.href = url;
   };
 
+  
+
   return (
     <div className="container mx-auto bg-white pt-3">
     <div className="mb-4 flex justify-between ml-6">
@@ -312,6 +314,7 @@ const App = () => {
       className={`${selectedRows.includes(index) ? '' : ''} hover:bg-gray-100`}
       onClick={() => toggleRowSelection(index)}
     >
+
       {Object.keys(item).map((column) => (
         // Exclude 'Project Type' column from rendering
         column !== 'Project_Type' && (
@@ -344,6 +347,7 @@ const App = () => {
           </td>
         )
       ))}
+      
     </tr>
   ))}
 </tbody>

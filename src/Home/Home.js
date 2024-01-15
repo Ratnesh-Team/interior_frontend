@@ -46,7 +46,15 @@ const Home = () => {
       }
     ];
     const [Projects] = useState(ProjectsData);
-
+    function checkDashboardURL() {
+      // Get the current URL
+      var currentURL = window.location.href;
+    
+      // Check if the URL contains the word "dashboard"
+      var isActive = currentURL.includes("dashboard");
+    
+      return isActive;
+    }
   return (
     <>
     <div className=' flex bg-[#ebebed] w-auto h-[100vh] '>
@@ -57,7 +65,7 @@ const Home = () => {
     <SidebarItem 
     icon={<LayoutDashboardIcon/>}  
     text="Dashboard"  
-    active={true} 
+    active={checkDashboardURL} 
     ></SidebarItem>
     </Link>
 
@@ -66,12 +74,12 @@ const Home = () => {
     <SidebarItem 
     icon={<LayoutList/>}  
     text="All Projects"  
-    active={false} 
+    active={checkDashboardURL} 
       ></SidebarItem>
     </Link>
 
 
-    <Link to='/quotation'>
+    <Link to='/inventory'>
     <SidebarItem 
     icon={<Warehouse/>}  
     text="Inventory"  

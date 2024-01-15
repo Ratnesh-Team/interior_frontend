@@ -321,13 +321,14 @@ const App = () => {
         column !== 'Project_Type' && (
           <td
             key={column}
-            className={`border-b-2 p-4 pl-6 text-wrap  `}
+            className={`border-b-2 p-4 pl-6 text-wrap cursor-pointer `}
+            onClick={() => handleProjectClick(`/user/`)}
           >
            
               <div>
                 <span
-                  className="hover:underline cursor-pointer hover:text-indigo-800"
-                  onClick={() => handleProjectClick(`/user/`)}
+                  className=""
+                 
                   style={{
                     backgroundColor: item['Project Type'] === 'Commercial' ? '#e8e7fd' : (item['Project Type'] === 'Residential' ? '#e2f6e8' : 'inherit'),
                     color: item['Project Type'] === 'Commercial' ? 'blue' : (item['Project Type'] === 'Residential' ? 'green' : 'inherit'),
