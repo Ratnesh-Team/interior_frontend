@@ -181,12 +181,114 @@ const App = () => {
 
   return (
     <div className="container mx-auto bg-white pt-3">
-      <div className="mb-4 flex justify-between ml-6">
-        <div>
-       
+    <div className="mb-4 flex justify-between ml-6">
+      <div>
+      <div className=' border-[2px] border-indigo-500 rounded-md '>
+        <Button
+          aria-describedby={filterId}
+          onClick={handleFilterClick}
+          className="flex border-b-2 border-indigo-500  py-1 rounded-md text-indigo-500"
+        >
+          <ListFilter className=" " />
+          <h1 className="ml-2 " style={{ fontFamily: "'Jost', sans-serif",paddingLeft:"5px" }}>Filter</h1>
+        </Button>
         </div>
-     
+        <Popover
+          id={filterId}
+          open={openFilter}
+          anchorEl={filterAnchorEl}
+          onClose={handleFilterClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+        >
+          <div className="p-4" 
+          style={{ fontFamily: "'Jost', sans-serif" }}>
+            {Object.keys(data[0]).map((column) => (
+              <div key={column} className="mb-2">
+               
+              </div>
+            ))}
+            {dynamicFilters.map((filter, index) => (
+              <div key={index} className="flex mb-2 p-[-10px]">
+                <Select
+                  value={filter.column}
+                  onChange={(e) =>
+                    setDynamicFilters((prevFilters) => {
+                      const updatedFilters = [...prevFilters];
+                      updatedFilters[index].column = e.target.value;
+                      return updatedFilters;
+                    })
+                    
+                  }
+                  displayEmpty
+                  className="border rounded"
+                  style={{ height: '32px', fontFamily: "'Jost', sans-serif"  }}
+                >
+                  <MenuItem value="" disabled style={{ fontFamily: "'Jost', sans-serif" }}>
+                    Select Column
+                  </MenuItem>
+                  {Object.keys(data[0]).map((column) => (
+                    <MenuItem key={column} value={column} style={{ fontFamily: "'Jost', sans-serif" }}>
+                    {column === 'ProjectName' ? 'Project Name' : column === 'Project_Type' ? 'Project Type' : column}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <input
+                  type="text"
+                  placeholder="Enter filter value..."
+                  className="ml-2  border-2 border-slate-200 rounded h-8 w-40"
+                  value={filter.value}
+                  onChange={(e) =>
+                    setDynamicFilters((prevFilters) => {
+                      const updatedFilters = [...prevFilters];
+                      updatedFilters[index].value = e.target.value;
+                      return updatedFilters;
+                    })
+                  }
+                />
+                <button
+                  className="ml-2 px-3 bg-slate-200 text-indigo-600 hover:bg-[#e96666] hover:text-white rounded-full"
+                  onClick={() => handleRemoveFilter(index)}
+                >
+                  X
+                </button>
+              </div>
+            ))}
+            <button
+              className="ml-2 px-2 py-1 bg-indigo-500 text-white rounded-sm"
+              onClick={handleAddFilter}
+            >
+              Add
+            </button>
+            <button
+              className="ml-2 px-2 py-1 bg-slate-200 text-black hover:bg-[#e96666] rounded-sm"
+              onClick={handleClearAllFilters}
+            >
+              Clear All
+            </button>
+            <button
+              className="ml-2 px-2 py-1 bg-green-500 text-white rounded-sm"
+              onClick={handleApplyFilters}
+            >
+              Apply
+            </button>
+          </div>
+        </Popover>
       </div>
+      <input
+        type="text"
+        placeholder="Quick Search..."
+        className="p-2 border rounded mr-8"
+        value={quickSearch}
+        onChange={(e) => setQuickSearch(e.target.value)}
+      />
+    </div>
       <table className="w-full overflow-auto overflow-x-auto" style={{overflow:"auto"}}>
       <thead className='bg-[rgb(246,246,247)] border-b-2 pl-4 ml-4'>
         <tr className=''>

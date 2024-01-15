@@ -281,7 +281,7 @@ const App = () => {
                   <input
                     type="text"
                     placeholder="Enter filter value..."
-                    className="ml-2  border-2 border-slate-200 rounded"
+                    className="ml-2  border-2 border-slate-200 rounded h-8 w-40"
                     value={filter.value}
                     onChange={(e) =>
                       setDynamicFilters((prevFilters) => {
@@ -300,19 +300,19 @@ const App = () => {
                 </div>
               ))}
               <button
-                className="ml-2 px-2 py-1 bg-indigo-500 text-white rounded-md"
+                className="ml-2 px-2 py-1 bg-indigo-500 text-white rounded-sm"
                 onClick={handleAddFilter}
               >
                 Add
               </button>
               <button
-                className="ml-2 px-2 py-1 bg-slate-200 text-black hover:bg-[#e96666] rounded-md"
+                className="ml-2 px-2 py-1 bg-slate-200 text-black hover:bg-[#e96666] rounded-sm"
                 onClick={handleClearAllFilters}
               >
                 Clear All
               </button>
               <button
-                className="ml-2 px-2 py-1 bg-green-500 text-white rounded-md"
+                className="ml-2 px-2 py-1 bg-green-500 text-white rounded-sm"
                 onClick={handleApplyFilters}
               >
                 Apply

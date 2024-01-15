@@ -137,10 +137,7 @@ const MinutesOfMeeting = () => {
     <Card sx={{ minWidth: 275 }} style={{ ...componentStyles, ...(window.innerWidth <= 1280?wideScreenStyles:componentStyles) }}>
       <CardContent>
       <h1 className="text-2xl font-bold mb-4 ml-6">Minutes Of Meeting</h1>
-      <h2 className="text-2xl font-semibold mb-2  mt-6 ml-6 ">
-        Discussed layouts for the living and the dining area
-      </h2>
-      <p className="text-gray-500 ml-6 ">28 May 2022. Google Meet</p>
+      
       <Data/>
       </CardContent>
       

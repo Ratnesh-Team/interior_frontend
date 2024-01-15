@@ -121,8 +121,8 @@ const TeamPage = () => {
  
 
 
-<button className='ml-[12%] mt-[5%] bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 py-2 px-5 rounded-sm font-semibold'>Submit</button>
-<button className='ml-[5%] mt-[5%] bg-slate-100 text-gray-400 py-2 px-5 rounded-sm font-semibold'>Cancel</button>
+<button className='ml-[12%] mt-[5%] bg-gradient-to-tr from-indigo-300 to-indigo-100 text-indigo-800 py-2 px-5 rounded-sm font-semibold' onClick={toggleDrawer(anchor, false)}>Submit</button>
+<button className='ml-[5%] mt-[5%] bg-slate-200 text-gray-400 py-2 px-5 rounded-sm font-semibold hover:bg-gray-400 hover:text-black' onClick={toggleDrawer(anchor, false)}>Cancel</button>
     </Box>
   );
 
