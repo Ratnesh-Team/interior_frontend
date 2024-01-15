@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { generateDummyData } from './DummyData';
-import { ChevronLeft, ListFilter,ChevronRight } from 'lucide-react';
+import { ChevronLeft, ListFilter,ChevronRight ,LayoutList} from 'lucide-react';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
@@ -321,9 +321,9 @@ const App = () => {
         column !== 'Project_Type' && (
           <td
             key={column}
-            className={`border-b-2 p-4 pl-6 text-wrap `}
+            className={`border-b-2 p-4 pl-6 text-wrap  `}
           >
-            {column === 'ProjectName' ? (
+           
               <div>
                 <span
                   className="hover:underline cursor-pointer hover:text-indigo-800"
@@ -342,9 +342,7 @@ const App = () => {
                 {/* Additional line for the entry */}
               
               </div>
-            ) : (
-              <p className={` rounded-md`}>{item[column]}</p>
-            )}
+            
           </td>
         )
       ))}

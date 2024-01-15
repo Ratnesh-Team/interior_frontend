@@ -1,6 +1,7 @@
 // TeamSection.js
 
-import React from 'react';
+import React from 'react'
+import { Warehouse ,LayoutList} from 'lucide-react';
 import MemberCard from './MemberCard';
 
 const TeamSection = ({ title, members }) => {

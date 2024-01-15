@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
+import { Warehouse } from 'lucide-react'
 import { useSelector } from 'react-redux';
-import Sidebar from './sides';
-import { SidebarItem } from './sides';
+import Sidebar from '../Home/Sides';
+import { SidebarItem } from '../Home/Sides';
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder,Users,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch,LayoutList} from 'lucide-react'
 import fa from 'fontawesome';
 import Data from './Data'
 import ProjectData from './ProjectData'
@@ -91,8 +92,8 @@ const Home = () => {
 
   return (
     <>
-    <div className=' flex bg-[#ebebed] w-auto h-[100vh] '>
-    <div className='fixed'>
+    <div className=' flex bg-[#ebebed] w-auto '>
+    <div className='fixed max-xl:hidden'>
     <Sidebar >
     
     <Link to='/'>
@@ -104,9 +105,18 @@ const Home = () => {
     </Link>
 
 
+  <Link to='/project' >
+    <SidebarItem 
+    icon={<LayoutList/>}  
+    text="All Projects"  
+    active={false} 
+      ></SidebarItem>
+    </Link>
+
+
     <Link to='/quotation'>
     <SidebarItem 
-    icon={<IndianRupee/>}  
+    icon={<Warehouse/>}  
     text="Inventory"  
     active={false}  
       ></SidebarItem>
@@ -130,7 +140,7 @@ const Home = () => {
 
     <Link to='/lead'>
     <SidebarItem 
-    icon={<Timer/>}  
+    icon={<Users/>}  
     text="Lead Management"  
     active={false}  
       ></SidebarItem>
@@ -142,13 +152,13 @@ const Home = () => {
 
 
 
-    <Link to='http://localhost:5173/'>
+    {/* <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
-    </Link>
+    </Link> */}
     
    
 
@@ -158,10 +168,10 @@ const Home = () => {
 
 
     </Sidebar></div>
-       <div className={` flex-1 ${expanded?' ml-[300px]':' ml-[100px]'} `}>
+       <div className={` flex-1 max-xl:mt-[7%] mt-[6%] ${expanded?' ':' ml-[100px]'} `}>
       
-       <div className=' bg-white mx-3 py-5 mt-5 rounded-lg flex  '>
-          <div className=' w-4/5'>
+       <div className=' bg-white mx-3 py-5 mt-5 rounded-lg flex max-xl:ml-[4%] mr-[1%] ml-[20%] '>
+          <div className=' w-4/5 ml-3'>
         <h1 className=" text-2xl font-bold ml-4 ">Devashish Project</h1>       
         <h1 className=" text-md font-light mt-2 ml-4">Project Name: Interior designer</h1>     
         <h1 className=" text-md font-light mt-2 ml-4">Project ID: 443941</h1>     
@@ -171,7 +181,7 @@ const Home = () => {
         <div className='w-1/5'>
        <div className="relative">
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-[55%]"
         onClick={toggleForm}
       >
         Edit
@@ -281,11 +291,11 @@ const Home = () => {
         </div>
         </div>
         
-        <div className='flex '>
-        <div className='w-2/5 mr-4'>
+        <div className='flex pb-7 '>
+        <div className='w-2/5 mr-5 max-xl:ml-[25px] ml-[19%]'>
           <ProjectData mydata={formData} />
           </div>
-          <div className='w-3/5 ml-4 bg-white mt-5'>
+          <div className='w-3/5 ml-4 mr-[1%] rounded-md bg-white mt-5'>
           <Data/>
           </div>
         </div>

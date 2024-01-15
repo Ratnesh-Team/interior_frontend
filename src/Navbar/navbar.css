@@ -1,0 +1,7 @@
+@media screen and (min-width: 1280px) {
+    .appbar {
+      /* Your styles for 1280px screen and above */
+      /* For example: */
+    width: 95%;
+    }
+  }

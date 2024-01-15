@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { SidebarItem } from '../Home/Sides';
 import Data from './Data'
 import { Link, useNavigate } from 'react-router-dom'
-import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot,Warehouse, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch,LayoutList} from 'lucide-react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -107,6 +107,33 @@ const Project = () => {
           •
         </Box>
       );
+      const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+      useEffect(() => {
+        const handleResize = () => {
+          setWindowWidth(window.innerWidth);
+        };
+    
+        // Add event listener on component mount
+        window.addEventListener('resize', handleResize);
+    
+        // Remove event listener on component unmount
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+      const componentStyles = {
+        // Your default styles here
+        width:"80%", marginTop:"7%", marginLeft:"20%", padding:"0", marginRight:"15px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)'
+      };
+      const wideScreenStyles = {
+        // Your styles for 1280px screen and above
+        // For example:
+        width:"96%",
+        marginLeft:"4%",
+        marginRight:"1%",
+        marginTop:"8%"
+      };
 
   return (
     <div className="flex">
@@ -133,7 +160,7 @@ const Project = () => {
 
     <Link to='/quotation'>
     <SidebarItem 
-    icon={<IndianRupee/>}  
+    icon={<Warehouse/>}  
     text="Inventory"  
     active={false}  
       ></SidebarItem>
@@ -187,7 +214,7 @@ const Project = () => {
     </Sidebar>
     </div>
   
-        <Card sx={{ minWidth: 275 }} style={{ width:"80%", marginTop:"7%", marginLeft:"19%", padding:"0", marginRight:"30px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)',}}>
+        <Card sx={{ minWidth: 275 }} style={{ ...componentStyles, ...(window.innerWidth <= 1280?wideScreenStyles:componentStyles) }}>
       <CardContent>
       <h1 className="text-2xl font-bold mb-4 ml-6">Project</h1>
       <Data/>

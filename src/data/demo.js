@@ -2,6 +2,7 @@ import { List } from '@mui/material';
 import { ListGroup } from 'flowbite-react';
 import { BarChart, ListIcon } from 'lucide-react';
 import React from 'react'
+import { Warehouse ,LayoutList} from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 

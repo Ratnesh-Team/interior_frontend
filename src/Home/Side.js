@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import React from 'react'
+import { Warehouse } from 'lucide-react'
 import Sidebar, { SidebarItem } from './Sides'
 import { Link } from 'react-router-dom'
-import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch,LayoutList} from 'lucide-react'
 
 
 const Side = () => {

@@ -2,13 +2,14 @@ import React from "react";
 import sofa from "./sofa.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { useState,useEffect } from "react";
 
 import Side from "../Home/Side";
 import Sidebar from '../Home/Sides';
 import { SidebarItem } from '../Home/Sides';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot,Warehouse, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch,LayoutList} from 'lucide-react'
 import { truckContainer } from "fontawesome";
 import { Card,CardContent } from "@mui/material";
 import Data from './Data'
@@ -27,6 +28,33 @@ const MinutesOfMeeting = () => {
 
     return imageUrls[itemName] || sofa;
   };
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Add event listener on component mount
+    window.addEventListener('resize', handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  const componentStyles = {
+    // Your default styles here
+    width:"80%", marginTop:"7%", marginLeft:"20%", padding:"0", marginRight:"15px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)'
+  };
+  const wideScreenStyles = {
+    // Your styles for 1280px screen and above
+    // For example:
+    width:"96%",
+    marginLeft:"4%",
+    marginRight:"1%",
+    marginTop:"8%"
+  };
 
   return (
     <div className="flex">
@@ -42,9 +70,9 @@ const MinutesOfMeeting = () => {
     </Link>
 
 
-    <Link to='/project' >
+  <Link to='/project' >
     <SidebarItem 
-    icon={<FolderOpenDot/>}  
+    icon={<LayoutList/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -53,7 +81,7 @@ const MinutesOfMeeting = () => {
 
     <Link to='/quotation'>
     <SidebarItem 
-    icon={<IndianRupee/>}  
+    icon={<Warehouse/>}  
     text="Inventory"  
     active={false}  
       ></SidebarItem>
@@ -106,7 +134,7 @@ const MinutesOfMeeting = () => {
 
     </Sidebar>
     </div>
-    <Card sx={{ minWidth: 275 }} style={{ width:"80%", marginTop:"7%", marginLeft:"19%", padding:"0", marginRight:"30px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)',}}>
+    <Card sx={{ minWidth: 275 }} style={{ ...componentStyles, ...(window.innerWidth <= 1280?wideScreenStyles:componentStyles) }}>
       <CardContent>
       <h1 className="text-2xl font-bold mb-4 ml-6">Minutes Of Meeting</h1>
       <h2 className="text-2xl font-semibold mb-2  mt-6 ml-6 ">

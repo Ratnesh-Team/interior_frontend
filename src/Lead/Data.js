@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { generateDummyData } from './DummyData';
-import { ChevronLeft, ListFilter,ChevronRight } from 'lucide-react';
+import { ChevronLeft, ListFilter,ChevronRight ,LayoutList} from 'lucide-react';
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
@@ -356,7 +356,7 @@ const App = () => {
               column !== 'Project_Type' && (
                 <td
             key={column}
-            className={`border-b-2 p-4 pl-6 hover:bg-slate-200 `}
+            className={`border-b-2 p-4 pl-6 `}
           >
           {column === 'Status' && item['Status']==='Follow up' ? (
               <div>

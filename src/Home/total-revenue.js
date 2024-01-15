@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Warehouse ,LayoutList} from 'lucide-react';
 import { PieChart, Pie, Cell, Tooltip,Sector } from 'recharts';
 
 const COLORS = ['#0F1035', '#365486', '#7FC7D9', '#DCF2F1'];

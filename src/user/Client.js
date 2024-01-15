@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
+import { Warehouse } from 'lucide-react'
+
 import Sidebar, { SidebarItem } from '../Home/Sides'
 import { Link } from 'react-router-dom'
-import { File, Folder, IndianRupee,FolderOpenDot, LayoutDashboard, LayoutDashboardIcon, Mail, MessageCircleCode, MessageCircleCodeIcon, Timer, Users, Watch} from 'lucide-react'
+
+import { File, Folder, IndianRupee,FolderOpenDot, LayoutDashboard, LayoutDashboardIcon, Mail, MessageCircleCode, MessageCircleCodeIcon, Timer, Users, Watch,LayoutList} from 'lucide-react'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -30,9 +33,9 @@ const ClientPage = () => {
     </Link>
 
 
-    <Link to='/project' >
+  <Link to='/project' >
     <SidebarItem 
-    icon={<FolderOpenDot/>}  
+    icon={<LayoutList/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -41,7 +44,7 @@ const ClientPage = () => {
 
     <Link to='/quotation'>
     <SidebarItem 
-    icon={<IndianRupee/>}  
+    icon={<Warehouse/>}  
     text="Inventory"  
     active={false}  
       ></SidebarItem>
@@ -94,7 +97,7 @@ const ClientPage = () => {
 
     </Sidebar>
     </div>
-    <div className={`flex-1 container  mt-8 w-full ${expanded ? 'ml-[300px]' : 'ml-[100px]'} `}>
+    <div className={`flex-1 container  mt-[8%] mr-1 max-w-[2040px] w-[100%] max-lg:ml-[12px] ml-[19%] `}>
       <div className=" mx-5 bg-white py-6 pl-6 rounded-md shadow-md ">
         <div className="mb-4">
           <h1 className="text-2xl font-bold mb-2">Client Information</h1>

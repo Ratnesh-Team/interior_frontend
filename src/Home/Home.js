@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import React from 'react'
+import { Warehouse } from 'lucide-react'
 import { useSelector } from 'react-redux';
 import Task from './Task'
-import { BarChart, List, Users } from 'lucide-react';
+import { BarChart, List, Users} from 'lucide-react';
 import Sidebar from './Sides';
 import { SidebarItem } from './Sides';
 import { Link, useNavigate } from 'react-router-dom'
 import Data from './Data'
 import Noti from '../notification/App'
-import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch} from 'lucide-react'
+import { File, Folder,FolderOpenDot, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Watch,LayoutList} from 'lucide-react'
 
 
 const Home = () => {
@@ -63,7 +64,7 @@ const Home = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<FolderOpenDot/>}  
+    icon={<LayoutList/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>
@@ -72,7 +73,7 @@ const Home = () => {
 
     <Link to='/quotation'>
     <SidebarItem 
-    icon={<IndianRupee/>}  
+    icon={<Warehouse/>}  
     text="Inventory"  
     active={false}  
       ></SidebarItem>
@@ -124,7 +125,7 @@ const Home = () => {
 
 
     </Sidebar></div>
-       <div className={` flex-1 ${expanded?' ml-[21%]':' ml-[100px]'} mt-[7%] `}>
+       <div className={` flex-1 ${expanded?' ml-[19%] max-xl:ml-[3%]':' ml-[100px]'} mt-[5%] `}>
       
         <div className=' border-t-2 mt-7 mx-3 rounded-lg h-[60vh]'>
      
@@ -139,16 +140,14 @@ const Home = () => {
       </div>
         <Task/>
 </div>
-        <div className='flex-1 ml-5 w-3/5 h-[60vh]'> <div className='h-[60vh] w-[100%] bg-white rounded-lg'>
+        <div className='flex-1 ml-5 w-3/5 h-[60vh]'> <div className='h-[60vh] w-[99%]  bg-white rounded-lg'>
       <div className=' border-b-2 mb-2 flex items-start py-2 ml-2
       '>
       <List/>
       <h1 className='text-lg font-normal ml-2'>Latest Activities</h1>
       </div>
       <Data/>
-   
 </div>
-
 </div>
       </div>
     

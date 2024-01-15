@@ -1,5 +1,6 @@
 // ContentComponent.js
-import React from 'react';
+import React from 'react'
+import { Warehouse ,LayoutList} from 'lucide-react';
 
 const ContentComponent = ({ category }) => {
   // Replace these dummy values with actual content data

@@ -17,7 +17,7 @@ export default function Sidebar({ children }) {
   };
 
   return (
-    <aside className={`h-screen ml-2 rounded-md mt-1 mb-1 ${expanded?"w-60":"w-10"}`}>
+    <aside className={`h-screen ml-2 rounded-md mt-1 mb-1 ${expanded?"w-60":"w-10"} max-xl:hidden`} >
       <nav className="h-full flex flex-col bg-white border-r shadow-sm rounded-md">
         <div className={`p-4 pb-2 flex j  ${expanded?"":" h-[75px]"}`}>
         <button

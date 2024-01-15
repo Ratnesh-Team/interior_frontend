@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Warehouse ,LayoutList} from 'lucide-react';
 import projectsData from './projectData.json'; // Import the JSON file
 
 const ProjectsTable = ({mydata}) => {

@@ -1,6 +1,7 @@
 // TeamSection.js
 
-import React from 'react';
+import React from 'react'
+import { Warehouse ,LayoutList} from 'lucide-react';
 import img from '../Mom/sofa.png'
 const TeamSection = ({ title, members }) => {
   return (
