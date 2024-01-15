@@ -91,7 +91,7 @@ const TeamPage = () => {
       role="presentation"
      
     >
-    <h1 className=' text-xl text-center mt-5 ' style={{fontFamily:"'Nunito Sans', sans-serif"}}>Add Lead</h1>
+    <h1 className=' text-xl text-center mt-5 ' style={{fontFamily:"'Nunito Sans', sans-serif",fontWeight:"600"}}>Add Lead</h1>
     <form className='flex flex-col ml-[12%] mt-9 '>
                     <label>Client Name</label>
                     <input type="text" className='border-gray-400 border rounded-sm w-72 h-10' name='devashish' 
@@ -121,8 +121,8 @@ const TeamPage = () => {
  
 
 
-<button className='ml-[12%] mt-[5%] bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 py-2 px-5 rounded-sm'>Submit</button>
-<button className='ml-[5%] mt-[5%] bg-slate-100 text-gray-400 py-2 px-5 rounded-sm'>Cancel</button>
+<button className='ml-[12%] mt-[5%] bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 py-2 px-5 rounded-sm font-semibold'>Submit</button>
+<button className='ml-[5%] mt-[5%] bg-slate-100 text-gray-400 py-2 px-5 rounded-sm font-semibold'>Cancel</button>
     </Box>
   );
 
@@ -217,7 +217,7 @@ const TeamPage = () => {
           <Button onClick={toggleDrawer(anchor, true)} style={{marginRight:"30px", background:"linear-gradient(to bottom left, #a5b4ff, #ebf4ff) " ,color:"", textTransform:"capatalize" ,  padding: '10px',
       height: '34px',
       fontFamily: "'Nunito Sans', sans-serif",
-      textTransform: 'capitalize'}}>Add Lead</Button>
+      textTransform: 'capitalize',fontWeight:"600"}}>Add Lead</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
