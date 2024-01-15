@@ -5,6 +5,7 @@ import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { Box, Drawer } from '@mui/material';
 
 const App = () => {
   const [data, setData] = useState(generateDummyData(100));
@@ -180,7 +181,64 @@ const App = () => {
   };
 
   
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
 
+  const toggleDrawer = (anchor, open) => (event) => {
+    console.log("yes");
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list1 = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 600,fontFamily:"'Nunito Sans', sans-serif" }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+    <div className='flex justify-between'>
+    <div>
+     <h1 className='ml-8 font-semibold text-2xl mt-12'>Panda Project </h1>
+     <h1 className='ml-8 mt-1  text-base font-medium'>Date:22/04/2023</h1>
+
+     </div>
+     <div className='mt-12 mr-4 '><button className='bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 px-6 py-2 rounded-sm'>Edit</button></div>
+     </div>
+    <ul className=' list-disc ml-4 mr-4 mt-16 pt-4 pl-4 h-[60vh] overflow-y-auto border-2 rounded-md' style={{listStyleType:"disc"}}>
+      <li className='ml-6 mr-6 mt-2' typeof='disc'>	Soft serve machine will be placed over under counter ice cube machine.</li>
+      <li className='ml-6 mr-6 mt-2' typeof='disc'>	3 Barrels and Electrical water boiler will be placed in centre of back wall.</li>
+      <li className='ml-6 mr-6 mt-2' typeof='disc'> Store front facade both edges will be straight.  </li>
+      <li className='ml-6 mr-6 mt-2' typeof='disc'>	Front counter- right side topping (10-12 no of topping) counter will be placed with pick-up counter and left side food display counter will be placed with order counter.
+  </li>
+  <li className='ml-6 mr-6 mt-2'> 10 Tea powder stand placed on back side wall.</li>
+  <li className='ml-6 mr-6 mt-2'> 2 inductions will be used intent of 1 dual induction, and storage provision for induction will be placed under the counter.</li>
+  <li className='ml-6 mr-6 mt-2'> Croffle maker placed on back side.</li>
+  <li className='ml-6 mr-6 mt-2'> Coffee machine will be placed on the front counter.</li>
+  <li className='ml-6 mr-6 mt-2'> Reference images will be shared of Glass stand/ holder to the client.</li>
+  <li className='ml-6 mr-6 mt-2'> Sealing and Milkshake machine will be placed side by side on the back side.</li>
+  <li className='ml-6 mr-6 mt-2'> Big utensil, Glass, Glass lid, Induction storage will be placed on the back side.</li>
+  <li className='ml-6 mr-6 mt-2'> RO will be hanged above the sink, and pull-out faucet for the sink will be procured.</li>
+  <li className='ml-6 mr-6 mt-2'> Under-counter deep freezer and fridge will be placed on the back wall.</li>
+  <li className='ml-6 mr-6 mt-2'> Movable strainer stand will be planned on the sink.</li>
+  <li className='ml-6 mr-6 mt-2'> LAN/TEL/Wi-Fi/Camera to be provisioned, confirmed with the client.</li>
+  <li className='ml-6 mr-6 mt-2'> Digital display screen to be provisioned, confirmed with the client.</li>
+  <li className='ml-6 mr-6 mt-2'> Glass size - 600ml and 320ml, confirmed with the client.</li>
+  <li className='ml-6 mr-6 mt-2'> Food menu to be shared by the client.</li>
+  <li className='ml-6 mr-6 mt-2'> Raw material to be shared by the client.</li>
+  <li className='ml-6 mr-6 mt-2'> 2 MCB to be provisioned, confirmed with the client. One MCB 24X7 ON for Branding display, Freezer, Fridge, and Soft serve machine, and Second MCB will be switched off on a daily basis for other alliances.</li>
+  <li className='ml-6 mr-6 mt-2'> Utensil specification to be shared by the client for storage provision.</li>
+    </ul>
+     
+    </Box>
+  );
   return (
     <div className="container mx-auto bg-white pt-3">
     <div className="mb-4 flex justify-between ml-6">
@@ -293,26 +351,28 @@ const App = () => {
     </div>
       <table className="w-full overflow-auto overflow-x-auto" style={{overflow:"auto"}}>
       <thead className='bg-[rgb(246,246,247)] border-b-2 pl-4 ml-4'>
-        <tr className=''>
-          {Object.keys(data[0]).map((column) => (
-            // Exclude 'Project Type' column from rendering
-            column !== 'Project_Type' && (
-              <th
-                key={column}
-                className="p-2 pl-6 ml-4 text-left"
-              >
-                 {column === 'ProjectName' ? 'Project Name' : column === 'Project_Type' ? 'Project Type' : column} {sortColumn === column && <span onClick={() => handleSort(column)} className='cursor-pointer'>{sortOrder === 'asc' ? '▲' : '▼'}</span>}
-              </th>
-            )
-          ))}
-        </tr>
+  
+      <tr className=''>
+
+{Object.keys(data[0]).map((column) => (
+  // Exclude 'Project Type' column from rendering
+  column !== 'Project_Type' && (
+    <th
+      key={column}
+      className="p-2 pl-6 ml-4 text-left"
+    >
+       {column === 'ProjectName' ? 'Project Name' : column === 'Project_Type' ? 'Project Type' : column} {sortColumn === column && <span onClick={() => handleSort(column)} className='cursor-pointer'>{sortOrder === 'asc' ? '▲' : '▼'}</span>}
+    </th>
+  )
+))}
+</tr>
       </thead>
       <tbody>
   {paginatedData.map((item, index) => (
     <tr
       key={index}
       className={`${selectedRows.includes(index) ? '' : ''} hover:bg-gray-100`}
-      onClick={() => toggleRowSelection(index)}
+      onClick={toggleDrawer('right',true)}
     >
 
       {Object.keys(item).map((column) => (
@@ -347,12 +407,21 @@ const App = () => {
           </td>
         )
       ))}
-      
+
     </tr>
   ))}
 </tbody>
 
     </table>
+    <React.Fragment >
+    <Drawer
+            anchor={'right'}
+            open={state['right']}
+            onClose={toggleDrawer('right', false)}
+          >
+            {list1('right')}
+          </Drawer>
+          </React.Fragment>
      
      
       

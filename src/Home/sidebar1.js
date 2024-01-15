@@ -64,7 +64,7 @@ const Sidebar = () => {
         <SidebarItem
           title="Quotation"
           icon=<IndianRupee/>
-          to="/quotation"
+          to="/inventory"
           selected={selectedItem === 'Quotation'}
           onItemClick={handleItemClick}
         />

@@ -145,14 +145,7 @@ const App = () => {
     setCurrentPage(1);
   };
 
-  const handleJumpToPageChange = (e) => {
-    setJumpToPage(e.target.value);
-  };
-  const handleJumpToPageKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleJumpToPage();
-    }
-  };
+
 
   const handleJumpToPage = () => {
     const page = parseInt(jumpToPage, 10);
@@ -173,6 +166,30 @@ const App = () => {
       ...prevVisibility,
       [column]: isHovered,
     }));
+  };
+
+  const handleJumpToPageChange = (e) => {
+    const value = e.target.value;
+    // Validate and update the jumpToPage state
+    setJumpToPage(value);
+    // Also update the currentPage state if needed
+    // setCurrentPage(value); // Uncomment this line if you want to update currentPage as well
+  };
+  
+  const handleJumpToPageKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleJumpToPage();
+    }
+  };
+  
+  const handleLeftButtonClick = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+    setJumpToPage(currentPage - 1); // Update the input value when clicking the left button
+  };
+  
+  const handleRightButtonClick = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+    setJumpToPage(currentPage + 1); // Update the input value when clicking the right button
   };
 
   return (
@@ -354,14 +371,14 @@ const App = () => {
       <div className="mt-6 ">
         <button
           className="mr-2  text-slate-400 h-[5px]"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={handleLeftButtonClick}
           disabled={currentPage === 1}
         >
          <ChevronLeft/>
         </button>
         <button
           className=" text-slate-400"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          onClick={handleRightButtonClick}
           disabled={currentPage === totalPages}
        >
            <ChevronRight/>

@@ -140,7 +140,7 @@ const Quotation = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<FolderOpenDot/>}  
+    icon={<LayoutList/>}  
     text="All Projects"  
     active={false} 
       ></SidebarItem>

@@ -80,13 +80,13 @@ const ClientPage = () => {
 
 
 
-    <Link to='http://localhost:5173/'>
+    {/* <Link to='http://localhost:5173/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
-    </Link>
+    </Link> */}
     
    
 

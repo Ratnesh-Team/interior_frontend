@@ -65,7 +65,7 @@ const Home = () => {
     <SidebarItem 
     icon={<LayoutDashboardIcon/>}  
     text="Dashboard"  
-    active={checkDashboardURL} 
+    active={true} 
     ></SidebarItem>
     </Link>
 
@@ -74,7 +74,7 @@ const Home = () => {
     <SidebarItem 
     icon={<LayoutList/>}  
     text="All Projects"  
-    active={checkDashboardURL} 
+    active={false} 
       ></SidebarItem>
     </Link>
 
@@ -148,11 +148,11 @@ const Home = () => {
       </div>
         <Task/>
 </div>
-        <div className='flex-1 ml-5 w-3/5 h-[60vh]'> <div className='h-[60vh] w-[99%]  bg-white rounded-lg'>
+        <div className='flex-1 ml-5 w-3/5 h-[60vh]'> <div className=' w-[99%] pb-6 bg-white rounded-lg'>
       <div className=' border-b-2 mb-2 flex items-start py-2 ml-2
       '>
       <List/>
-      <h1 className='text-lg font-normal ml-2'>Latest Activities</h1>
+      <h1 className='text-lg font-normal ml-2 '>Latest Activities</h1>
       </div>
       <Data/>
 </div>

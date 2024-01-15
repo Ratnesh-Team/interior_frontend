@@ -6,7 +6,7 @@ const ProjectsTable = ({mydata}) => {
     console.log(mydata);
     console.log();
   return (
-    <div className="container mx-4 p-2 rounded-md mt-8 bg-white ">
+    <div className="container mx-4 p-2 rounded-md mt-5 bg-white ">
     
       <table className="min-w-full bg-white ">
         <thead>
@@ -27,22 +27,22 @@ const ProjectsTable = ({mydata}) => {
             </tr>
           
             <tr >
-              <td className="py-2 px-4 border-b font-bold ">Project Status</td>
+              <td className="py-2 px-4 border-b font-bold ">Project Timeline</td>
               <td className="py-2 px-4 border-b ">{mydata.timelineDate}</td>
             </tr>
           
             <tr >
-              <td className="py-2 px-4 border-b font-bold ">Project Status</td>
+              <td className="py-2 px-4 border-b font-bold ">Project Budget</td>
               <td className="py-2 px-4 border-b ">{mydata.projectBudget}</td>
             </tr>
           
             <tr >
-              <td className="py-2 px-4 border-b font-bold ">Project Status</td>
+              <td className="py-2 px-4 border-b font-bold ">Received Budget</td>
               <td className="py-2 px-4 border-b ">{mydata.receivedBudget}</td>
             </tr>
           
             <tr >
-              <td className="py-2 px-4 border-b font-bold ">Project Status</td>
+              <td className="py-2 px-4 border-b font-bold ">Remaining Budget</td>
               <td className="py-2 px-4 border-b ">{mydata.remainingBudget}</td>
             </tr>
         

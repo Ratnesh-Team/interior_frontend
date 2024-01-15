@@ -67,7 +67,7 @@ function ResponsiveAppBar() {
     marginLeft:"21%",
      width:"79%", 
      marginRight:"1%", 
-     marginTop:"",
+     marginTop:"5px",
       borderRadius:"3px"
   };
   const componentStyles1 = {
@@ -130,7 +130,8 @@ function ResponsiveAppBar() {
         
         {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)} style={{ ...componentStyles1, ...(window.innerWidth <= 1280?wideScreenStyles1:componentStyles1) }} ><FontAwesomeIcon icon={faBars} className='text-black  text-2xl w/4/5 '  /></Button>
+          <Button onClick={toggleDrawer(anchor, true)} style={{ ...componentStyles1, ...(window.innerWidth <= 1280?wideScreenStyles1:componentStyles1) }} >
+          <FontAwesomeIcon icon={faBars} className='text-black  text-2xl w/4/5 '  /></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

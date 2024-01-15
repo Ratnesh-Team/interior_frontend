@@ -151,7 +151,7 @@ const Project = () => {
 
     <Link to='/project' >
     <SidebarItem 
-    icon={<FolderOpenDot/>}  
+    icon={<LayoutList/>}  
     text="All Projects"  
     active={true} 
       ></SidebarItem>
