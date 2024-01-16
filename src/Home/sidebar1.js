@@ -93,7 +93,7 @@ const Sidebar = () => {
         <SidebarItem
           title="Chat"
           icon=<MessageCircleCode/>
-          to="https://master.d1iuo6abnc6erf.amplifyapp.com/chat"
+          to="https://master.d1iuo6abnc6erf.amplifyapp.comchat"
           selected={selectedItem === 'Chat'}
           onItemClick={handleItemClick}
         />

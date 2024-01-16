@@ -151,7 +151,6 @@ function ResponsiveAppBar() {
 </div>
         </div>
         <div className='mb-10 w-1/12'>
-        
          <App />
 
          </div>

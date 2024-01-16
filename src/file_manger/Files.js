@@ -127,7 +127,7 @@ const TeamPage = () => {
 
 
 {/* 
-    <Link to='http://localhost:5173/'>
+    <Link to='https://master.d1iuo6abnc6erf.amplifyapp.com/'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
