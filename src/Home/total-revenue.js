@@ -90,7 +90,7 @@ const CustomTooltip = ({ active, payload }) => {
 
 const DonutChart = () => {
  return (
-      <div>
+      <div className=''>
         
       </div>
     // <PieChart width={400} height={400}>

@@ -13,7 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Drawer from '@mui/material/Drawer';
-
+import photo from './logo.png'
+import photo1 from './colo_text.png'
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -127,11 +128,11 @@ function ResponsiveAppBar() {
     <AppBar position="fixed" className='appbar' style={{ ...componentStyles, ...(window.innerWidth <= 1280?wideScreenStyles:componentStyles) }}>
       <Container style={{padding:"0", margin:"0"}} className='navbar' >
         <Toolbar disableGutters className='flex justify-between w-full items-center'>
-        
+        <div className='flex'>
         {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)} style={{ ...componentStyles1, ...(window.innerWidth <= 1280?wideScreenStyles1:componentStyles1) }} >
-          <FontAwesomeIcon icon={faBars} className='text-black  text-2xl w/4/5 '  /></Button>
+          <FontAwesomeIcon icon={faBars} className='text-black  text-2xl  '  /></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -141,8 +142,16 @@ function ResponsiveAppBar() {
           </Drawer>
         </React.Fragment>
       ))}
-        
+        <div className='flex' style={window.innerWidth<=1280?{marginLeft:""}:{marginLeft:"-2.75rem"}}>
+        <img src={photo} className='w-[40px]' alt="" />
+        <span>
+          <h1 className=' font-bold text-red-600 border-b-2 w-28 text-lg border-red-200'>COLONELZ</h1>
+          <p className=' text-xs font-semibold'>BUILDING RELATIONSHIPS</p>
+        </span>
+</div>
+        </div>
         <div className='mb-10 w-1/12'>
+        
          <App />
 
          </div>
