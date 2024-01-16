@@ -117,14 +117,14 @@ const MinutesOfMeeting = () => {
 
 
 
-    {/* <Link to='http://localhost:5173/'>
+    <Link to='https://master.d1iuo6abnc6erf.amplifyapp.com/chat'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
     active={false}  
       ></SidebarItem>
     </Link>
-     */}
+    
    
 
 

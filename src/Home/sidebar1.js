@@ -90,13 +90,13 @@ const Sidebar = () => {
           selected={selectedItem === 'Lead Management'}
           onItemClick={handleItemClick}
         />
-        {/* <SidebarItem
+        <SidebarItem
           title="Chat"
           icon=<MessageCircleCode/>
-          to="/chat"
+          to="https://master.d1iuo6abnc6erf.amplifyapp.com/chat"
           selected={selectedItem === 'Chat'}
           onItemClick={handleItemClick}
-        /> */}
+        />
         {/* Add more SidebarItem components for other routes */}
       </ul>
     

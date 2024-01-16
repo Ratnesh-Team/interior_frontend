@@ -184,7 +184,7 @@ const Home = () => {
 
 
 
-    <Link to=''>
+    <Link to='https://master.d1iuo6abnc6erf.amplifyapp.com/chat'>
     <SidebarItem 
     icon={<MessageCircleCode/>}  
     text="Chat"  
