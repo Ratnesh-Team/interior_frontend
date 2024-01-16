@@ -143,11 +143,7 @@ function ResponsiveAppBar() {
         </React.Fragment>
       ))}
         <div className='flex' style={window.innerWidth<=1280?{marginLeft:""}:{marginLeft:"-2.75rem"}}>
-        <img src={photo} className='w-[40px]' alt="" />
-        <span>
-          <h1 className=' font-bold text-red-600 border-b-2 w-28 text-lg border-red-200'>COLONELZ</h1>
-          <p className=' text-xs font-semibold'>BUILDING RELATIONSHIPS</p>
-        </span>
+      
 </div>
         </div>
         <div className='mb-10 w-1/12'>

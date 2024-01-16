@@ -2,6 +2,7 @@ import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../redux/actions';
+import photo from './logo.png'
 
 const SidebarContext = createContext();
 
@@ -20,13 +21,11 @@ export default function Sidebar({ children }) {
     <aside className={`h-screen ml-2 rounded-md mt-1 mb-1 ${expanded?"w-60":"w-10"} max-xl:hidden`} >
       <nav className="h-full flex flex-col bg-white border-r shadow-sm rounded-md">
         <div className={`p-4 pb-2 flex j  ${expanded?"":" h-[75px]"}`}>
-        <button
-            
-            className={`overflow-hidden transition-all bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800  rounded-xl ${
-              expanded ? "w-40 py-2 px-2" : "w-0 none py-0"
-            }`}
-            alt=""
-          >Create New Project</button>
+        <img src={photo} className='w-[20%]' alt="" />
+        <span>
+          <h1 className=' font-bold text-red-600 border-b-2 w-28 text-lg border-red-200'>COLONELZ</h1>
+          <p className=' text-xs font-semibold'>BUILDING RELATIONSHIPS</p>
+        </span>
           
         </div>
 
