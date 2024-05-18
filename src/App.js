@@ -21,8 +21,7 @@ function App() {
 
   return (
     <>
-    
-    <ResponsiveAppBar/>
+  
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path="/file/*" element={<Files />} />

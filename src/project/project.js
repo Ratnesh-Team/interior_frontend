@@ -1,234 +1,162 @@
-import React, { useState, useEffect } from "react";
-import "tailwindcss/tailwind.css";
-import ProjectForm from "./ProjectForm";
-import Side from "../Home/Side";
-import Sidebar from '../Home/Sides';
-import { useSelector } from 'react-redux';
-import { SidebarItem } from '../Home/Sides';
+import React from "react"; 
+import AppBar from "@mui/material/AppBar"; 
+import Box from "@mui/material/Box"; 
+import CssBaseline from "@mui/material/CssBaseline"; 
+import Divider from "@mui/material/Divider"; 
+import Drawer from "@mui/material/Drawer"; 
+import IconButton from "@mui/material/IconButton";  
+import MenuIcon from "@mui/icons-material/Menu"; 
+import Toolbar from "@mui/material/Toolbar"; 
+import Typography from "@mui/material/Typography"; 
+import photo from '../Navbar/logo.png'
+import { Dashboard, } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { Card,CardContent } from "@mui/material";
 import Data from './Data'
-import { Link, useNavigate } from 'react-router-dom'
-import { File, Folder,FolderOpenDot,Warehouse, IndianRupee, LayoutDashboard, LayoutDashboardIcon, MessageCircleCode, Timer, Users, Watch,LayoutList} from 'lucide-react'
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 
 
-const ProjectDetailsPopup = ({ isOpen, onClose, project, onRemove }) => {
-  return (
-    isOpen && (
-      <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-        <div className="bg-white p-4 rounded-md">
-          <h2 className="text-2xl font-bold mb-2">Project: {project.name}</h2>
-          <p>Lead Manager: {project.leadManager}</p>
-          <p>Designer: {project.designer}</p>
-          <p>Phase: {project.phase}</p>
-          <p>Description: {project.description}</p>
-          <button
-            className="py-2 px-4 bg-red-500 text-white rounded-md mt-4 hover:bg-red-600"
-            onClick={() => {
-              onRemove(project.id);
-              onClose();
-            }}
-          >
-            Remove
-          </button>
-          <button
-            className="py-2 px-4 bg-gray-500 text-white rounded-md ml-2"
-            onClick={onClose}
-          >
-            Close
-          </button>
+
+import { LayoutDashboard, LayoutList, MessageCircleCodeIcon, Timer, Users, Warehouse } from "lucide-react";
+
+const drawWidth = 280; 
+
+function App() { 
+	const [mobileViewOpen, setMobileViewOpen] = React.useState(false); 
+
+	const handleToggle = () => { 
+		setMobileViewOpen(!mobileViewOpen); 
+	}; 
+
+	const responsiveDrawer = ( 
+		<div style={{ backgroundColor: "#FFFFFF", 
+			height: "100%",fontFamily:"'Nunito Sans', sans-serif", }}> 
+      <div className="mt-5 px-7">
+	        <img src={photo} className='w-[1%]' alt="" />
+        <span>
+          <h1 className=' font-bold text-red-600 border-b-2 w-28 text-lg border-red-200'>COLONELZ</h1>
+          <p className=' text-xs font-semibold'>BUILDING RELATIONSHIPS</p>
+        </span>
         </div>
-      </div>
-    )
-  );
-};
-
-const Project = () => {
-  const [projects, setProjects] = useState([]);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isDetailsPopupOpen, setIsDetailsPopupOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const navigate=useNavigate();
-  const expanded = useSelector((state) => state.expanded);
- 
-  const addProject = (project) => {
-    
-    setProjects([...projects, { id: projects.length + 1, ...project }]);
-    closeForm();
-  };
-
-  const removeProject = (projectId) => {
-    const updatedProjects = projects.filter(
-      (project) => project.id !== projectId
-    );
-    setProjects(updatedProjects);
-  };
-
-  const openForm = () => {
-    setIsFormOpen(true);
-  };
-
-  const closeForm = () => {
-    setIsFormOpen(false);
-  };
-
-  const showDetailsPopup = (project) => {
-    navigate("/user")
- 
-  };
-
-  const closeDetailsPopup = () => {
-    setSelectedProject(null);
-    setIsDetailsPopupOpen(false);
-  };
-
-  const filterProjectsByCategory = (category) => {
-    setSelectedCategory(category);
-  };
-
-  const clearCategoryFilter = () => {
-    setSelectedCategory(null);
-  };
-
-  const filteredProjects =
-    selectedCategory === null
-      ? projects
-      : projects.filter((project) => project.category === selectedCategory);
-      const bull = (
-        <Box
-          component="span"
-          sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-        >
-          •
-        </Box>
-      );
-      const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-      useEffect(() => {
-        const handleResize = () => {
-          setWindowWidth(window.innerWidth);
-        };
-    
-        // Add event listener on component mount
-        window.addEventListener('resize', handleResize);
-    
-        // Remove event listener on component unmount
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }, []);
-      const componentStyles = {
-        // Your default styles here
-        width:"80%", marginTop:"7%", marginLeft:"20%", padding:"0", marginRight:"15px", marginBottom:"1%", paddingBottom:"1%", backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter:'blur(10px)'
-      };
-      const wideScreenStyles = {
-        // Your styles for 1280px screen and above
-        // For example:
-        width:"96%",
-        marginLeft:"4%",
-        marginRight:"1%",
-        marginTop:"8%"
-      };
-
-  return (
-    <div className="flex">
-    <div className=" fixed">
-      <Sidebar >
-    
-    <Link to='/'>
-    <SidebarItem 
-    icon={<LayoutDashboardIcon/>}  
-    text="Dashboard"  
-    active={false} 
-    ></SidebarItem>
-    </Link>
-
-
-    <Link to='/project' >
-    <SidebarItem 
-    icon={<LayoutList/>}  
-    text="All Projects"  
-    active={true} 
-      ></SidebarItem>
-    </Link>
-
-
-    <Link to='/inventory'>
-    <SidebarItem 
-    icon={<Warehouse/>}  
-    text="Inventory"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
-
-
-
-
-
- 
-
-
-    <Link to='/mom'>
-    <SidebarItem 
-    icon={<Timer/>}  
-    text="MOM"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
-
-
-    <Link to='/lead'>
-    <SidebarItem 
-    icon={<Users/>}  
-    text="Lead Management"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
-
-
-
-
-
-
-
-    <Link to='https://master.d1iuo6abnc6erf.amplifyapp.com/chat'>
-    <SidebarItem 
-    icon={<MessageCircleCode/>}  
-    text="Chat"  
-    active={false}  
-      ></SidebarItem>
-    </Link>
-    
-   
-
-
-
-
-
-
-    </Sidebar>
-    </div>
-  
-        <Card sx={{ minWidth: 275 }} style={{ ...componentStyles, ...(window.innerWidth <= 1280?wideScreenStyles:componentStyles) }}>
-      <CardContent>
-      <h1 className="text-2xl font-bold mb-4 ml-6">Project</h1>
-      <Data/>
-      </CardContent>
-      
-    </Card>
+        <div className=" pr-10 pl-4 text-medium mt-[10%] font-semibold">
+          <Link to="/">
+            <button className=" font-['Nunito Sans', sans-serif] w-[100%]  flex bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800 py-[9px] px-6 rounded-md">
+            <LayoutDashboard/><h2 className="ml-3">Dashboard</h2></button>
+          </Link>
+          <Link to="/project">
+            <button className=" font-['Nunito Sans', sans-serif] w-[100%] mt-6  flex  py-[9px] px-6 rounded-md">
+            <LayoutList/><h2 className="ml-3">All Projects</h2></button>
+          </Link>
+          <Link to="/inventory">
+            <button className=" font-['Nunito Sans', sans-serif] w-[100%] mt-6  flex  py-[9px] px-6 rounded-md">
+            <Warehouse/><h2 className="ml-3">Inventory</h2></button>
+          </Link>
+          <Link to="/mom">
+            <button className=" font-['Nunito Sans', sans-serif] w-[100%] mt-6  flex  py-[9px] px-6 rounded-md">
+            <Timer/><h2 className="ml-3">MOM</h2></button>
+          </Link>
+          <Link to="/lead">
+            <button className=" font-['Nunito Sans', sans-serif] w-[100%] mt-6  flex  py-[9px] px-6 rounded-md">
+            <Users/><h2 className="ml-3">Lead Management</h2></button>
+          </Link>
+          <Link to="/chat">
+            <button className=" font-['Nunito Sans', sans-serif] w-[100%] mt-6  flex  py-[9px] px-6 rounded-md">
+            <MessageCircleCodeIcon/><h2 className="ml-3">Chat</h2></button>
+          </Link>
         </div>
-          
-       
+ 
+		</div> 
+	); 
 
-      
-      
+	return ( 
+		<div> 
+			<div> 
+				<Box sx={{ display: "flex" }}> 
+					<CssBaseline /> 
+
+					<AppBar 
+						position="fixed"
+						sx={{ 
+							width: { sm: `calc(100% - ${drawWidth}px)` }, 
+							backgroundColor: "rgb(241 245 249)",
+              fontFamily:"'Nunito Sans', sans-serif",
+              boxShadow:"none",
+              paddingX:3
+						}} 
+           
+					> 
+						<Toolbar sx={{paddingX:2,
+             backgroundColor:"#FFFFFF",
+             borderRadius:1,mt:1,display:"flex",alignItems:"center",justifyContent:"space-between"}} > 
+							<IconButton 
+								color="inherit"
+								edge="start"
+								onClick={handleToggle} 
+								sx={{ mr: 2, display: { sm: "none" } }} 
+							> 
+								<MenuIcon /> 
+							</IconButton>
+
+						 
+						</Toolbar> 
+					</AppBar> 
+					<Box 
+						component="nav"
+						sx={{ width: { sm: drawWidth }, 
+							flexShrink: { sm: 0 } }} 
+					> 
+						<Drawer 
+							variant="temporary"
+							open={mobileViewOpen} 
+							onClose={handleToggle} 
+							ModalProps={{ 
+								keepMounted: true, 
+							}} 
+							sx={{ 
+								display: { xs: "block", sm: "none" }, 
+								"& .MuiDrawer-paper": { 
+									boxSizing: "border-box", 
+									width: drawWidth,
+                  boxShadow:1 
+								}, 
+							}} 
+						> 
+							{responsiveDrawer} 
+						</Drawer> 
+						<Drawer 
+							variant="permanent"
+							sx={{ 
+								display: { xs: "none", sm: "block" }, 
+								"& .MuiDrawer-paper": { 
+									boxSizing: "border-box", 
+									width: drawWidth, 
+								}, 
+							}} 
+							open 
+						> 
+							{responsiveDrawer} 
+						</Drawer> 
+					</Box> 
+					<Box 
+						component="main"
+						sx={{ 
+							flexGrow: 1, 
+							p: 3, 
+							width: { sm: `calc(100% - ${drawWidth}px)` }, 
+						}} 
+					> 
+						<Toolbar /> 
+            <Card sx={{ minWidth: 275,overflow:"auto" } } >
+    <CardContent>
+    <h1 className="text-2xl font-bold mb-4 ml-6">Project</h1>
+    <Data/>
+    </CardContent>
     
-  );
-};
+  </Card>
+					</Box> 
+				</Box> 
+			</div> 
+		</div> 
+	); 
+} 
 
-export default Project;
+export default App;
